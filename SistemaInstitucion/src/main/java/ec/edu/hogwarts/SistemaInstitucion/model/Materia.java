@@ -1,16 +1,26 @@
 package ec.edu.hogwarts.SistemaInstitucion.model;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_materias")
-public class Materia {
+public class Materia implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "mat_id")
@@ -39,6 +49,22 @@ public class Materia {
 	
 	@Column(name = "mat_estado")
 	private String estado;
+	
+	@OneToMany
+	@JoinColumn(name="mat_req")
+	private List<Materia> prerequisitos;
+
+	public List<Materia> getPrerequisitos() {
+		return prerequisitos;
+	}
+
+	public void setPrerequisitos(List<Materia> prerequisitos) {
+		this.prerequisitos = prerequisitos;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	public int getId() {
 		return id;

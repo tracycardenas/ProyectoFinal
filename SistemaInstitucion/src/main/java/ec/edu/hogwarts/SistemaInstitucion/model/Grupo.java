@@ -1,16 +1,25 @@
 package ec.edu.hogwarts.SistemaInstitucion.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_grupos")
-public class Grupo {
+public class Grupo implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "grup_id")
@@ -28,9 +37,18 @@ public class Grupo {
 	@Column(name = "grup_modalidad")
 	private String modalidad;
 	
+	@OneToOne
+	@JoinColumn(name = "mat_id")
 	private Materia materia;
-	private Usuario docente;
+	
+	@OneToOne
+	@JoinColumn(name = "doc_id")
+	private Docente docente;
+	
+	@OneToOne
+	@JoinColumn(name = "esp_id")
 	private EspacioFisico espacioFisico;
+	
 	public int getId() {
 		return id;
 	}
@@ -67,19 +85,16 @@ public class Grupo {
 	public void setMateria(Materia materia) {
 		this.materia = materia;
 	}
-	public Usuario getDocente() {
-		return docente;
-	}
-	public void setDocente(Usuario docente) {
-		this.docente = docente;
-	}
 	public EspacioFisico getEspacioFisico() {
 		return espacioFisico;
 	}
 	public void setEspacioFisico(EspacioFisico espacioFisico) {
 		this.espacioFisico = espacioFisico;
 	}
-	
-	
-
+	public Docente getDocente() {
+		return docente;
+	}
+	public void setDocente(Docente docente) {
+		this.docente = docente;
+	}
 }

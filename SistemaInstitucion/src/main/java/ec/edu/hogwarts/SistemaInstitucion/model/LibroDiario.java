@@ -1,5 +1,6 @@
 package ec.edu.hogwarts.SistemaInstitucion.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -12,8 +13,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_libroDiario")
-public class LibroDiario {
+public class LibroDiario implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "lib_id")
@@ -37,7 +43,7 @@ public class LibroDiario {
 	@Column(name = "lib_observacion")
 	private String observacion;
 	
-	private List<Movimiento> movimientos;
+	//private List<Movimiento> movimientos;
 
 	public int getId() {
 		return id;
@@ -95,13 +101,13 @@ public class LibroDiario {
 		this.observacion = observacion;
 	}
 
-	public List<Movimiento> getMovimientos() {
+	/*public List<Movimiento> getMovimientos() {
 		return movimientos;
 	}
 
 	public void setMovimientos(List<Movimiento> movimientos) {
 		this.movimientos = movimientos;
-	}
+	}*/
 	
 	
 

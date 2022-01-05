@@ -1,5 +1,6 @@
 package ec.edu.hogwarts.SistemaInstitucion.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -8,12 +9,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_facturas")
-public class Factura {
+public class Factura implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "fac_id")
@@ -25,8 +34,12 @@ public class Factura {
 	@Column(name = "fac_total")
 	private double total;
 	
+	@OneToOne
+	@JoinColumn(name="usu_id")
 	private Usuario estudiante;
 	
+	@OneToMany
+	@JoinColumn(name="fac_id")
 	private List<DetalleFactura> detalles;
 
 	public int getId() {
@@ -61,13 +74,13 @@ public class Factura {
 		this.estudiante = estudiante;
 	}
 
-	public List<DetalleFactura> getDetalles() {
+	/*public List<DetalleFactura> getDetalles() {
 		return detalles;
 	}
 
 	public void setDetalles(List<DetalleFactura> detalles) {
 		this.detalles = detalles;
-	}
+	}*/
 	
 	
 	
