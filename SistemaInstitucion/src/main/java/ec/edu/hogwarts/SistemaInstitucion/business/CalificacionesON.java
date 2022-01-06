@@ -14,18 +14,18 @@ public class CalificacionesON implements CalificacionesONLocal, CalificacionesON
 	@Inject
 	private CalificacionDAO daoCalificacion;
 	
-	public void insert ( Calificacion op) {
+	public void insert ( Calificacion op) throws Exception{
 		
 		daoCalificacion.insert(op);
 		
 	}
 	
-	public void update (Calificacion op) {
+	public void update (Calificacion op) throws Exception{
 		
 		daoCalificacion.update(op);
 	}
 	
-	public void delete (int id) {
+	public void delete (int id) throws Exception{
 		
 		daoCalificacion.Delete(id);
 	}

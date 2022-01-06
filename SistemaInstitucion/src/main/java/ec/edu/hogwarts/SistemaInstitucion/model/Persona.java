@@ -37,7 +37,7 @@ public class Persona implements Serializable{
 	private String apellido;
 	
 	@Column(name = "per_fechaNacimiento")
-	private Date fechaNacimiento;
+	private String fechaNacimiento;
 	
 	@Column(name = "per_telefono")
 	private String telefono;
@@ -45,7 +45,25 @@ public class Persona implements Serializable{
 	@Column(name = "per_direccion")
 	private String direccion;
 	
+	@Column(name = "per_email")
+	private String email;
 	
+	@Column(name = "per_password")
+	private String password;
+	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getId() {
 		return id;
 	}
@@ -70,10 +88,10 @@ public class Persona implements Serializable{
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public Date getFechaNacimiento() {
+	public String getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	public String getTelefono() {

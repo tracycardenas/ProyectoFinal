@@ -42,17 +42,17 @@ public class Calificacion implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="est_id")
-	private Usuario estudiante;
+	private Estudiante estudiante;
 	
 	@ManyToOne
 	@JoinColumn(name="grup_id")
 	private Grupo grupo;
 	
 	
-	public Usuario getEstudiante() {
+	public Estudiante getEstudiante() {
 		return estudiante;
 	}
-	public void setEstudiante(Usuario estudiante) {
+	public void setEstudiante(Estudiante estudiante) {
 		this.estudiante = estudiante;
 	}
 	public Grupo getGrupo() {

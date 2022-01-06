@@ -14,18 +14,18 @@ public class CarreraON implements CarreraONLocal, CarreraONRemote {
 	@Inject
 	private CarreraDAO daoCarrera;
 	
-	public void insert ( Carrera op) {
+	public void insert ( Carrera op) throws Exception{
 		
 		daoCarrera.insert(op);
 		
 	}
 	
-	public void update (Carrera op) {
+	public void update (Carrera op) throws Exception {
 		
 		daoCarrera.update(op);
 	}
 	
-	public void delete (int id) {
+	public void delete (int id) throws Exception{
 		
 		daoCarrera.Delete(id);
 	}

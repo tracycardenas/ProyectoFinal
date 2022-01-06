@@ -9,11 +9,11 @@ import ec.edu.hogwarts.SistemaInstitucion.model.Persona;
 @Remote
 public interface PersonaONRemote {
 
-	public void insert ( Persona op) ;
+	public void insert ( Persona op) throws Exception;
 	
-	public void update (Persona op) ;
+	public void update (Persona op)throws Exception ;
 	
-	public void delete (int id) ;
+	public void delete (int id)throws Exception ;
 	
 	public List<Persona>getPersona();
 	

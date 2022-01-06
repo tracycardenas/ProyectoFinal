@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+
+	 <h:form>
+
+	<h:outputLabel value="Nombre" />
+	<h:inputText value="#{ingresoMaterias.materia.nombre}" />
+	<br />
+	<h:outputLabel value="Nivel" />
+	<h:inputText value="#{ingresoMaterias.materia.nivel}" />
+	<br />
+	<h:outputLabel value="Horas Practicas" />
+	<h:inputText value="#{ingresoMaterias.materia.h_practica}" />
+	<br />
+	<h:outputLabel value="Horas Docencia" />
+	<h:inputText value="#{ingresoMaterias.materia.h_docencia}" />
+	<br />
+	<h:outputLabel value="Horas Autonomo" />
+	<h:inputText value="#{ingresoMaterias.materia.h_autonomo}" />
+	<br />
+	<h:outputLabel value="Periodo" />
+	<h:inputText value="#{ingresoMaterias.materia.periodo}" />
+	<br />
+	<h:outputLabel value="Numero de Matricula" />
+	<h:inputText value="#{ingresoMaterias.materia.n_matricula}" />
+	<br />
+		<h:outputLabel value="Estado" />
+	<h:inputText value="#{ingresoMaterias.materia.estado}" />
+	<br />
+	<h:outputLabel value="Materias Prerequeridas" />
+	<br />
+
+	
+
+	<h:commandButton action="#{ingresoMaterias.guardarMateria()}" value="Guardar" />
+
+</h:form>
+
+</body> 
+</html>

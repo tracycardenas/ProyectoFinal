@@ -14,18 +14,18 @@ public class MallaCurricularON implements MallaCurricularONLocal, MallaCurricula
 	@Inject
 	private MallaCurricularDAO daoMallaCurricular;
 	
-	public void insert ( MallaCurricular op) {
+	public void insert ( MallaCurricular op) throws Exception{
 		
 		daoMallaCurricular.insert(op);
 		
 	}
 	
-	public void update (MallaCurricular op) {
+	public void update (MallaCurricular op) throws Exception {
 		
 		daoMallaCurricular.update(op);
 	}
 	
-	public void delete (int id) {
+	public void delete (int id) throws Exception{
 		
 		daoMallaCurricular.Delete(id);
 	}

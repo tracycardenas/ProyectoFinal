@@ -14,7 +14,7 @@ public class InstitucionON implements InstitucionONLocal, InstitucionONRemote {
 	@Inject
 	private InstitucionDAO daoInstitucion;
 	
-	public void insert ( Institucion op) {
+	public void insert ( Institucion op) throws Exception{
 		
 		daoInstitucion.insert(op);
 		

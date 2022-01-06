@@ -31,7 +31,7 @@ public class Matricula implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="est_id")
-	private Usuario estudiante;
+	private Estudiante estudiante;
 	
 	@OneToOne
 	@JoinColumn(name="grup_id")
@@ -43,10 +43,10 @@ public class Matricula implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Usuario getEstudiante() {
+	public Estudiante getEstudiante() {
 		return estudiante;
 	}
-	public void setEstudiante(Usuario estudiante) {
+	public void setEstudiante(Estudiante estudiante) {
 		this.estudiante = estudiante;
 	}
 	public Grupo getGrupo() {

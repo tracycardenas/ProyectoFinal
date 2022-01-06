@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+	 <h:form>
+
+	<h:outputLabel value="Nombre" />
+	<h:inputText value="#{ingresoGrupo.grupo.nombre}" />
+	<br />
+	<h:outputLabel value="Modalidad" />
+	<h:inputText value="#{ingresoGrupo.grupo.modalidad}" />
+	<br />
+	<h:outputLabel value="Cupos" />
+	<h:inputText value="#{ingresoGrupo.grupo.cupos}" />
+	<br />
+	<h:outputLabel value="Costos" />
+	<h:inputText value="#{ingresoGrupo.grupo.costo}" />
+	<br />
+	<h:outputLabel value="Materia" />
+	<br />
+	<h:outputLabel value="Espacio Fisico" />
+	<br />
+	<h:outputLabel value="Docente" />
+	<br />
+	
+
+	<h:commandButton action="#{ingresoGrupo.guardarGrupo()}" value="Guardar" />
+
+</h:form>
+
+</body> 
+</html>

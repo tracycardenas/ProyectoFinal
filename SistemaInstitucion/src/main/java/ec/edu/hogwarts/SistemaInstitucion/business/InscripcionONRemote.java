@@ -9,11 +9,11 @@ import ec.edu.hogwarts.SistemaInstitucion.model.Inscripcion;
 @Remote
 public interface InscripcionONRemote {
 
-	public void insert ( Inscripcion op) ;
+	public void insert ( Inscripcion op) throws Exception;
 	
-	public void update (Inscripcion op) ;
+	public void update (Inscripcion op) throws Exception;
 	
-	public void delete (int id) ;
+	public void delete (int id) throws Exception ;
 	
 	public List<Inscripcion>getInscripcion();
 	

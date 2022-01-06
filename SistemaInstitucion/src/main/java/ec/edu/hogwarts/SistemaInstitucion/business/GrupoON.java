@@ -14,18 +14,18 @@ public class GrupoON implements GrupoONLocal, GrupoONRemote {
 	@Inject
 	private GrupoDAO daoGrupo;
 	
-	public void insert ( Grupo op) {
+	public void insert ( Grupo op) throws Exception{
 		
 		daoGrupo.insert(op);
 		
 	}
 	
-	public void update (Grupo op) {
+	public void update (Grupo op) throws Exception{
 		
 		daoGrupo.update(op);
 	}
 	
-	public void delete (int id) {
+	public void delete (int id) throws Exception{
 		
 		daoGrupo.Delete(id);
 	}

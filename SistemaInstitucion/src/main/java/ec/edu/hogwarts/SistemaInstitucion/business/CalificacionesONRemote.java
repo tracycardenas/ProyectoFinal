@@ -9,11 +9,11 @@ import ec.edu.hogwarts.SistemaInstitucion.model.Calificacion;
 @Remote
 public interface CalificacionesONRemote {
 
-	public void insert ( Calificacion op) ;
+	public void insert ( Calificacion op) throws Exception;
 	
-	public void update (Calificacion op) ;
+	public void update (Calificacion op) throws Exception ;
 	
-	public void delete (int id) ;
+	public void delete (int id) throws Exception;
 	
 	public List<Calificacion>getCalificacion();
 	

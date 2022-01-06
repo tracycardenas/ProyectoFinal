@@ -14,18 +14,18 @@ public class InscripcionON implements InscripcionONLocal, InscripcionONRemote {
 	@Inject
 	private InscripcionDAO daoInscripcion;
 	
-	public void insert ( Inscripcion op) {
+	public void insert ( Inscripcion op) throws Exception{
 		
 		daoInscripcion.insert(op);
 		
 	}
 	
-	public void update (Inscripcion op) {
+	public void update (Inscripcion op) throws Exception{
 		
 		daoInscripcion.update(op);
 	}
 	
-	public void delete (int id) {
+	public void delete (int id) throws Exception{
 		
 		daoInscripcion.Delete(id);
 	}

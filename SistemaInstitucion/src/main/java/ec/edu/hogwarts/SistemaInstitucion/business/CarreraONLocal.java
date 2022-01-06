@@ -10,11 +10,11 @@ import ec.edu.hogwarts.SistemaInstitucion.model.Carrera;
 @Local
 public interface CarreraONLocal {
 
-	public void insert ( Carrera op) ;
+	public void insert ( Carrera op) throws Exception ;
 	
-	public void update (Carrera op) ;
+	public void update (Carrera op) throws Exception;
 	
-	public void delete (int id) ;
+	public void delete (int id) throws Exception;
 	
 	public List<Carrera>getCarrera();
 	

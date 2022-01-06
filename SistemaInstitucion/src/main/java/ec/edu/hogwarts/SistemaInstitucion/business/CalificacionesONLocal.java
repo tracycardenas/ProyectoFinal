@@ -10,11 +10,11 @@ import ec.edu.hogwarts.SistemaInstitucion.model.Calificacion;
 @Local
 public interface CalificacionesONLocal {
 
-	public void insert ( Calificacion op) ;
+	public void insert ( Calificacion op) throws Exception;
 	
-	public void update (Calificacion op) ;
+	public void update (Calificacion op) throws Exception;
 	
-	public void delete (int id) ;
+	public void delete (int id) throws Exception ;
 	
 	public List<Calificacion>getCalificacion();
 	

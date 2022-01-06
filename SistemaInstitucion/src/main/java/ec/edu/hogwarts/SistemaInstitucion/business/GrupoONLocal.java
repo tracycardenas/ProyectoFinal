@@ -10,11 +10,11 @@ import ec.edu.hogwarts.SistemaInstitucion.model.Grupo;
 @Local
 public interface GrupoONLocal {
 
-	public void insert ( Grupo op) ;
+	public void insert ( Grupo op) throws Exception;
 	
-	public void update (Grupo op) ;
+	public void update (Grupo op) throws Exception;
 	
-	public void delete (int id) ;
+	public void delete (int id) throws Exception;
 	
 	public List<Grupo>getGrupo();
 	

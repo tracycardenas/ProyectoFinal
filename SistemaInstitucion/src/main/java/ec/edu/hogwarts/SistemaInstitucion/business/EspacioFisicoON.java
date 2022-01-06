@@ -14,18 +14,18 @@ public class EspacioFisicoON implements EspacioFisicoONLocal, EspacioFisicoONRem
 	@Inject
 	private EspacioFisicoDAO daoEspacioFisico;
 	
-	public void insert ( EspacioFisico op) {
+	public void insert ( EspacioFisico op) throws Exception {
 		
 		daoEspacioFisico.insert(op);
 		
 	}
 	
-	public void update (EspacioFisico op) {
+	public void update (EspacioFisico op) throws Exception {
 		
 		daoEspacioFisico.update(op);
 	}
 	
-	public void delete (int id) {
+	public void delete (int id) throws Exception {
 		
 		daoEspacioFisico.Delete(id);
 	}

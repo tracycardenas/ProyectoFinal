@@ -14,18 +14,18 @@ public class FacturaON implements FacturaONLocal, FacturaONRemote {
 	@Inject
 	private FacturaDAO daoFactura;
 	
-	public void insert ( Factura op) {
+	public void insert ( Factura op) throws Exception{
 		
 		daoFactura.insert(op);
 		
 	}
 	
-	public void update (Factura op) {
+	public void update (Factura op) throws Exception{
 		
 		daoFactura.update(op);
 	}
 	
-	public void delete (int id) {
+	public void delete (int id) throws Exception {
 		
 		daoFactura.Delete(id);
 	}

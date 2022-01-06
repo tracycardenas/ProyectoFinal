@@ -14,18 +14,18 @@ public class LibroDiarioON implements LibroDiarioONLocal, LibroDiarioONRemote {
 	@Inject
 	private LibroDiarioDAO daoLibroDiario;
 	
-	public void insert ( LibroDiario op) {
+	public void insert ( LibroDiario op) throws Exception{
 		
 		daoLibroDiario.insert(op);
 		
 	}
 	
-	public void update (LibroDiario op) {
+	public void update (LibroDiario op) throws Exception{
 		
 		daoLibroDiario.update(op);
 	}
 	
-	public void delete (int id) {
+	public void delete (int id) throws Exception{
 		
 		daoLibroDiario.Delete(id);
 	}

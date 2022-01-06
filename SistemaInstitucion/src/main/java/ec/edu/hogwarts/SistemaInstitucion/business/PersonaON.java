@@ -14,18 +14,18 @@ public class PersonaON implements PersonaONLocal, PersonaONRemote {
 	@Inject
 	private PersonaDAO daoPersona;
 	
-	public void insert ( Persona op) {
+	public void insert( Persona op) throws Exception{
 		
 		daoPersona.insert(op);
 		
 	}
 	
-	public void update (Persona op) {
+	public void update (Persona op) throws Exception {
 		
 		daoPersona.update(op);
 	}
 	
-	public void delete (int id) {
+	public void delete (int id) throws Exception{
 		
 		daoPersona.Delete(id);
 	}

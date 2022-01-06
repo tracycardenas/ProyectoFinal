@@ -36,7 +36,7 @@ public class Factura implements Serializable{
 	
 	@OneToOne
 	@JoinColumn(name="usu_id")
-	private Usuario estudiante;
+	private Estudiante estudiante;
 	
 	@OneToMany
 	@JoinColumn(name="fac_id")
@@ -66,21 +66,21 @@ public class Factura implements Serializable{
 		this.total = total;
 	}
 
-	public Usuario getEstudiante() {
+	public Estudiante getEstudiante() {
 		return estudiante;
 	}
 
-	public void setEstudiante(Usuario estudiante) {
+	public void setEstudiante(Estudiante estudiante) {
 		this.estudiante = estudiante;
 	}
 
-	/*public List<DetalleFactura> getDetalles() {
+	public List<DetalleFactura> getDetalles() {
 		return detalles;
 	}
 
 	public void setDetalles(List<DetalleFactura> detalles) {
 		this.detalles = detalles;
-	}*/
+	}
 	
 	
 	

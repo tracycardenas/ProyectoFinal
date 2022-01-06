@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+
+	 <h:form>
+
+
+	<h:outputLabel value="Cedula" />
+	<h:inputText value="#{ingresoPersonasBean.estudiante.cedula}" />
+	<br />
+	<h:outputLabel value="Nombre" />
+	<h:inputText value="#{ingresoPersonasBean.estudiante.nombre}" />
+	<br />
+	<h:outputLabel value="Apellido" />
+	<h:inputText value="#{ingresoPersonasBean.estudiante.apellido}" />
+	<br />
+	<h:outputLabel value="Fecha de Nacimiento" />
+	<h:inputText value="#{ingresoPersonasBean.estudiante.fechaNacimiento}" />
+	<br />
+	<h:outputLabel value="Direccion" />
+	<h:inputText value="#{ingresoPersonasBean.estudiante.direccion}" />
+	<br />
+	<h:outputLabel value="Telefono" />
+	<h:inputText value="#{ingresoPersonasBean.estudiante.telefono}" />
+	<br />
+	<h:outputLabel value="Email" />
+	<h:inputText value="#{ingresoPersonasBean.estudiante.email}" />
+	<br />
+	<h:outputLabel value="Password" />
+	<h:inputSecret value="#{ingresoPersonasBean.estudiante.password}" />
+	<br />
+	<h:outputLabel value="Nombre del Representante" />
+	<h:inputText value="#{ingresoPersonasBean.estudiante.representante}" />
+	<br />
+	
+	
+
+
+	<h:commandButton action="#{ingresoPersonasBean.guardarEstudiante()}" value="Guardar" />
+
+</h:form>
+
+</body> 
+</html>

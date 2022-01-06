@@ -14,18 +14,18 @@ public class MovimientoON implements MovimientoONLocal, MovimientoONRemote {
 	@Inject
 	private MovimientoDAO daoMovimiento;
 	
-	public void insert ( Movimiento op) {
+	public void insert ( Movimiento op) throws Exception{
 		
 		daoMovimiento.insert(op);
 		
 	}
 	
-	public void update (Movimiento op) {
+	public void update (Movimiento op) throws Exception{
 		
 		daoMovimiento.update(op);
 	}
 	
-	public void delete (int id) {
+	public void delete (int id) throws Exception{
 		
 		daoMovimiento.Delete(id);
 	}

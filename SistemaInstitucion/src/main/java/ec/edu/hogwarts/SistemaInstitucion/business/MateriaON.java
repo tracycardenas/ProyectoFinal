@@ -14,18 +14,18 @@ public class MateriaON implements MateriaONLocal, MateriaONRemote {
 	@Inject
 	private MateriaDAO daoMateria;
 	
-	public void insert ( Materia op) {
+	public void insert ( Materia op) throws Exception {
 		
 		daoMateria.insert(op);
 		
 	}
 	
-	public void update (Materia op) {
+	public void update (Materia op) throws Exception {
 		
 		daoMateria.update(op);
 	}
 	
-	public void delete (int id) {
+	public void delete (int id) throws Exception {
 		
 		daoMateria.Delete(id);
 	}

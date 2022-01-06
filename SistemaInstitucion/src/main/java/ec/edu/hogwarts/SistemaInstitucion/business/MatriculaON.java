@@ -14,18 +14,18 @@ public class MatriculaON implements MatriculaONLocal, MatriculaONRemote {
 	@Inject
 	private MatriculaDAO daoMatricula;
 	
-	public void insert ( Matricula op) {
+	public void insert ( Matricula op) throws Exception{
 		
 		daoMatricula.insert(op);
 		
 	}
 	
-	public void update (Matricula op) {
+	public void update (Matricula op) throws Exception{
 		
 		daoMatricula.update(op);
 	}
 	
-	public void delete (int id) {
+	public void delete (int id) throws Exception {
 		
 		daoMatricula.Delete(id);
 	}

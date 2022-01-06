@@ -1,0 +1,1 @@
+package ec.edu.hogwarts.SistemaInstitucion.bean;
