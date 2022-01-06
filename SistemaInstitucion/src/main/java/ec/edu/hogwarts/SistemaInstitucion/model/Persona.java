@@ -1,6 +1,10 @@
 package ec.edu.hogwarts.SistemaInstitucion.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -37,7 +41,7 @@ public class Persona implements Serializable{
 	private String apellido;
 	
 	@Column(name = "per_fechaNacimiento")
-	private String fechaNacimiento;
+	private Date fechaNacimiento;
 	
 	@Column(name = "per_telefono")
 	private String telefono;
@@ -88,10 +92,10 @@ public class Persona implements Serializable{
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public String getFechaNacimiento() {
+	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(String fechaNacimiento) {
+	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	public String getTelefono() {
@@ -107,7 +111,13 @@ public class Persona implements Serializable{
 		this.direccion = direccion;
 	}
 
-	
-	
+	public int getEdad() {
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		LocalDate fechaNac = LocalDate.parse(sdf.format(getFechaNacimiento()), fmt);
+		LocalDate ahora = LocalDate.now();
+		Period periodo = Period.between(fechaNac, ahora);
+		return periodo.getYears();
+	}
 
 }
