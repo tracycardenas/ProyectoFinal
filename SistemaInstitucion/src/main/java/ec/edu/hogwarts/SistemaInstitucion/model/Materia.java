@@ -62,10 +62,6 @@ public class Materia implements Serializable{
 		this.prerequisitos = prerequisitos;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public int getId() {
 		return id;
 	}
