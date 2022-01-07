@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -43,7 +46,9 @@ public class LibroDiario implements Serializable{
 	@Column(name = "lib_observacion")
 	private String observacion;
 	
-	//private List<Movimiento> movimientos;
+	@OneToMany
+	@JoinColumn(name="mov_id")
+	private List<Movimiento> movimientos;
 
 	public int getId() {
 		return id;
@@ -101,14 +106,12 @@ public class LibroDiario implements Serializable{
 		this.observacion = observacion;
 	}
 
-	/*public List<Movimiento> getMovimientos() {
+	public List<Movimiento> getMovimientos() {
 		return movimientos;
 	}
 
 	public void setMovimientos(List<Movimiento> movimientos) {
 		this.movimientos = movimientos;
-	}*/
-	
-	
+	}
 
 }

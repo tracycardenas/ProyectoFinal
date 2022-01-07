@@ -362,30 +362,38 @@ public class CasosDePruebas{
 	}
 	
 	@Test
-	public void testCrearLibroDiario() {
+	public void testLibroDiario() {
 		
 		LibroDiario libro = new LibroDiario();
-		Date fecha = new Date();
-		
+		Date fecha = StringToDate("15/06/2000");
 		libro.setId(1);
 		libro.setInicioDia(1000);
-		libro.setFecha(StringToDate("15/06/2000"));
+		libro.setFecha(fecha);
 		libro.setObservacion("Todo bien");
-		libro.setIngresos(2900);
-		libro.setEgresos(900);
-		libro.setSaldo(1900);
-		
+		libro.setIngresos(2900.00);
+		libro.setEgresos(900.00);
+		libro.setSaldo(1900.00);
+		libro.setMovimientos(new ArrayList<Movimiento>());
+		libro.getMovimientos().add(getMovimiento());
 	
 		assertTrue(libro.getId()==1);
 		assertTrue(libro.getInicioDia()==1000);
-		assertTrue(libro.getFecha()==StringToDate("15/06/2000"));
+		assertTrue(libro.getFecha()==fecha);
 		assertTrue(libro.getObservacion()=="Todo bien");
-		assertTrue(libro.getIngresos()==2900);
-		assertTrue(libro.getEgresos()==900);
+		assertTrue(libro.getIngresos()!=0);
+		assertTrue(libro.getEgresos()!=0);
 		assertTrue(libro.getSaldo()==1900);	
+		assertTrue(libro.getMovimientos().size()==1);
 	}
 
-
+	public Movimiento getMovimiento() {
+		Movimiento mov = new Movimiento();
+		mov.setId(1);
+		mov.setTipo("entrada");
+		mov.setDescripcion("cobro de pension");
+		mov.setValor(250.90);
+		return mov;
+	}
 
 	@Test
 	public void testIngresarInstituto() {
