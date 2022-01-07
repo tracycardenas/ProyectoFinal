@@ -16,12 +16,21 @@ import javax.persistence.OneToOne;
 
 import org.junit.Test;
 
+import ec.edu.hogwarts.SistemaInstitucion.model.Calificacion;
 import ec.edu.hogwarts.SistemaInstitucion.model.Carrera;
+import ec.edu.hogwarts.SistemaInstitucion.model.DetalleFactura;
 import ec.edu.hogwarts.SistemaInstitucion.model.Docente;
+import ec.edu.hogwarts.SistemaInstitucion.model.EspacioFisico;
 import ec.edu.hogwarts.SistemaInstitucion.model.Estudiante;
+import ec.edu.hogwarts.SistemaInstitucion.model.Factura;
+import ec.edu.hogwarts.SistemaInstitucion.model.Grupo;
 import ec.edu.hogwarts.SistemaInstitucion.model.Inscripcion;
+import ec.edu.hogwarts.SistemaInstitucion.model.Institucion;
+import ec.edu.hogwarts.SistemaInstitucion.model.LibroDiario;
 import ec.edu.hogwarts.SistemaInstitucion.model.MallaCurricular;
 import ec.edu.hogwarts.SistemaInstitucion.model.Materia;
+import ec.edu.hogwarts.SistemaInstitucion.model.Matricula;
+import ec.edu.hogwarts.SistemaInstitucion.model.Movimiento;
 import ec.edu.hogwarts.SistemaInstitucion.model.Persona;
 
 public class CasosDePruebas{
@@ -217,6 +226,202 @@ public class CasosDePruebas{
 		inscripcion.setCarrera(carrera);
 		inscripcion.setEstudiante(estudiante);
 		return inscripcion;
+	}
+	
+	@Test
+	public void testCrearEspacioFisico() {
+		EspacioFisico espacioFisico = new EspacioFisico();
+		espacioFisico.setId(1);
+		espacioFisico.setDescripcion("Aula 1");
+		espacioFisico.setUbicacion("Edificio Cornelio Merchan");
+		espacioFisico.setDisponibilidad("Diaria");
+		
+		assertEquals(espacioFisico.getId(), 1);
+		assertEquals(espacioFisico.getDescripcion(), "Aula 1");
+		assertEquals(espacioFisico.getUbicacion(), "Edificio Cornelio Merchan");
+		assertEquals(espacioFisico.getDisponibilidad(), "Diaria");
+		assertTrue(espacioFisico!=null);
+	}
+	
+	@Test
+	public void testCrearGrupo() {
+		Grupo grupo = new Grupo();
+		grupo.setId(1);
+		grupo.setNombre("Grupo 1");
+		grupo.setModalidad("Virtual");
+		grupo.setCupos(30);
+		grupo.setCosto(500.0);
+		
+		Materia materia = new Materia();
+		materia.setId(1);
+		materia.setNombre("Programacion");
+		grupo.setMateria(materia);
+		
+		EspacioFisico espacioFisico = new EspacioFisico();
+		espacioFisico.setId(1);
+		grupo.setEspacioFisico(espacioFisico);
+		
+		Docente docente = new Docente();
+		docente.setId(1);
+		grupo.setDocente(docente);
+		
+		assertEquals(grupo.getId(), 1);
+		assertEquals(grupo.getNombre(), "Grupo 1");
+		assertEquals(grupo.getModalidad(), "Virtual");
+		assertTrue(grupo.getCupos()==30);
+		assertTrue(grupo.getCosto()==500.0);
+		assertTrue(grupo.getDocente()==docente);
+		assertTrue(grupo.getEspacioFisico()==espacioFisico);
+		assertTrue(grupo.getMateria()==materia);
+		
+	}
+	
+	@Test
+	public void testCrearCalificacion() {
+		Calificacion calificacion = new Calificacion();
+		calificacion.setId(1);
+		calificacion.setAporte1(10);
+		calificacion.setAporte2(10);
+		calificacion.setEstado(true);
+		
+		Estudiante estudiante= new Estudiante();
+		estudiante.setId(1);
+		calificacion.setEstudiante(estudiante);
+		calificacion.setExamen1(10);
+		calificacion.setExamen2(10);
+		
+		Grupo grupo = new Grupo();
+		grupo.setId(1);
+		calificacion.setGrupo(grupo);
+		
+		calificacion.setEstado(true);
+		
+		assertEquals(calificacion.getId(), 1);
+		assertTrue(calificacion.getAporte1()==10);
+		assertTrue(calificacion.getAporte2()==10);
+		assertTrue(calificacion.getEstudiante()==estudiante);
+		assertTrue(calificacion.getExamen1()==10);
+		assertTrue(calificacion.getExamen2()==10);
+		assertTrue(calificacion.getGrupo()==grupo);
+		assertTrue(calificacion.isEstado()==true);
+	}
+	
+	@Test
+	public void testCrearMatricula() {
+		Matricula matricula = new Matricula();
+		matricula.setId(1);
+		matricula.setMatricula(1);
+		Estudiante estudiante = new Estudiante();
+		estudiante.setId(1);
+		matricula.setEstudiante(estudiante);
+		
+		Grupo grupo = new Grupo();
+		grupo.setId(1);
+		matricula.setGrupo(grupo);
+		
+		assertEquals(matricula.getId(), 1);
+		assertEquals(matricula.getMatricula(), 1);
+		assertTrue(matricula.getEstudiante()==estudiante);
+		assertTrue(matricula.getGrupo()==grupo);
+		
+	}
+	
+	@Test
+	public void testCrearFactura() {
+		Factura factura = new Factura();
+		factura.setId(1);
+		Date date = new Date();
+		factura.setFecha(date);
+		factura.setTotal(5000);
+		
+		Estudiante estudiante = new Estudiante();
+		estudiante.setId(1);
+		factura.setEstudiante(estudiante);
+		
+		List<DetalleFactura> detalles = new ArrayList<DetalleFactura>();
+		
+		DetalleFactura detalle1 = new DetalleFactura();
+		detalle1.setId(1);
+		detalle1.setCantidad(5);
+		detalle1.setCosto(500);
+		detalle1.setDetalle("5 materias");
+		detalles.add(detalle1);
+		
+		factura.setDetalles(detalles);
+		
+		assertEquals(factura.getId(), 1);
+		assertTrue(factura.getDetalles()==detalles);
+		assertTrue(factura.getEstudiante()==estudiante);
+		assertTrue(factura.getFecha()==date);
+		assertTrue(factura.getTotal()==5000);
+		
+		assertEquals(detalle1.getCantidad(), 5);
+		assertTrue(detalle1.getCosto()==500);
+		assertTrue(detalle1.getDetalle()=="5 materias");
+		assertTrue(detalle1.getId()==1);
+	}
+	
+	@Test
+	public void testCrearLibroDiario() {
+		
+		LibroDiario libro = new LibroDiario();
+		Date fecha = new Date();
+		
+		libro.setId(1);
+		libro.setInicioDia(1000);
+		libro.setFecha(StringToDate("15/06/2000"));
+		libro.setObservacion("Todo bien");
+		libro.setIngresos(2900);
+		libro.setEgresos(900);
+		libro.setSaldo(1900);
+		
+	
+		assertTrue(libro.getId()==1);
+		assertTrue(libro.getInicioDia()==1000);
+		assertTrue(libro.getFecha()==StringToDate("15/06/2000"));
+		assertTrue(libro.getObservacion()=="Todo bien");
+		assertTrue(libro.getIngresos()==2900);
+		assertTrue(libro.getEgresos()==900);
+		assertTrue(libro.getSaldo()==1900);	
+	}
+
+
+
+	@Test
+	public void testIngresarInstituto() {
+		
+		Institucion insti = new Institucion();
+		
+		insti.setId(1);
+		insti.setNombre("Hogwarts");
+		insti.setRUC("1234567890");
+		insti.setDireccion("Cuenca");
+		insti.setTelefono("0979038347");
+		
+		assertTrue(insti.getId()==1);
+		assertTrue(insti.getNombre()=="Hogwarts");
+		assertTrue(insti.getRUC()=="1234567890");
+		assertTrue(insti.getDireccion()=="Cuenca");
+		assertTrue(insti.getTelefono()=="0979038347");
+	}
+
+
+	@Test
+	public void testMovimiento() {
+		
+		Movimiento mov = new Movimiento();
+		
+		mov.setId(1);
+		mov.setTipo("entrada");
+		mov.setDescripcion("cobro de pension");
+		mov.setValor(250.90);
+		
+		assertTrue(mov.getId()==1);
+		assertTrue(mov.getTipo()=="entrada");
+		assertTrue(mov.getDescripcion()=="cobro de pension");
+		assertTrue(mov.getValor()==250.90);
+		
+		
 	}
 	
 }
