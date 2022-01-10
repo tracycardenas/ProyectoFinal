@@ -30,6 +30,7 @@ public class PersonaDAO {
 	public Persona read(int id) {
 		
 		Persona op = em.find(Persona.class, id);
+	
 		return op;
 	}
 	
