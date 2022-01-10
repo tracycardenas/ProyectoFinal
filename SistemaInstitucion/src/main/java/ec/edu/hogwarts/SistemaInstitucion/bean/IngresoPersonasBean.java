@@ -24,9 +24,8 @@ public class IngresoPersonasBean {
 	private Persona persona = new Persona();
 	private Estudiante estudiante = new Estudiante();
 	private Docente docente = new Docente();
-	private List<Persona> personas;
-	private List<Estudiante> estudiantes;
-	private List<Docente> docentes;
+	private List<Persona> estudiantes;
+	private List<Persona> docentes;
 	
 
 	
@@ -40,21 +39,34 @@ public class IngresoPersonasBean {
 	}
 	
 	@PostConstruct
-	public void init () {
+	public void init() {
 		this.loadPersonas();
 	}
-
-
-	public List<Persona> getPersonas() {
-		return personas;
-	}
-
-
-	public void setPersonas(List<Persona> personas) {
-		this.personas = personas;
-	}
+	
 
 	
+
+	
+	public List<Persona> getEstudiantes() {
+		return estudiantes;
+	}
+
+
+	public void setEstudiantes(List<Persona> estudiantes) {
+		this.estudiantes = estudiantes;
+	}
+
+
+	public List<Persona> getDocentes() {
+		return docentes;
+	}
+
+
+	public void setDocentes(List<Persona> docentes) {
+		this.docentes = docentes;
+	}
+
+
 	public Docente getDocente() {
 		return docente;
 	}
@@ -65,14 +77,7 @@ public class IngresoPersonasBean {
 	}
 
 
-	public List<Estudiante> getEstudiantes() {
-		return estudiantes;
-	}
-
-
-	public void setEstudiantes(List<Estudiante> estudiantes) {
-		this.estudiantes = estudiantes;
-	}
+	
 
 
 	public Estudiante getEstudiante() {
@@ -88,7 +93,7 @@ public class IngresoPersonasBean {
 	public String guardarEstudiante() {
 		
 		try {
-			
+			estudiante.setRol("Estudiante");
 			personasON.insert(this.estudiante);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -100,25 +105,33 @@ public class IngresoPersonasBean {
 	public String guardarDocente() {
 		
 		try {
+			docente.setRol("Docente");
 			personasON.insert(this.docente);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "Listar_Estudiantes?faces-redirect=true";
+		return "Listado_Docentes?faces-redirect=true";
 	}
 	
 	public void loadPersonas() {
-		
-		this.personas= personasON.getPersona();
-		
-	    for (int i = 0; i < personas.size(); i++) {
+		this.estudiantes= personasON.getEstudiantes();
+
+			for (int i = 0; i < estudiantes.size(); i++) {
+				Persona estudiante = estudiantes.get(i);
+			}
 			
-	    	Persona p = personas.get(i);
-	    	
+			this.docentes= personasON.getDocentes();
+
+			for (int i = 0; i < docentes.size(); i++) {
+				Persona docente = docentes.get(i);
+			}
+		
 			
-		}
 	}
+			
+
+	
 	
 	
 

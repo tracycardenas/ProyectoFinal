@@ -8,24 +8,34 @@
 
 <ui:composition template="template/pages/dashboards/dashboard.xhtml">
 	<ui:define name="title">
-		Lista de Estudiante
+		Lista de Estudiantes
 	</ui:define>
 	<ui:define name="content">
-		<h:dataTable var ="per" value="#{ingresoPersonasBean.personas}"> 
+		<h:dataTable var ="per" value="#{ingresoPersonasBean.estudiantes}"> 
 
 			<h:column>
 				<f:facet name="header"> Cedula </f:facet>
 				#{per.cedula}
 			</h:column>
-			
-				<h:column>
+	
+			<h:column>
 				<f:facet name="header"> Nombre</f:facet>
 				#{per.nombre}
 			</h:column>
 			
 			<h:column>
+				<f:facet name="header"> Apellido</f:facet>
+				#{per.apellido}
+			</h:column>
+			
+			<h:column>
 				<f:facet name="header"> Direccion </f:facet>
 				#{per.direccion}
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header"> Fecha de Nacimiento </f:facet>
+				#{per.fechaNacimiento}
 			</h:column>
 		
 		

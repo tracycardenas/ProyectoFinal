@@ -40,11 +40,23 @@ public class PersonaDAO {
 		em.remove(op);
 	}
 	
-	public List<Persona> getList(){
+	public List<Persona> getListEstudiantes(){
 		 
 		List<Persona> listado = new ArrayList<Persona>();
 		
-		String jpql = "SELECT op FROM Persona op";
+		String jpql = "SELECT op FROM Persona op WHERE per_rol='Estudiante'";
+				
+		
+		Query query = em.createQuery(jpql,Persona.class);
+		listado=query.getResultList();
+		
+		return listado;
+	}
+	public List<Persona> getListDocentes(){
+		 
+		List<Persona> listado = new ArrayList<Persona>();
+		
+		String jpql = "SELECT op FROM Persona op WHERE per_rol='Docente'";
 				
 		
 		Query query = em.createQuery(jpql,Persona.class);

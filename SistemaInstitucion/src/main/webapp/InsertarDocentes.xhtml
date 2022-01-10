@@ -1,48 +1,75 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head> 
-<body> 
-
-	 <h:form>
-
-	<h:outputLabel value="Cedula" />
-	<h:inputText value="#{ingresoPersonasBean.docente.cedula}" />
-	<br />
-	<h:outputLabel value="Nombre" />
-	<h:inputText value="#{ingresoPersonasBean.docente.nombre}" />
-	<br />
-	<h:outputLabel value="Apellido" />
-	<h:inputText value="#{ingresoPersonasBean.docente.apellido}" />
-	<br />
-	<h:outputLabel value="Fecha de Nacimiento" />
-	<h:inputText value="#{ingresoPersonasBean.docente.fechaNacimiento}" />
-	<br />
-	<h:outputLabel value="Direccion" />
-	<h:inputText value="#{ingresoPersonasBean.docente.direccion}" />
-	<br />
-	<h:outputLabel value="Telefono" />
-	<h:inputText value="#{ingresoPersonasBean.docente.telefono}" />
-	<br />
-	<h:outputLabel value="Email" />
-	<h:inputText value="#{ingresoPersonasBean.docente.email}" />
-	<br />
-	<h:outputLabel value="Password" />
-	<h:inputSecret value="#{ingresoPersonasBean.docente.password}" />
-	<br />
-	<h:outputLabel value="Especialidad" />
-	<h:inputText value="#{ingresoPersonasBean.docente.especialidad}" />
-	<br />
-	
-	
+<ui:composition template="template/pages/dashboards/dashboard.xhtml">
+	<ui:define name="title">
+		Crear Docente
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<div class="p-field">
+				<p:outputLabel for="fieldCedula" value="Cedula:" />
+				<p:inputText id="fieldCedula" value="#{ingresoPersonasBean.docente.cedula}" />
+			</div>
 
 
-	<h:commandButton action="#{ingresoPersonasBean.guardarDocente()}" value="Guardar" />
+			<div>
+				<p:outputLabel value="Nombre:" />
+				<p:inputText value="#{ingresoPersonasBean.docente.nombre}" />
+			</div>
 
-</h:form>
+			<div>
+				<p:outputLabel value="Apellido:" />
+				<p:inputText value="#{ingresoPersonasBean.docente.apellido}" />
+			</div>
 
-</body> 
+			<div>
+				<p:outputLabel value="Fecha de Nacimiento:" />
+				<p:calendar
+					value="#{ingresoPersonasBean.docente.fechaNacimiento}"
+					navigator="true"></p:calendar>
+			</div>
+
+			<div>
+				<p:outputLabel value="Direccion:" />
+				<p:inputText value="#{ingresoPersonasBean.docente.direccion}" />
+			</div>
+
+			<div>
+				<p:outputLabel value="Telefono:" />
+				<p:inputText value="#{ingresoPersonasBean.docente.telefono}" />
+			</div>
+
+			<div>
+				<p:outputLabel value="Email:" />
+				<p:inputText value="#{ingresoPersonasBean.docente.email}" />
+			</div>
+
+			<div>
+				<p:outputLabel value="Password:" />
+				<p:password value="#{ingresoPersonasBean.docente.password}"></p:password>
+			</div>
+
+
+			<div>
+				<p:outputLabel value="Especialidad:" />
+				<p:inputText value="#{ingresoPersonasBean.docente.especialidad}" />
+			</div>
+
+			<div>
+				<h:commandButton action="#{ingresoPersonasBean.guardarDocente()}"
+					value="Guardar" />
+			</div>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+
 </html>

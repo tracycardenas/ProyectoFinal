@@ -30,8 +30,12 @@ public class PersonaON implements PersonaONLocal, PersonaONRemote {
 		daoPersona.Delete(id);
 	}
 	
-	public List<Persona>getPersona(){
+	public List<Persona>getEstudiantes(){
 		
-		return daoPersona.getList();
+		return daoPersona.getListEstudiantes();
+	}
+	public List<Persona>getDocentes(){
+		
+		return daoPersona.getListDocentes();
 	}
 }

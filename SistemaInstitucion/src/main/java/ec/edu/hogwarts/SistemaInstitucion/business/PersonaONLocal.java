@@ -16,6 +16,7 @@ public interface PersonaONLocal {
 	
 	public void delete (int id) throws Exception;
 	
-	public List<Persona>getPersona();
+	public List<Persona>getEstudiantes();
+	public List<Persona>getDocentes();
 	
 }

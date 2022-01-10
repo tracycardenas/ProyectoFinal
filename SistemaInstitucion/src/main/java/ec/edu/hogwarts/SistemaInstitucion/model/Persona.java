@@ -55,7 +55,16 @@ public class Persona implements Serializable{
 	@Column(name = "per_password")
 	private String password;
 	
+	@Column(name = "per_rol")
+	private String rol;
 	
+	
+	public String getRol() {
+		return rol;
+	}
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 	public String getEmail() {
 		return email;
 	}
