@@ -12,51 +12,51 @@
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
-			<div class="p-field">
-				<p:outputLabel for="fieldCedula" value="Cedula:" />
+			<div class="columna_izquierda">
+				<p:outputLabel for="fieldCedula" value="Cedula:" class="columna_izquierda"/>
 				<p:inputText id="fieldCedula" value="#{ingresoPersonasBean.docente.cedula}" />
 			</div>
 
 
-			<div>
+			<div class="columna_izquierda">
 				<p:outputLabel value="Nombre:" />
 				<p:inputText value="#{ingresoPersonasBean.docente.nombre}" />
 			</div>
 
-			<div>
+			<div class="columna_izquierda">
 				<p:outputLabel value="Apellido:" />
 				<p:inputText value="#{ingresoPersonasBean.docente.apellido}" />
 			</div>
 
-			<div>
+			<div class="columna_izquierda">
 				<p:outputLabel value="Fecha de Nacimiento:" />
 				<p:calendar
 					value="#{ingresoPersonasBean.docente.fechaNacimiento}"
 					navigator="true"></p:calendar>
 			</div>
 
-			<div>
+			<div class="columna_derecho">
 				<p:outputLabel value="Direccion:" />
 				<p:inputText value="#{ingresoPersonasBean.docente.direccion}" />
 			</div>
 
-			<div>
+			<div class="columna_derecho">
 				<p:outputLabel value="Telefono:" />
 				<p:inputText value="#{ingresoPersonasBean.docente.telefono}" />
 			</div>
 
-			<div>
+			<div class="columna_derecho">
 				<p:outputLabel value="Email:" />
 				<p:inputText value="#{ingresoPersonasBean.docente.email}" />
 			</div>
 
-			<div>
+			<div class="columna_derecho">
 				<p:outputLabel value="Password:" />
 				<p:password value="#{ingresoPersonasBean.docente.password}"></p:password>
 			</div>
 
 
-			<div>
+			<div class="columna_derecho">
 				<p:outputLabel value="Especialidad:" />
 				<p:inputText value="#{ingresoPersonasBean.docente.especialidad}" />
 			</div>

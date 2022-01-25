@@ -43,6 +43,7 @@ License - nucleoapp.com/license/
   font-size: 5em;
 }
 
+
 /*----------------------------------
   add a square/circle background
 -----------------------------------*/
@@ -570,3 +571,102 @@ License - nucleoapp.com/license/
 
 
 /* all icon font classes list here */
+
+/* Modificaciones para darle estilo al formulario by DP*/
+
+
+.registro{
+	
+	margin-left: 50px;
+
+	max-width: 650px;
+}
+.info{
+	
+	padding: 7px;
+}
+
+.cedula{
+	
+	margin-left:30px;
+	width: 300px;
+}
+
+.nombre{
+	
+	margin-left:20px;
+	width: 300px;
+}
+
+.apellido{
+	
+	margin-left:20px;
+	width: 300px;
+}
+
+.calendar{
+	
+	margin-left:20px;
+	
+}
+
+.direccion{
+	
+	margin-left:20px;
+	width: 290px;
+}
+
+.telefono{
+	
+	margin-left:25px;
+	width: 290px;
+}
+
+.email{
+	
+	margin-left:45px;
+	width: 290px;
+}
+.password{
+	
+	margin-left:16px;
+	width: 290px;
+}
+
+.representante{
+	
+	margin-left:16px;
+	width: 167px;
+}
+
+.enviar{
+	
+	margin-left: 450px;
+	width: 200px;
+	padding: 10px;
+}
+
+
+.mensaje{
+	float:left;
+	margin-left: 700px;
+	margin-top: -535px;
+	min-width: 400px;
+	min-height: 400px;
+	max-width: 400px;
+	text-align: center;
+	
+}
+
+.escudo{
+	
+	margin-left: 120px;
+	max-width: 150px;
+	min-height: 150px;
+	background-image: url("https://2.bp.blogspot.com/-RUd0F79aGhU/WECMP7hY8uI/AAAAAAAAVuU/VCXcuL9jIv0g3LVOBB7sICRXUo_K7jiqQCLcB/s1600/emblema%2Bhogwarts%2B%25282%2529.jpg");
+	background-size: 150px;
+	
+}
+
+/* END Modificaciones para darle estilo al formulario by DP*/
+

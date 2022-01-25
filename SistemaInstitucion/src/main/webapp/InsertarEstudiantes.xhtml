@@ -6,67 +6,89 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
+
 <ui:composition template="template/pages/dashboards/dashboard.xhtml">
 	<ui:define name="title">
-		Crear Estudiante
+		Inscripcion de Estudiantes
 	</ui:define>
+	
 	<ui:define name="content">
-		<h:form>
-			<div class="p-field">
+		<h:form class="registro">
+			<div class="info">
 				<p:outputLabel for="fieldCedula" value="Cedula:" />
-				<p:inputText id="fieldCedula" value="#{ingresoPersonasBean.estudiante.cedula}" />
+				<p:inputText class="cedula" id="fieldCedula" value="#{ingresoPersonasBean.estudiante.cedula}" 
+				onblur="return validarCedula(this)" onkeypress="return validarNumeros( this)"/>
 			</div>
 
 
-			<div>
+			<div class="info">
 				<p:outputLabel value="Nombre:" />
-				<p:inputText value="#{ingresoPersonasBean.estudiante.nombre}" />
+				<p:inputText class="nombre" value="#{ingresoPersonasBean.estudiante.nombre}" />
 			</div>
 
-			<div>
+			<div class="info">
 				<p:outputLabel value="Apellido:" />
-				<p:inputText value="#{ingresoPersonasBean.estudiante.apellido}" />
+				<p:inputText class="apellido" value="#{ingresoPersonasBean.estudiante.apellido}" />
 			</div>
 
-			<div>
+			<div class="info">
 				<p:outputLabel value="Fecha de Nacimiento:" />
-				<p:calendar
+				<p:calendar class="calendar"
 					value="#{ingresoPersonasBean.estudiante.fechaNacimiento}"
 					navigator="true"></p:calendar>
 			</div>
-
-			<div>
+			
+			<div class="info">
 				<p:outputLabel value="Direccion:" />
-				<p:inputText value="#{ingresoPersonasBean.estudiante.direccion}" />
+				<p:inputText class="direccion" value="#{ingresoPersonasBean.estudiante.direccion}" />
 			</div>
 
-			<div>
+			<div class="info">
 				<p:outputLabel value="Telefono:" />
-				<p:inputText value="#{ingresoPersonasBean.estudiante.telefono}" />
+				<p:inputText type="tel" pattern="\+?\d{0,3}[\s\(\-]?([0-9]{2,3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})" class="telefono" value="#{ingresoPersonasBean.estudiante.telefono}" />
 			</div>
 
-			<div>
+			<div class="info">
 				<p:outputLabel value="Email:" />
-				<p:inputText value="#{ingresoPersonasBean.estudiante.email}" />
+				<p:inputText type="email" class="email" value="#{ingresoPersonasBean.estudiante.email}" />
 			</div>
 
-			<div>
+			<div class="info">
 				<p:outputLabel value="Password:" />
-				<p:password value="#{ingresoPersonasBean.estudiante.password}"></p:password>
+				<p:password class="password" name="pw" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value="#{ingresoPersonasBean.estudiante.password}" ></p:password>
 			</div>
+			
 
-
-			<div>
+			<div class="info">
 				<p:outputLabel value="Nombre del Representante:" />
-				<p:inputText value="#{ingresoPersonasBean.estudiante.representante}" />
+				<p:inputText class="representante" value="#{ingresoPersonasBean.estudiante.representante}"  />
 			</div>
 
-			<div>
+			<div class="enviar">
 				<h:commandButton action="#{ingresoPersonasBean.guardarEstudiante()}"
-					value="Guardar" />
+					value="Inscribir" />
 			</div>
 
 		</h:form>
+		
+		<div class="mensaje">
+			
+			
+			<div class="escudo">
+			</div>
+			<br></br>
+			<h2> Universidad "HOGWARTS"</h2>
+			<br></br>
+			<p>
+			
+			El pago único de $50,00 que cubre todo el proceso de admisión, deberá realizarse de forma presencial en las oficinas de Tesorería en la Universidad 
+		<br></br>
+		<br></br>
+			Luego de 48 horas, la Universidad te enviará un correo a la dirección con la que realizaste tu inscripción y te asignará una cuenta de correo electrónico institucional, 
+			a la cual te enviaremos todas las notificaciones sobre lo que tienes que hacer en el proceso de matriculación.
+			
+			</p>
+		</div>
 	</ui:define>
 
 </ui:composition>
