@@ -92,14 +92,17 @@ public class IngresoPersonasBean {
 
 	public String guardarEstudiante() {
 		
+		String r="";
 		try {
 			estudiante.setRol("Estudiante");
 			personasON.insert(this.estudiante);
+			r= "Listar_Estudiantes?faces-redirect=true";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			r= "InsertarEstudiantes?faces-redirect=true";
 		}
-		return "Listar_Estudiantes?faces-redirect=true";
+		return r;
 	}
 	
 	public String guardarDocente() {

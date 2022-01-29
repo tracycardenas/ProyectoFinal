@@ -6,13 +6,18 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
+<head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
 
 <ui:composition template="template/pages/dashboards/dashboard.xhtml">
+	swal("Oops!", "Something went wrong on the page!", "error");
 	<ui:define name="title">
 		Inscripcion de Estudiantes
 	</ui:define>
 	
 	<ui:define name="content">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<h:form class="registro">
 			<div class="info">
 				<p:outputLabel for="fieldCedula" value="Cedula:" />
@@ -67,6 +72,8 @@
 			<div class="enviar">
 				<h:commandButton action="#{ingresoPersonasBean.guardarEstudiante()}"
 					value="Inscribir" />
+					
+					
 			</div>
 
 		</h:form>

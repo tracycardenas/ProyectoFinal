@@ -28,10 +28,6 @@ public class Persona implements Serializable{
 
 	@Id
 	@Column(name = "per_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	@Column(name = "per_cedula")
 	private String cedula;
 	
 	@Column(name = "per_nombre")
@@ -76,12 +72,6 @@ public class Persona implements Serializable{
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public String getCedula() {
 		return cedula;
