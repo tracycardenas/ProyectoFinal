@@ -56,6 +56,14 @@ public class Materia implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "mat_plan_analitico")
 	private PlanAnalitico planAnalitico;
+	
+	@OneToMany
+	@JoinColumn(name = "materia_id")
+	private List<Grupo> grupos;
+	
+	@OneToMany
+	@JoinColumn(name = "mat_id")
+	private List<Nivel> nivel;
 
 	public int getId() {
 		return id;
@@ -136,5 +144,13 @@ public class Materia implements Serializable{
 	public void setPlanAnalitico(PlanAnalitico planAnalitico) {
 		this.planAnalitico = planAnalitico;
 	}
-	
+
+	public List<Grupo> getGrupos() {
+		return grupos;
+	}
+
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
+	}
+
 }

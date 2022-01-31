@@ -47,7 +47,7 @@ public class LibroDiario implements Serializable{
 	private String observacion;
 	
 	@OneToMany
-	@JoinColumn(name="mov_id")
+	@JoinColumn(name="lib_id")
 	private List<Movimiento> movimientos;
 
 	public int getId() {

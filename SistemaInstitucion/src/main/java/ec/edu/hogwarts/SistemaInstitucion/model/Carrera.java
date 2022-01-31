@@ -25,16 +25,16 @@ public class Carrera implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "carr_id")
 	private int id;
-	
 	@Column(name = "carr_nombre")
 	private String nombre;
-	
 	@Column(name = "carr_descripcion")
 	private String descripcion;
-	
 	@OneToMany
 	@JoinColumn(name="carr_id")
 	private List<MallaCurricular> mallas;
+	@OneToMany
+	@JoinColumn(name="carr_id")
+	private List<Inscripcion> inscripciones;
 
 	public int getId() {
 		return id;

@@ -22,16 +22,11 @@ public class EspacioFisico implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "esp_id")
 	private int id;
-	
 	@Column(name = "esp_descripcion")
 	private String descripcion;
-	
 	@Column(name = "esp_ubicacion")
 	private String ubicacion;
 	
-	@Column(name = "esp_disponibilidad")
-	private String disponibilidad;
-
 	public int getId() {
 		return id;
 	}
@@ -55,15 +50,5 @@ public class EspacioFisico implements Serializable{
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-
-	public String getDisponibilidad() {
-		return disponibilidad;
-	}
-
-	public void setDisponibilidad(String disponibilidad) {
-		this.disponibilidad = disponibilidad;
-	}
-	
-	
 
 }

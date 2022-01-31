@@ -24,43 +24,18 @@ public class Calificacion implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "cal_id")
 	private int id;
-	
 	@Column(name = "cal_aporte1")
 	private double aporte1;
-	
 	@Column(name = "cal_examen1")
 	private double examen1;
-	
 	@Column(name = "cal_aporte2")
 	private double aporte2;
-	
 	@Column(name = "cal_examen2")
 	private double examen2;
-	
 	@Column(name = "cal_estado")
-	private boolean estado;
-	
-	@ManyToOne
-	@JoinColumn(name="est_id")
-	private Estudiante estudiante;
-	
-	@ManyToOne
-	@JoinColumn(name="grup_id")
-	private Grupo grupo;
-	
-	
-	public Estudiante getEstudiante() {
-		return estudiante;
-	}
-	public void setEstudiante(Estudiante estudiante) {
-		this.estudiante = estudiante;
-	}
-	public Grupo getGrupo() {
-		return grupo;
-	}
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
-	}
+	private boolean estado; //aprobado-reprobado-cursando
+	@Column(name = "cal_numero_matricula")
+	private int numeroMatricula;
 	public int getId() {
 		return id;
 	}
@@ -96,6 +71,12 @@ public class Calificacion implements Serializable{
 	}
 	public void setEstado(boolean estado) {
 		this.estado = estado;
+	}
+	public int getNumeroMatricula() {
+		return numeroMatricula;
+	}
+	public void setNumeroMatricula(int numeroMatricula) {
+		this.numeroMatricula = numeroMatricula;
 	}
 	
 }

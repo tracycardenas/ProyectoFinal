@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.swing.ImageIcon;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -54,25 +55,9 @@ public class Persona implements Serializable{
 	@Column(name = "per_rol")
 	private String rol;
 	
+	@Column(name = "per_imagen")
+	private ImageIcon foto;
 	
-	public String getRol() {
-		return rol;
-	}
-	public void setRol(String rol) {
-		this.rol = rol;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
 	public String getCedula() {
 		return cedula;
 	}
@@ -108,6 +93,30 @@ public class Persona implements Serializable{
 	}
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRol() {
+		return rol;
+	}
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+	public ImageIcon getFoto() {
+		return foto;
+	}
+	public void setFoto(ImageIcon foto) {
+		this.foto = foto;
 	}
 
 	public int getEdad() {

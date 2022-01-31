@@ -1,6 +1,7 @@
 package ec.edu.hogwarts.SistemaInstitucion.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,17 +25,17 @@ public class Matricula implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "matri_id")
 	private int id;
-	
-	@Column(name= "matri_matricula")
-	private int matricula;
-	
-	@ManyToOne
-	@JoinColumn(name="est_id")
-	private Estudiante estudiante;
-	
-	@OneToOne
-	@JoinColumn(name="grup_id")
-	private Grupo grupo;
+	@Column(name = "matri_estado")
+	private boolean estado;	
+	@Column(name = "matri_costo_matricula")
+	private double costoMatricula;
+	@Column(name = "matri_costo_hora")
+	private double costoHora;
+	@Column(name = "matri_total_horas")
+	private int totalHoras;
+	@OneToMany
+	@JoinColumn(name="matri_id")
+	private List<Calificacion> calificacion;
 	
 	public int getId() {
 		return id;
@@ -43,23 +43,35 @@ public class Matricula implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Estudiante getEstudiante() {
-		return estudiante;
+	public boolean isEstado() {
+		return estado;
 	}
-	public void setEstudiante(Estudiante estudiante) {
-		this.estudiante = estudiante;
+	public void setEstado(boolean estado) {
+		this.estado = estado;
 	}
-	public Grupo getGrupo() {
-		return grupo;
+	public double getCostoMatricula() {
+		return costoMatricula;
 	}
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
+	public void setCostoMatricula(double costoMatricula) {
+		this.costoMatricula = costoMatricula;
 	}
-	public int getMatricula() {
-		return matricula;
+	public double getCostoHora() {
+		return costoHora;
 	}
-	public void setMatricula(int matricula) {
-		this.matricula = matricula;
+	public void setCostoHora(double costoHora) {
+		this.costoHora = costoHora;
 	}
-
+	public int getTotalHoras() {
+		return totalHoras;
+	}
+	public void setTotalHoras(int totalHoras) {
+		this.totalHoras = totalHoras;
+	}
+	public List<Calificacion> getCalificacion() {
+		return calificacion;
+	}
+	public void setCalificacion(List<Calificacion> calificacion) {
+		this.calificacion = calificacion;
+	}
+	
 }

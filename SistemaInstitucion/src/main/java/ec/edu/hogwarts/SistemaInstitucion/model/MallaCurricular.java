@@ -29,22 +29,19 @@ public class MallaCurricular implements Serializable{
 	@Column(name = "malla_descripcion")
 	private String descripcion;
 	
-	@Column(name = "malla_niveles")
-	private int niveles;
-	
 	@Column(name = "malla_estado")
 	private boolean estado;
 	
 	@OneToMany
 	@JoinColumn(name="malla_id")
-	private List<Materia> materias;
-
-	public List<Materia> getMaterias() {
-		return materias;
+	private List<Nivel> niveles;
+	
+	public List<Nivel> getNiveles() {
+		return niveles;
 	}
 
-	public void setMaterias(List<Materia> materias) {
-		this.materias = materias;
+	public void setNiveles(List<Nivel> niveles) {
+		this.niveles = niveles;
 	}
 
 	public int getId() {
@@ -61,14 +58,6 @@ public class MallaCurricular implements Serializable{
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	public int getNiveles() {
-		return niveles;
-	}
-
-	public void setNiveles(int niveles) {
-		this.niveles = niveles;
 	}
 
 	public boolean isEstado() {

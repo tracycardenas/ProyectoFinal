@@ -32,6 +32,9 @@ public class DetalleFactura implements Serializable{
 	@Column(name = "det_costo")
 	private int costo;
 
+	@Column(name = "det_subtotal")
+	private double subtotal;
+
 	public int getId() {
 		return id;
 	}
@@ -62,6 +65,14 @@ public class DetalleFactura implements Serializable{
 
 	public void setCosto(int costo) {
 		this.costo = costo;
+	}
+
+	public double getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
 	}
 	
 }

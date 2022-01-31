@@ -31,6 +31,12 @@ public class Factura implements Serializable{
 	@Column(name = "fac_fecha")
 	private Date fecha;
 	
+	@Column(name = "fac_subtotal")
+	private double subtotal;
+	
+	@Column(name = "fac_iva")
+	private double iva;
+	
 	@Column(name = "fac_total")
 	private double total;
 	
@@ -58,6 +64,22 @@ public class Factura implements Serializable{
 		this.fecha = fecha;
 	}
 
+	public double getSubtotal() {
+		return subtotal;
+	}
+
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
+	}
+
+	public double getIva() {
+		return iva;
+	}
+
+	public void setIva(double iva) {
+		this.iva = iva;
+	}
+
 	public double getTotal() {
 		return total;
 	}
@@ -82,8 +104,4 @@ public class Factura implements Serializable{
 		this.detalles = detalles;
 	}
 	
-	
-	
-
-
 }

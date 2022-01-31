@@ -1,1 +1,0 @@
-package ec.edu.hogwarts.SistemaInstitucion.model;
