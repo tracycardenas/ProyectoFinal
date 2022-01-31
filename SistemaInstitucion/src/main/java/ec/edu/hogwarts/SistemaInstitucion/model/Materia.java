@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,46 +22,40 @@ public class Materia implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "mat_id")
 	private int id;
 	
+	@Id
+	@Column(name = "mat_codigo")
+	private String codigo;
+	
 	@Column(name = "mat_nombre")
 	private String nombre;
 	
-	@Column(name = "mat_nivel")
-	private int nivel;
+	@Column(name = "mat_descripcion")
+	private String descripcion;
 	
-	@Column(name = "mat_docencia")
-	private int h_docencia;
+	@Column(name = "mat_horas_clase")
+	private int horasClase;
 	
-	@Column(name = "mat_practica")
-	private int h_practica;
+	@Column(name = "mat_horas_practicas")
+	private int horasPracticas;
 	
-	@Column(name = "mat_autonomo")
-	private int h_autonomo;
-	
-	@Column(name = "mat_periodo")
-	private int periodo;
-	
-	@Column(name = "mat_matricula")
-	private int n_matricula;
-	
-	@Column(name = "mat_estado")
-	private String estado;
+	@Column(name = "mat_horas_unidad")
+	private int horasUnidad;
 	
 	@OneToMany
-	@JoinColumn(name="mat_req")
+	@JoinColumn(name = "mat_requisito")
 	private List<Materia> prerequisitos;
-
-	public List<Materia> getPrerequisitos() {
-		return prerequisitos;
-	}
-
-	public void setPrerequisitos(List<Materia> prerequisitos) {
-		this.prerequisitos = prerequisitos;
-	}
+	
+	@OneToOne
+	@JoinColumn(name = "mat_equivalencia")
+	private Materia equivalencia;
+	
+	@OneToOne
+	@JoinColumn(name = "mat_plan_analitico")
+	private PlanAnalitico planAnalitico;
 
 	public int getId() {
 		return id;
@@ -68,6 +63,14 @@ public class Materia implements Serializable{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getNombre() {
@@ -78,62 +81,60 @@ public class Materia implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public int getNivel() {
-		return nivel;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setNivel(int nivel) {
-		this.nivel = nivel;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	public int getH_docencia() {
-		return h_docencia;
+	public int getHorasClase() {
+		return horasClase;
 	}
 
-	public void setH_docencia(int h_docencia) {
-		this.h_docencia = h_docencia;
+	public void setHorasClase(int horasClase) {
+		this.horasClase = horasClase;
 	}
 
-	public int getH_practica() {
-		return h_practica;
+	public int getHorasPracticas() {
+		return horasPracticas;
 	}
 
-	public void setH_practica(int h_practica) {
-		this.h_practica = h_practica;
+	public void setHorasPracticas(int horasPracticas) {
+		this.horasPracticas = horasPracticas;
 	}
 
-	public int getH_autonomo() {
-		return h_autonomo;
+	public int getHorasUnidad() {
+		return horasUnidad;
 	}
 
-	public void setH_autonomo(int h_autonomo) {
-		this.h_autonomo = h_autonomo;
+	public void setHorasUnidad(int horasUnidad) {
+		this.horasUnidad = horasUnidad;
 	}
 
-	public int getPeriodo() {
-		return periodo;
+	public List<Materia> getPrerequisitos() {
+		return prerequisitos;
 	}
 
-	public void setPeriodo(int periodo) {
-		this.periodo = periodo;
+	public void setPrerequisitos(List<Materia> prerequisitos) {
+		this.prerequisitos = prerequisitos;
 	}
 
-	public int getN_matricula() {
-		return n_matricula;
+	public Materia getEquivalencia() {
+		return equivalencia;
 	}
 
-	public void setN_matricula(int n_matricula) {
-		this.n_matricula = n_matricula;
+	public void setEquivalencia(Materia equivalencia) {
+		this.equivalencia = equivalencia;
 	}
 
-	public String getEstado() {
-		return estado;
+	public PlanAnalitico getPlanAnalitico() {
+		return planAnalitico;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setPlanAnalitico(PlanAnalitico planAnalitico) {
+		this.planAnalitico = planAnalitico;
 	}
 	
-	
-
 }

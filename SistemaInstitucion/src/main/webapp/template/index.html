@@ -1,504 +1,970 @@
- <!-- =========================================================
- * Argon Dashboard PRO v1.1.0
- =========================================================
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ela Admin - HTML5 Admin Template</title>
+    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
- * Product Page: https://www.creative-tim.com/product/argon-dashboard-pro
- * Copyright 2019 Creative Tim (https://www.creative-tim.com)
+    <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
+    <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
 
- * Coded by Creative Tim
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
+    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
 
- =========================================================
+    <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
 
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-  -->
- <!DOCTYPE html>
- <html>
+   <style>
+    #weatherWidget .currentDesc {
+        color: #ffffff!important;
+    }
+        .traffic-chart {
+            min-height: 335px;
+        }
+        #flotPie1  {
+            height: 150px;
+        }
+        #flotPie1 td {
+            padding:3px;
+        }
+        #flotPie1 table {
+            top: 20px!important;
+            right: -10px!important;
+        }
+        .chart-container {
+            display: table;
+            min-width: 270px ;
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        #flotLine5  {
+             height: 105px;
+        }
 
- <head>
-   <meta charset="utf-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-   <meta name="author" content="Creative Tim">
-   <title>Argon Dashboard PRO - Premium Bootstrap 4 Admin Template</title>
-   <!-- Favicon -->
-   <link rel="icon" href="./assets/img/brand/favicon.png" type="image/png">
-   <!-- Fonts -->
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-   <!-- Icons -->
-   <link rel="stylesheet" href="./assets/vendor/nucleo/css/nucleo.css" type="text/css">
-   <link rel="stylesheet" href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
-   <!-- Page plugins -->
-   <!-- Argon CSS -->
-   <link rel="stylesheet" href="./assets/css/argon.css?v=1.1.0" type="text/css">
- </head>
+        #flotBarChart {
+            height: 150px;
+        }
+        #cellPaiChart{
+            height: 160px;
+        }
 
- <body>
-   <!-- Navabr -->
-   <nav id="navbar-main" class="navbar navbar-horizontal navbar-main navbar-expand-lg navbar-dark bg-primary">
-     <div class="container">
-       <a class="navbar-brand" href="./pages/dashboards/dashboard.html">
-         <img src="./assets/img/brand/white.png">
-       </a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-       </button>
-       <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
-         <div class="navbar-collapse-header">
-           <div class="row">
-             <div class="col-6 collapse-brand">
-               <a href="./pages/dashboards/dashboard.html">
-                 <img src="./assets/img/brand/blue.png">
-               </a>
-             </div>
-             <div class="col-6 collapse-close">
-               <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-                 <span></span>
-                 <span></span>
-               </button>
-             </div>
-           </div>
-         </div>
-         <ul class="navbar-nav mr-auto">
-           <li class="nav-item">
-             <a href="./pages/dashboards/dashboard.html" class="nav-link">
-               <span class="nav-link-inner--text">Dashboard</span>
-             </a>
-           </li>
-           <li class="nav-item">
-             <a href="./pages/examples/pricing.html" class="nav-link">
-               <span class="nav-link-inner--text">Pricing</span>
-             </a>
-           </li>
-           <li class="nav-item">
-             <a href="./pages/examples/login.html" class="nav-link">
-               <span class="nav-link-inner--text">Login</span>
-             </a>
-           </li>
-           <li class="nav-item">
-             <a href="./pages/examples/register.html" class="nav-link">
-               <span class="nav-link-inner--text">Register</span>
-             </a>
-           </li>
-           <li class="nav-item">
-             <a href="./pages/examples/lock.html" class="nav-link">
-               <span class="nav-link-inner--text">Lock</span>
-             </a>
-           </li>
-         </ul>
-         <hr class="d-lg-none" />
-         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-           <li class="nav-item">
-             <a class="nav-link nav-link-icon" href="https://www.facebook.com/creativetim" target="_blank" data-toggle="tooltip" title="" data-original-title="Like us on Facebook">
-               <i class="fab fa-facebook-square"></i>
-               <span class="nav-link-inner--text d-lg-none">Facebook</span>
-             </a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link nav-link-icon" href="https://www.instagram.com/creativetimofficial" target="_blank" data-toggle="tooltip" title="" data-original-title="Follow us on Instagram">
-               <i class="fab fa-instagram"></i>
-               <span class="nav-link-inner--text d-lg-none">Instagram</span>
-             </a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link nav-link-icon" href="https://twitter.com/creativetim" target="_blank" data-toggle="tooltip" title="" data-original-title="Follow us on Twitter">
-               <i class="fab fa-twitter-square"></i>
-               <span class="nav-link-inner--text d-lg-none">Twitter</span>
-             </a>
-           </li>
-           <li class="nav-item">
-             <a class="nav-link nav-link-icon" href="https://github.com/creativetimofficial" target="_blank" data-toggle="tooltip" title="" data-original-title="Star us on Github">
-               <i class="fab fa-github"></i>
-               <span class="nav-link-inner--text d-lg-none">Github</span>
-             </a>
-           </li>
-           <li class="nav-item d-none d-lg-block ml-lg-4">
-             <a href="https://www.creative-tim.com/product/argon-dashboard-pro" target="_blank" class="btn btn-neutral btn-icon">
-               <span class="btn-inner--icon">
-                 <i class="fas fa-shopping-cart mr-2"></i>
-               </span>
-               <span class="nav-link-inner--text">Purchase now</span>
-             </a>
-           </li>
-         </ul>
-       </div>
-     </div>
-   </nav>
-   <!-- Main content -->
-   <div class="main-content">
-     <!-- Header -->
-     <div class="header bg-primary pt-5 pb-7">
-       <div class="container">
-         <div class="header-body">
-           <div class="row align-items-center">
-             <div class="col-lg-6">
-               <div class="pr-5">
-                 <h1 class="display-2 text-white font-weight-bold mb-0">Argon Dashboard PRO</h1>
-                 <h2 class="display-4 text-white font-weight-light">A beautiful premium dashboard for Bootstrap 4.</h2>
-                 <p class="text-white mt-4">Argon perfectly combines reusable HTML and modular CSS with a modern styling and beautiful markup throughout each HTML template in the pack.</p>
-                 <div class="mt-5">
-                   <a href="./pages/dashboards/dashboard.html" class="btn btn-neutral my-2">Explore Dashboard</a>
-                   <a href="https://www.creative-tim.com/product/argon-dashboard-pro" class="btn btn-default my-2">Purchase now</a>
-                 </div>
-               </div>
-             </div>
-             <div class="col-lg-6">
-               <div class="row pt-5">
-                 <div class="col-md-6">
-                   <div class="card">
-                     <div class="card-body">
-                       <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow mb-4">
-                         <i class="ni ni-active-40"></i>
-                       </div>
-                       <h5 class="h3">Components</h5>
-                       <p>Argon comes with over 70 handcrafted components.</p>
-                     </div>
-                   </div>
-                   <div class="card">
-                     <div class="card-body">
-                       <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow mb-4">
-                         <i class="ni ni-active-40"></i>
-                       </div>
-                       <h5 class="h3">Plugins</h5>
-                       <p>Fully integrated and extendable third-party plugins that you will love.</p>
-                     </div>
-                   </div>
-                 </div>
-                 <div class="col-md-6 pt-lg-5 pt-4">
-                   <div class="card mb-4">
-                     <div class="card-body">
-                       <div class="icon icon-shape bg-gradient-success text-white rounded-circle shadow mb-4">
-                         <i class="ni ni-active-40"></i>
-                       </div>
-                       <h5 class="h3">Pages</h5>
-                       <p>From simple to complex, you get a beautiful set of 15+ page examples.</p>
-                     </div>
-                   </div>
-                   <div class="card mb-4">
-                     <div class="card-body">
-                       <div class="icon icon-shape bg-gradient-warning text-white rounded-circle shadow mb-4">
-                         <i class="ni ni-active-40"></i>
-                       </div>
-                       <h5 class="h3">Documentation</h5>
-                       <p>You will love how easy is to to work with Argon.</p>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-       <div class="separator separator-bottom separator-skew zindex-100">
-         <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-           <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-         </svg>
-       </div>
-     </div>
-     <section class="py-6 pb-9 bg-default">
-       <div class="row justify-content-center text-center">
-         <div class="col-md-6">
-           <h2 class="display-3 text-white">A complete HTML solution</h3>
-             <p class="lead text-white">
-               Argon is a completly new product built on our newest re-built from scratch framework structure that is meant to make our products more intuitive,
-               more adaptive and, needless to say, so much easier to customize. Let Argon amaze you with its cool features and build tools and get your project to a whole new level.
-             </p>
-         </div>
-       </div>
-     </section>
-     <section class="section section-lg pt-lg-0 mt--7">
-       <div class="container">
-         <div class="row justify-content-center">
-           <div class="col-lg-12">
-             <div class="row">
-               <div class="col-lg-4">
-                 <div class="card card-lift--hover shadow border-0">
-                   <div class="card-body py-5">
-                     <div class="icon icon-shape bg-gradient-primary text-white rounded-circle mb-4">
-                       <i class="ni ni-check-bold"></i>
-                     </div>
-                     <h4 class="h3 text-primary text-uppercase">Based on Bootstrap 4</h4>
-                     <p class="description mt-3">Argon is built on top of the most popular open source toolkit for developing with HTML, CSS, and JS.</p>
-                     <div>
-                       <span class="badge badge-pill badge-primary">bootstrap 4</span>
-                       <span class="badge badge-pill badge-primary">dashboard</span>
-                       <span class="badge badge-pill badge-primary">template</span>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-               <div class="col-lg-4">
-                 <div class="card card-lift--hover shadow border-0">
-                   <div class="card-body py-5">
-                     <div class="icon icon-shape bg-gradient-success text-white rounded-circle mb-4">
-                       <i class="ni ni-istanbul"></i>
-                     </div>
-                     <h4 class="h3 text-success text-uppercase">Integrated build tools</h4>
-                     <p class="description mt-3">Use Argons's included npm and gulp scripts to compile source code, run tests, and more with just a few simple commands.</p>
-                     <div>
-                       <span class="badge badge-pill badge-success">npm</span>
-                       <span class="badge badge-pill badge-success">gulp</span>
-                       <span class="badge badge-pill badge-success">build tools</span>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-               <div class="col-lg-4">
-                 <div class="card card-lift--hover shadow border-0">
-                   <div class="card-body py-5">
-                     <div class="icon icon-shape bg-gradient-warning text-white rounded-circle mb-4">
-                       <i class="ni ni-planet"></i>
-                     </div>
-                     <h4 class="h3 text-warning text-uppercase">Full Sass support</h4>
-                     <p class="description mt-3">Argon makes customization easier than ever before. You get all the tools to make your website building process a breeze.</p>
-                     <div>
-                       <span class="badge badge-pill badge-warning">sass</span>
-                       <span class="badge badge-pill badge-warning">design</span>
-                       <span class="badge badge-pill badge-warning">customize</span>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <section class="py-6">
-       <div class="container">
-         <div class="row row-grid align-items-center">
-           <div class="col-md-6 order-md-2">
-             <img src="./assets/img/theme/landing-1.png" class="img-fluid">
-           </div>
-           <div class="col-md-6 order-md-1">
-             <div class="pr-md-5">
-               <h1>Awesome features</h1>
-               <p>This dashboard comes with super cool features that are meant to help in the process. Handcrafted components, page examples and functional widgets are just a few things you will see and love at first sight.</p>
-               <ul class="list-unstyled mt-5">
-                 <li class="py-2">
-                   <div class="d-flex align-items-center">
-                     <div>
-                       <div class="badge badge-circle badge-success mr-3">
-                         <i class="ni ni-settings-gear-65"></i>
-                       </div>
-                     </div>
-                     <div>
-                       <h4 class="mb-0">Carefully crafted components</h4>
-                     </div>
-                   </div>
-                 </li>
-                 <li class="py-2">
-                   <div class="d-flex align-items-center">
-                     <div>
-                       <div class="badge badge-circle badge-success mr-3">
-                         <i class="ni ni-html5"></i>
-                       </div>
-                     </div>
-                     <div>
-                       <h4 class="mb-0">Amazing page examples</h4>
-                     </div>
-                   </div>
-                 </li>
-                 <li class="py-2">
-                   <div class="d-flex align-items-center">
-                     <div>
-                       <div class="badge badge-circle badge-success mr-3">
-                         <i class="ni ni-satisfied"></i>
-                       </div>
-                     </div>
-                     <div>
-                       <h4 class="mb-0">Super friendly support team</h4>
-                     </div>
-                   </div>
-                 </li>
-               </ul>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <section class="py-6">
-       <div class="container">
-         <div class="row row-grid align-items-center">
-           <div class="col-md-6">
-             <img src="./assets/img/theme/landing-2.png" class="img-fluid">
-           </div>
-           <div class="col-md-6">
-             <div class="pr-md-5">
-               <h1>Example pages</h1>
-               <p>If you want to get inspiration or just show something directly to your clients, you can jump start your development with our pre-built example pages.</p>
-               <a href="./pages/examples/profile.html" class="font-weight-bold text-warning mt-5">Explore pages</a>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <section class="py-6">
-       <div class="container">
-         <div class="row row-grid align-items-center">
-           <div class="col-md-6 order-md-2">
-             <img src="./assets/img/theme/landing-3.png" class="img-fluid">
-           </div>
-           <div class="col-md-6 order-md-1">
-             <div class="pr-md-5">
-               <h1>Lovable widgets and cards</h1>
-               <p>We love cards and everybody on the web seems to. We have gone above and beyond with options for you to organise your information. From cards designed for content, to pricing cards or user profiles, you will have many options to choose from.</p>
-               <a href="./pages/widgets.html" class="font-weight-bold text-info mt-5">Explore widgets</a>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
-     <section class="py-7 section-nucleo-icons bg-white overflow-hidden">
-       <div class="container">
-         <div class="row justify-content-center">
-           <div class="col-lg-8 text-center">
-             <h2 class="display-3">Nucleo Icons</h2>
-             <p class="lead">
-               The official package contains over 21.000 icons which are looking great in combination with Argon Design System. Make sure you check all of them and use those that you like the most.
-             </p>
-             <div class="btn-wrapper">
-               <a href="./docs/foundation/icons.html" class="btn btn-primary">View demo icons</a>
-               <a href="https://nucleoapp.com/?ref=1712" target="_blank" class="btn btn-default mt-3 mt-md-0">View all icons</a>
-             </div>
-           </div>
-         </div>
-         <div class="blur--hover">
-           <a href="./docs/foundation/icons.html">
-             <div class="icons-container blur-item mt-5">
-               <!-- Center -->
-               <i class="icon ni ni-diamond"></i>
-               <!-- Right 1 -->
-               <i class="icon icon-sm ni ni-album-2"></i>
-               <i class="icon icon-sm ni ni-app"></i>
-               <i class="icon icon-sm ni ni-atom"></i>
-               <!-- Right 2 -->
-               <i class="icon ni ni-bag-17"></i>
-               <i class="icon ni ni-bell-55"></i>
-               <i class="icon ni ni-credit-card"></i>
-               <!-- Left 1 -->
-               <i class="icon icon-sm ni ni-briefcase-24"></i>
-               <i class="icon icon-sm ni ni-building"></i>
-               <i class="icon icon-sm ni ni-button-play"></i>
-               <!-- Left 2 -->
-               <i class="icon ni ni-calendar-grid-58"></i>
-               <i class="icon ni ni-camera-compact"></i>
-               <i class="icon ni ni-chart-bar-32"></i>
-             </div>
-             <span class="blur-hidden h5 text-success">Explore all the 21.000+ Nucleo Icons</span>
-           </a>
-         </div>
-       </div>
-     </section>
-     <section class="py-7">
-       <div class="container">
-         <div class="row row-grid justify-content-center">
-           <div class="col-lg-8 text-center">
-             <h2 class="display-3">Do you love this awesome <span class="text-success">Dashboard for Bootstrap 4?</span></h2>
-             <p class="lead">Cause if you do, it can be yours now. Hit the button below to navigate to get the free version or purchase a license for your next project. Build a new web app or give an old Bootstrap project a new look!</p>
-             <div class="btn-wrapper">
-               <a href="https://www.creative-tim.com/product/argon-dashboard" class="btn btn-neutral mb-3 mb-sm-0" target="_blank">
-                 <span class="btn-inner--text">Get FREE version</span>
-               </a>
-               <a href="https://www.creative-tim.com/product/argon-dashboard-pro" class="btn btn-primary btn-icon mb-3 mb-sm-0">
-                 <span class="btn-inner--icon"><i class="ni ni-basket"></i></span>
-                 <span class="btn-inner--text">Purchase now</span>
-                 <span class="badge badge-md badge-pill badge-floating badge-danger border-white">$79</span>
-               </a>
-             </div>
-             <div class="text-center">
-               <h4 class="display-4 mb-5 mt-5">Available on these technologies</h4>
-               <div class="row justify-content-center">
-                 <div class="w-10 mx-2 mb-2">
-                   <a href="https://www.creative-tim.com/product/argon-dashboard" target="_blank" data-toggle="tooltip" data-original-title="Bootstrap 4 - Most popular front-end component library">
-                     <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/bootstrap.jpg" class="img-fluid rounded-circle shadow shadow-lg--hover">
-                   </a>
-                 </div>
-                 <div class="w-10 mx-2 mb-2">
-                   <a href=" https://www.creative-tim.com/product/vue-argon-dashboard" target="_blank" data-toggle="tooltip" data-original-title="Vue.js - The progressive javascript framework">
-                     <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/vue.jpg" class="img-fluid rounded-circle">
-                   </a>
-                 </div>
-                 <div class="w-10 mx-2 mb-2">
-                   <a href=" https://www.creative-tim.com/product/argon-dashboard" target="_blank" data-toggle="tooltip" data-original-title="Sketch - Digital design toolkit">
-                     <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/sketch.jpg" class="img-fluid rounded-circle">
-                   </a>
-                 </div>
-                 <div class="w-10 mx-2 mb-2">
-                   <a href=" https://www.creative-tim.com/product/argon-dashboard-angular" target="_blank" data-toggle="tooltip" data-original-title="Angular - One framework. Mobile &amp; desktop">
-                     <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/angular.jpg" class="img-fluid rounded-circle">
-                   </a>
-                 </div>
-                 <div class="w-10 mx-2 mb-2">
-                   <a href=" https://www.creative-tim.com/product/argon-dashboard-react" target="_blank" data-toggle="tooltip" data-original-title="React - A JavaScript library for building user interfaces">
-                     <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/react.jpg" class="img-fluid rounded-circle">
-                   </a>
-                 </div>
-                 <div class="w-10 mx-2 mb-2">
-                   <a href=" https://www.creative-tim.com/product/argon-dashboard-laravel" target="_blank" data-toggle="tooltip" data-original-title="Laravel - The PHP Framework For Web Artisans">
-                     <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/laravel_logo.png" class="img-fluid rounded-circle">
-                   </a>
-                 </div>
-                 <div class="w-10 mx-2 mb-2">
-                   <a href=" https://www.creative-tim.com/product/argon-dashboard-nodejs" target="_blank" data-toggle="tooltip" data-original-title="Node.js - a JavaScript runtime built on Chrome's V8 JavaScript engine">
-                     <img src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/nodejs-logo.jpg" class="img-fluid rounded-circle">
-                   </a>
-                 </div>
-                 <div class="w-10 mx-2 mb-2">
-                   <a href=" https://www.adobe.com/products/photoshop.html" target="_blank" data-toggle="tooltip" data-original-title="[Coming Soon] Adobe Photoshop - Software for digital images manipulation">
-                     <img src="https://s3.amazonaws.com/creativetim_bucket/tim_static_images/presentation-page/ps.jpg" class="img-fluid rounded-circle opacity-3">
-                   </a>
-                 </div>
-               </div>
-               <div class="spinner-border" role="status">
-                 <span class="sr-only">Loading...</span>
-               </div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </section>
-   </div>
-   <!-- Footer -->
-   <footer class="py-5" id="footer-main">
-     <div class="container">
-       <div class="row align-items-center justify-content-xl-between">
-         <div class="col-xl-6">
-           <div class="copyright text-center text-xl-left text-muted">
-             &copy; 2019 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
-           </div>
-         </div>
-         <div class="col-xl-6">
-           <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-             <li class="nav-item">
-               <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-             </li>
-             <li class="nav-item">
-               <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-             </li>
-             <li class="nav-item">
-               <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-             </li>
-             <li class="nav-item">
-               <a href="https://www.creative-tim.com/license" class="nav-link" target="_blank">License</a>
-             </li>
-           </ul>
-         </div>
-       </div>
-     </div>
-   </footer>
-   <!-- Argon Scripts -->
-   <!-- Core -->
-   <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
-   <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-   <script src="./assets/vendor/js-cookie/js.cookie.js"></script>
-   <script src="./assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-   <script src="./assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-   <!-- Optional JS -->
-   <script src="./assets/vendor/onscreen/dist/on-screen.umd.min.js"></script>
-   <!-- Argon JS -->
-   <script src="./assets/js/argon.js?v=1.1.0"></script>
-   <!-- Demo JS - remove this in your project -->
-   <script src="./assets/js/demo.min.js"></script>
- </body>
+    </style>
+</head>
 
- </html>
+<body>
+    <!-- Left Panel -->
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="index.html"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                    </li>
+                    <li class="menu-title">UI elements</li><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>Components</a>
+                        <ul class="sub-menu children dropdown-menu">                            <li><i class="fa fa-puzzle-piece"></i><a href="ui-buttons.html">Buttons</a></li>
+                            <li><i class="fa fa-id-badge"></i><a href="ui-badges.html">Badges</a></li>
+                            <li><i class="fa fa-bars"></i><a href="ui-tabs.html">Tabs</a></li>
+
+                            <li><i class="fa fa-id-card-o"></i><a href="ui-cards.html">Cards</a></li>
+                            <li><i class="fa fa-exclamation-triangle"></i><a href="ui-alerts.html">Alerts</a></li>
+                            <li><i class="fa fa-spinner"></i><a href="ui-progressbar.html">Progress Bars</a></li>
+                            <li><i class="fa fa-fire"></i><a href="ui-modals.html">Modals</a></li>
+                            <li><i class="fa fa-book"></i><a href="ui-switches.html">Switches</a></li>
+                            <li><i class="fa fa-th"></i><a href="ui-grids.html">Grids</a></li>
+                            <li><i class="fa fa-file-word-o"></i><a href="ui-typgraphy.html">Typography</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-table"></i><a href="tables-basic.html">Basic Table</a></li>
+                            <li><i class="fa fa-table"></i><a href="tables-data.html">Data Table</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-title">Icons</li><!-- /.menu-title -->
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-fort-awesome"></i><a href="font-fontawesome.html">Font Awesome</a></li>
+                            <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Themefy Icons</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
+                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-line-chart"></i><a href="charts-chartjs.html">Chart JS</a></li>
+                            <li><i class="menu-icon fa fa-area-chart"></i><a href="charts-flot.html">Flot Chart</a></li>
+                            <li><i class="menu-icon fa fa-pie-chart"></i><a href="charts-peity.html">Peity Chart</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
+                            <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
+                        </ul>
+                    </li>
+                    <li class="menu-title">Extras</li><!-- /.menu-title -->
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Login</a></li>
+                            <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
+                            <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Forget Pass</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside>
+    <!-- /#left-panel -->
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+        <!-- Header-->
+        <header id="header" class="header">
+            <div class="top-left">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
+                    <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+                </div>
+            </div>
+            <div class="top-right">
+                <div class="header-menu">
+                    <div class="header-left">
+                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        <div class="form-inline">
+                            <form class="search-form">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                            </form>
+                        </div>
+
+                        <div class="dropdown for-notification">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <span class="count bg-danger">3</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="notification">
+                                <p class="red">You have 3 Notification</p>
+                                <a class="dropdown-item media" href="#">
+                                    <i class="fa fa-check"></i>
+                                    <p>Server #1 overloaded.</p>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <i class="fa fa-info"></i>
+                                    <p>Server #2 overloaded.</p>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <i class="fa fa-warning"></i>
+                                    <p>Server #3 overloaded.</p>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown for-message">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-envelope"></i>
+                                <span class="count bg-primary">4</span>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="message">
+                                <p class="red">You have 4 Mails</p>
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">Jonathan Smith</span>
+                                        <span class="time float-right">Just now</span>
+                                        <p>Hello, this is an example msg</p>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">Jack Sanders</span>
+                                        <span class="time float-right">5 minutes ago</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">Cheryl Wheeler</span>
+                                        <span class="time float-right">10 minutes ago</span>
+                                        <p>Hello, this is an example msg</p>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">Rachel Santos</span>
+                                        <span class="time float-right">15 minutes ago</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user-area dropdown float-right">
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
+                        </a>
+
+                        <div class="user-menu dropdown-menu">
+                            <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+
+                            <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+
+                            <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+        <!-- /#header -->
+        <!-- Content -->
+        <div class="content">
+            <!-- Animated -->
+            <div class="animated fadeIn">
+                <!-- Widgets  -->
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-1">
+                                        <i class="pe-7s-cash"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text">$<span class="count">23569</span></div>
+                                            <div class="stat-heading">Revenue</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-2">
+                                        <i class="pe-7s-cart"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-heading">Sales</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-3">
+                                        <i class="pe-7s-browser"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">349</span></div>
+                                            <div class="stat-heading">Templates</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-4">
+                                        <i class="pe-7s-users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">2986</span></div>
+                                            <div class="stat-heading">Clients</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Widgets -->
+                <!--  Traffic  -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="box-title">Traffic </h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="card-body">
+                                        <!-- <canvas id="TrafficChart"></canvas>   -->
+                                        <div id="traffic-chart" class="traffic-chart"></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="card-body">
+                                        <div class="progress-box progress-1">
+                                            <h4 class="por-title">Visits</h4>
+                                            <div class="por-txt">96,930 Users (40%)</div>
+                                            <div class="progress mb-2" style="height: 5px;">
+                                                <div class="progress-bar bg-flat-color-1" role="progressbar" style="width: 40%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                        <div class="progress-box progress-2">
+                                            <h4 class="por-title">Bounce Rate</h4>
+                                            <div class="por-txt">3,220 Users (24%)</div>
+                                            <div class="progress mb-2" style="height: 5px;">
+                                                <div class="progress-bar bg-flat-color-2" role="progressbar" style="width: 24%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                        <div class="progress-box progress-2">
+                                            <h4 class="por-title">Unique Visitors</h4>
+                                            <div class="por-txt">29,658 Users (60%)</div>
+                                            <div class="progress mb-2" style="height: 5px;">
+                                                <div class="progress-bar bg-flat-color-3" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                        <div class="progress-box progress-2">
+                                            <h4 class="por-title">Targeted  Visitors</h4>
+                                            <div class="por-txt">99,658 Users (90%)</div>
+                                            <div class="progress mb-2" style="height: 5px;">
+                                                <div class="progress-bar bg-flat-color-4" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- /.card-body -->
+                                </div>
+                            </div> <!-- /.row -->
+                            <div class="card-body"></div>
+                        </div>
+                    </div><!-- /# column -->
+                </div>
+                <!--  /Traffic -->
+                <div class="clearfix"></div>
+                <!-- Orders -->
+                <div class="orders">
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="box-title">Orders </h4>
+                                </div>
+                                <div class="card-body--">
+                                    <div class="table-stats order-table ov-h">
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th class="serial">#</th>
+                                                    <th class="avatar">Avatar</th>
+                                                    <th>ID</th>
+                                                    <th>Name</th>
+                                                    <th>Product</th>
+                                                    <th>Quantity</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="serial">1.</td>
+                                                    <td class="avatar">
+                                                        <div class="round-img">
+                                                            <a href="#"><img class="rounded-circle" src="images/avatar/1.jpg" alt=""></a>
+                                                        </div>
+                                                    </td>
+                                                    <td> #5469 </td>
+                                                    <td>  <span class="name">Louis Stanley</span> </td>
+                                                    <td> <span class="product">iMax</span> </td>
+                                                    <td><span class="count">231</span></td>
+                                                    <td>
+                                                        <span class="badge badge-complete">Complete</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="serial">2.</td>
+                                                    <td class="avatar">
+                                                        <div class="round-img">
+                                                            <a href="#"><img class="rounded-circle" src="images/avatar/2.jpg" alt=""></a>
+                                                        </div>
+                                                    </td>
+                                                    <td> #5468 </td>
+                                                    <td>  <span class="name">Gregory Dixon</span> </td>
+                                                    <td> <span class="product">iPad</span> </td>
+                                                    <td><span class="count">250</span></td>
+                                                    <td>
+                                                        <span class="badge badge-complete">Complete</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="serial">3.</td>
+                                                    <td class="avatar">
+                                                        <div class="round-img">
+                                                            <a href="#"><img class="rounded-circle" src="images/avatar/3.jpg" alt=""></a>
+                                                        </div>
+                                                    </td>
+                                                    <td> #5467 </td>
+                                                    <td>  <span class="name">Catherine Dixon</span> </td>
+                                                    <td> <span class="product">SSD</span> </td>
+                                                    <td><span class="count">250</span></td>
+                                                    <td>
+                                                        <span class="badge badge-complete">Complete</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="serial">4.</td>
+                                                    <td class="avatar">
+                                                        <div class="round-img">
+                                                            <a href="#"><img class="rounded-circle" src="images/avatar/4.jpg" alt=""></a>
+                                                        </div>
+                                                    </td>
+                                                    <td> #5466 </td>
+                                                    <td>  <span class="name">Mary Silva</span> </td>
+                                                    <td> <span class="product">Magic Mouse</span> </td>
+                                                    <td><span class="count">250</span></td>
+                                                    <td>
+                                                        <span class="badge badge-pending">Pending</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class=" pb-0">
+                                                    <td class="serial">5.</td>
+                                                    <td class="avatar pb-0">
+                                                        <div class="round-img">
+                                                            <a href="#"><img class="rounded-circle" src="images/avatar/6.jpg" alt=""></a>
+                                                        </div>
+                                                    </td>
+                                                    <td> #5465 </td>
+                                                    <td>  <span class="name">Johnny Stephens</span> </td>
+                                                    <td> <span class="product">Monitor</span> </td>
+                                                    <td><span class="count">250</span></td>
+                                                    <td>
+                                                        <span class="badge badge-complete">Complete</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div> <!-- /.table-stats -->
+                                </div>
+                            </div> <!-- /.card -->
+                        </div>  <!-- /.col-lg-8 -->
+
+                        <div class="col-xl-4">
+                            <div class="row">
+                                <div class="col-lg-6 col-xl-12">
+                                    <div class="card br-0">
+                                        <div class="card-body">
+                                            <div class="chart-container ov-h">
+                                                <div id="flotPie1" class="float-chart"></div>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.card -->
+                                </div>
+
+                                <div class="col-lg-6 col-xl-12">
+                                    <div class="card bg-flat-color-3  ">
+                                        <div class="card-body">
+                                            <h4 class="card-title m-0  white-color ">August 2018</h4>
+                                        </div>
+                                         <div class="card-body">
+                                             <div id="flotLine5" class="flot-line"></div>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- /.col-md-4 -->
+                    </div>
+                </div>
+                <!-- /.orders -->
+                <!-- To Do and Live Chat -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title box-title">To Do List</h4>
+                                <div class="card-content">
+                                    <div class="todo-list">
+                                        <div class="tdl-holder">
+                                            <div class="tdl-content">
+                                                <ul>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox"><i class="check-box"></i><span>Conveniently fabricate interactive technology for ....</span>
+                                                            <a href='#' class="fa fa-times"></a>
+                                                            <a href='#' class="fa fa-pencil"></a>
+                                                            <a href='#' class="fa fa-check"></a>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox"><i class="check-box"></i><span>Creating component page</span>
+                                                            <a href='#' class="fa fa-times"></a>
+                                                            <a href='#' class="fa fa-pencil"></a>
+                                                            <a href='#' class="fa fa-check"></a>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" checked><i class="check-box"></i><span>Follow back those who follow you</span>
+                                                            <a href='#' class="fa fa-times"></a>
+                                                            <a href='#' class="fa fa-pencil"></a>
+                                                            <a href='#' class="fa fa-check"></a>
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" checked><i class="check-box"></i><span>Design One page theme</span>
+                                                            <a href='#' class="fa fa-times"></a>
+                                                            <a href='#' class="fa fa-pencil"></a>
+                                                            <a href='#' class="fa fa-check"></a>
+                                                        </label>
+                                                    </li>
+
+                                                    <li>
+                                                        <label>
+                                                            <input type="checkbox" checked><i class="check-box"></i><span>Creating component page</span>
+                                                            <a href='#' class="fa fa-times"></a>
+                                                            <a href='#' class="fa fa-pencil"></a>
+                                                            <a href='#' class="fa fa-check"></a>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div> <!-- /.todo-list -->
+                                </div>
+                            </div> <!-- /.card-body -->
+                        </div><!-- /.card -->
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title box-title">Live Chat</h4>
+                                <div class="card-content">
+                                    <div class="messenger-box">
+                                        <ul>
+                                            <li>
+                                                <div class="msg-received msg-container">
+                                                    <div class="avatar">
+                                                       <img src="images/avatar/64-1.jpg" alt="">
+                                                       <div class="send-time">11.11 am</div>
+                                                    </div>
+                                                    <div class="msg-box">
+                                                        <div class="inner-box">
+                                                            <div class="name">
+                                                                John Doe
+                                                            </div>
+                                                            <div class="meg">
+                                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis sunt placeat velit ad reiciendis ipsam
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- /.msg-received -->
+                                            </li>
+                                            <li>
+                                                <div class="msg-sent msg-container">
+                                                    <div class="avatar">
+                                                       <img src="images/avatar/64-2.jpg" alt="">
+                                                       <div class="send-time">11.11 am</div>
+                                                    </div>
+                                                    <div class="msg-box">
+                                                        <div class="inner-box">
+                                                            <div class="name">
+                                                                John Doe
+                                                            </div>
+                                                            <div class="meg">
+                                                                Hay how are you doing?
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- /.msg-sent -->
+                                            </li>
+                                        </ul>
+                                        <div class="send-mgs">
+                                            <div class="yourmsg">
+                                                <input class="form-control" type="text">
+                                            </div>
+                                            <button class="btn msg-send-btn">
+                                                <i class="pe-7s-paper-plane"></i>
+                                            </button>
+                                        </div>
+                                    </div><!-- /.messenger-box -->
+                                </div>
+                            </div> <!-- /.card-body -->
+                        </div><!-- /.card -->
+                    </div>
+                </div>
+                <!-- /To Do and Live Chat -->
+                <!-- Calender Chart Weather  -->
+                <div class="row">
+                    <div class="col-md-12 col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <!-- <h4 class="box-title">Chandler</h4> -->
+                                <div class="calender-cont widget-calender">
+                                    <div id="calendar"></div>
+                                </div>
+                            </div>
+                        </div><!-- /.card -->
+                    </div>
+
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card ov-h">
+                            <div class="card-body bg-flat-color-2">
+                                <div id="flotBarChart" class="float-chart ml-4 mr-4"></div>
+                            </div>
+                            <div id="cellPaiChart" class="float-chart"></div>
+                        </div><!-- /.card -->
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card weather-box">
+                            <h4 class="weather-title box-title">Weather</h4>
+                            <div class="card-body">
+                                <div class="weather-widget">
+                                    <div id="weather-one" class="weather-one"></div>
+                                </div>
+                            </div>
+                        </div><!-- /.card -->
+                    </div>
+                </div>
+                <!-- /Calender Chart Weather -->
+                <!-- Modal - Calendar - Add New Event -->
+                <div class="modal fade none-border" id="event-modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title"><strong>Add New Event</strong></h4>
+                            </div>
+                            <div class="modal-body"></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success save-event waves-effect waves-light">Create event</button>
+                                <button type="button" class="btn btn-danger delete-event waves-effect waves-light" data-dismiss="modal">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /#event-modal -->
+                <!-- Modal - Calendar - Add Category -->
+                <div class="modal fade none-border" id="add-category">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title"><strong>Add a category </strong></h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="control-label">Category Name</label>
+                                            <input class="form-control form-white" placeholder="Enter name" type="text" name="category-name"/>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="control-label">Choose Category Color</label>
+                                            <select class="form-control form-white" data-placeholder="Choose a color..." name="category-color">
+                                                <option value="success">Success</option>
+                                                <option value="danger">Danger</option>
+                                                <option value="info">Info</option>
+                                                <option value="pink">Pink</option>
+                                                <option value="primary">Primary</option>
+                                                <option value="warning">Warning</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger waves-effect waves-light save-category" data-dismiss="modal">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- /#add-category -->
+            </div>
+            <!-- .animated -->
+        </div>
+        <!-- /.content -->
+        <div class="clearfix"></div>
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-inner bg-white">
+                <div class="row">
+                    <div class="col-sm-6">
+                        Copyright &copy; 2018 Ela Admin
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        Designed by <a href="https://colorlib.com">Colorlib</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- /.site-footer -->
+    </div>
+    <!-- /#right-panel -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!--  Chart js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
+
+    <!--Chartist Chart-->
+    <script src="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartist-plugin-legend@0.6.2/chartist-plugin-legend.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flot-pie@1.0.0/src/jquery.flot.pie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/simpleweather@3.1.0/jquery.simpleWeather.min.js"></script>
+    <script src="assets/js/init/weather-init.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
+    <script src="assets/js/init/fullcalendar-init.js"></script>
+
+    <!--Local Stuff-->
+    <script>
+        jQuery(document).ready(function($) {
+            "use strict";
+
+            // Pie chart flotPie1
+            var piedata = [
+                { label: "Desktop visits", data: [[1,32]], color: '#5c6bc0'},
+                { label: "Tab visits", data: [[1,33]], color: '#ef5350'},
+                { label: "Mobile visits", data: [[1,35]], color: '#66bb6a'}
+            ];
+
+            $.plot('#flotPie1', piedata, {
+                series: {
+                    pie: {
+                        show: true,
+                        radius: 1,
+                        innerRadius: 0.65,
+                        label: {
+                            show: true,
+                            radius: 2/3,
+                            threshold: 1
+                        },
+                        stroke: {
+                            width: 0
+                        }
+                    }
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: true
+                }
+            });
+            // Pie chart flotPie1  End
+            // cellPaiChart
+            var cellPaiChart = [
+                { label: "Direct Sell", data: [[1,65]], color: '#5b83de'},
+                { label: "Channel Sell", data: [[1,35]], color: '#00bfa5'}
+            ];
+            $.plot('#cellPaiChart', cellPaiChart, {
+                series: {
+                    pie: {
+                        show: true,
+                        stroke: {
+                            width: 0
+                        }
+                    }
+                },
+                legend: {
+                    show: false
+                },grid: {
+                    hoverable: true,
+                    clickable: true
+                }
+
+            });
+            // cellPaiChart End
+            // Line Chart  #flotLine5
+            var newCust = [[0, 3], [1, 5], [2,4], [3, 7], [4, 9], [5, 3], [6, 6], [7, 4], [8, 10]];
+
+            var plot = $.plot($('#flotLine5'),[{
+                data: newCust,
+                label: 'New Data Flow',
+                color: '#fff'
+            }],
+            {
+                series: {
+                    lines: {
+                        show: true,
+                        lineColor: '#fff',
+                        lineWidth: 2
+                    },
+                    points: {
+                        show: true,
+                        fill: true,
+                        fillColor: "#ffffff",
+                        symbol: "circle",
+                        radius: 3
+                    },
+                    shadowSize: 0
+                },
+                points: {
+                    show: true,
+                },
+                legend: {
+                    show: false
+                },
+                grid: {
+                    show: false
+                }
+            });
+            // Line Chart  #flotLine5 End
+            // Traffic Chart using chartist
+            if ($('#traffic-chart').length) {
+                var chart = new Chartist.Line('#traffic-chart', {
+                  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                  series: [
+                  [0, 18000, 35000,  25000,  22000,  0],
+                  [0, 33000, 15000,  20000,  15000,  300],
+                  [0, 15000, 28000,  15000,  30000,  5000]
+                  ]
+              }, {
+                  low: 0,
+                  showArea: true,
+                  showLine: false,
+                  showPoint: false,
+                  fullWidth: true,
+                  axisX: {
+                    showGrid: true
+                }
+            });
+
+                chart.on('draw', function(data) {
+                    if(data.type === 'line' || data.type === 'area') {
+                        data.element.animate({
+                            d: {
+                                begin: 2000 * data.index,
+                                dur: 2000,
+                                from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                                to: data.path.clone().stringify(),
+                                easing: Chartist.Svg.Easing.easeOutQuint
+                            }
+                        });
+                    }
+                });
+            }
+            // Traffic Chart using chartist End
+            //Traffic chart chart-js
+            if ($('#TrafficChart').length) {
+                var ctx = document.getElementById( "TrafficChart" );
+                ctx.height = 150;
+                var myChart = new Chart( ctx, {
+                    type: 'line',
+                    data: {
+                        labels: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul" ],
+                        datasets: [
+                        {
+                            label: "Visit",
+                            borderColor: "rgba(4, 73, 203,.09)",
+                            borderWidth: "1",
+                            backgroundColor: "rgba(4, 73, 203,.5)",
+                            data: [ 0, 2900, 5000, 3300, 6000, 3250, 0 ]
+                        },
+                        {
+                            label: "Bounce",
+                            borderColor: "rgba(245, 23, 66, 0.9)",
+                            borderWidth: "1",
+                            backgroundColor: "rgba(245, 23, 66,.5)",
+                            pointHighlightStroke: "rgba(245, 23, 66,.5)",
+                            data: [ 0, 4200, 4500, 1600, 4200, 1500, 4000 ]
+                        },
+                        {
+                            label: "Targeted",
+                            borderColor: "rgba(40, 169, 46, 0.9)",
+                            borderWidth: "1",
+                            backgroundColor: "rgba(40, 169, 46, .5)",
+                            pointHighlightStroke: "rgba(40, 169, 46,.5)",
+                            data: [1000, 5200, 3600, 2600, 4200, 5300, 0 ]
+                        }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        }
+
+                    }
+                } );
+            }
+            //Traffic chart chart-js  End
+            // Bar Chart #flotBarChart
+            $.plot("#flotBarChart", [{
+                data: [[0, 18], [2, 8], [4, 5], [6, 13],[8,5], [10,7],[12,4], [14,6],[16,15], [18, 9],[20,17], [22,7],[24,4], [26,9],[28,11]],
+                bars: {
+                    show: true,
+                    lineWidth: 0,
+                    fillColor: '#ffffff8a'
+                }
+            }], {
+                grid: {
+                    show: false
+                }
+            });
+            // Bar Chart #flotBarChart End
+        });
+    </script>
+</body>
+</html>

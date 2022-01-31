@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:metadata>
+		<!-- f:viewParam name="id" value="#{clienteBean.cedula}"></f:viewParam> 
+		<f:viewAction action="#{clienteBean.loadData()}"/-->
+	</f:metadata>
+</h:head> 
+
+<ui:composition template="/template/plantilla.xhtml">
+	<ui:define name="title">
+        Materias
+    </ui:define>
+	<ui:define name="content">
+	
+		<div class="card"><!-- no borrar -->
+			<div class="card-header">Gestión Materias</div> <!-- body title -->
+			
+			<div class="card-body card-block">
+				<h:form class="">
+					
+					<div class="form-group"><!--CÉDULA-->
+						<div class="input-group">
+							
+							<p:inputText value="" type="text" id="cedula" name="cedula" placeholder="Cédula" class="form-control" >
+								<!-- f:ajax execute="cedula" 
+										render="nombre email"
+										listener="#{clienteBean.loadDataEditar()}"/-->
+							</p:inputText>
+							<div class="input-group-addon"><i class="fa fa-user"></i></div>
+						</div>
+					</div>
+					<div class="form-group"><!--NOMBRE-->
+						<div class="input-group">
+							<p:inputText value="#" type="text" id="nombre" name="nombre" placeholder="Nombre" class="form-control"/>
+							<div class="input-group-addon"><i class="fa fa-user"></i></div>
+						</div>
+					</div>
+					<div class="form-group"><!-- E-MAIL -->
+						<div class="input-group">
+							<p:inputText value="#" type="email" id="email" name="email" placeholder="Correo electrónico" class="form-control"/>
+							<div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+						</div>
+					</div>
+
+					<div class="form-group"><!-- PASSWORD -->
+						<div class="input-group">
+							<p:password id="pwd2" value="#{clienteBean.persona.password}" toggleMask="true" label="Password 2" required="true" class="form-control"/>
+							<div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+						</div>
+					</div>
+					
+					<div class="form-group"><!-- CALLE PRINCIPAL -->
+						<div class="input-group">
+							<p:inputText value="#"  id="callePrincipal" name="callePrincipal" placeholder="Calle principal" class="form-control" />	
+							
+							<div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+						</div>
+					</div>
+					
+					<div class="form-group"><!-- CALLE SECUNDARIA -->
+						<div class="input-group">
+							<p:inputText value="#"  id="calleSecundaria" name="calleSecundaria" placeholder="Calle secundaria" class="form-control" />	
+							
+							<div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+						</div>
+					</div>
+					
+					<div class="form-group"><!-- REFERENCIA -->
+						<div class="input-group">
+							<p:inputText value="#"  id="referencia" name="referencia" placeholder="Referencia" class="form-control" />	
+							
+							<div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+						</div>
+					</div>
+					
+					<div class="form-actions form-group">
+						<h:commandButton action="#" value="Guardar" class="btn btn-secondary btn-sm"/>
+					</div>
+					
+				</h:form>
+			</div>
+                        
+		</div>
+		<h:form>
+			
+			
+			
+			
+			
+			
+			
+			
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>
