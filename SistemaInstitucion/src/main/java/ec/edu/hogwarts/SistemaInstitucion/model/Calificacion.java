@@ -33,9 +33,42 @@ public class Calificacion implements Serializable{
 	@Column(name = "cal_examen2")
 	private double examen2;
 	@Column(name = "cal_estado")
-	private boolean estado; //aprobado-reprobado-cursando
-	@Column(name = "cal_numero_matricula")
-	private int numeroMatricula;
+	private String estado; //aprobado-reprobado-cursando
+	
+	@Column(name = "cal_total")
+	private double total;
+	
+	@ManyToOne
+	@JoinColumn(name="matri_id")
+	private Calificacion calificacion;
+	
+	@ManyToOne
+	@JoinColumn(name = "per_id")
+	private Estudiante estudiante;
+	
+	@ManyToOne
+	@JoinColumn(name = "grup_id")
+	private Grupo grupo;
+	
+	
+	public double getTotal() {
+		return total;
+	}
+	public void setTotal(double total) {
+		this.total = total;
+	}
+	public Estudiante getEstudiante() {
+		return estudiante;
+	}
+	public void setEstudiante(Estudiante estudiante) {
+		this.estudiante = estudiante;
+	}
+	public Grupo getGrupo() {
+		return grupo;
+	}
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
+	}
 	public int getId() {
 		return id;
 	}
@@ -66,17 +99,21 @@ public class Calificacion implements Serializable{
 	public void setExamen2(double examen2) {
 		this.examen2 = examen2;
 	}
-	public boolean isEstado() {
+	
+	public Calificacion getCalificacion() {
+		return calificacion;
+	}
+	public void setCalificacion(Calificacion calificacion) {
+		this.calificacion = calificacion;
+	}
+	public String getEstado() {
 		return estado;
 	}
-	public void setEstado(boolean estado) {
+	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public int getNumeroMatricula() {
-		return numeroMatricula;
-	}
-	public void setNumeroMatricula(int numeroMatricula) {
-		this.numeroMatricula = numeroMatricula;
-	}
+	
+	
+
 	
 }

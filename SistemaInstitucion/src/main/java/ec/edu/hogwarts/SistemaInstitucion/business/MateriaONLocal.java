@@ -18,4 +18,6 @@ public interface MateriaONLocal {
 	
 	public List<Materia>getMateria();
 	
+	public Materia getMateriaporCodigo(int id);
+	
 }

@@ -1,6 +1,7 @@
 package ec.edu.hogwarts.SistemaInstitucion.dao;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -9,6 +10,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ec.edu.hogwarts.SistemaInstitucion.model.Grupo;
+import ec.edu.hogwarts.SistemaInstitucion.model.Materia;
+import ec.edu.hogwarts.SistemaInstitucion.model.Persona;
 
 @Stateless
 public class GrupoDAO {
@@ -71,5 +74,25 @@ public class GrupoDAO {
 		
 		
 		return pro;
+	}
+	public List<Materia> obtenerMaterias(String cedula) {
+		List<Materia> materias = null;
+		String consulta;
+		try {
+			consulta = "SELECT u FROM Grupo u WHERE u.per_id=?1 ";
+			Query query = em.createQuery(consulta);
+			query.setParameter(1,cedula);
+			
+			List<Materia> listaMaterias = query.getResultList();
+			if(!listaMaterias.isEmpty()) {
+				for (Materia materia : listaMaterias) {
+					materias.add(materia);
+				}
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		}
+		return materias;
 	}
 }

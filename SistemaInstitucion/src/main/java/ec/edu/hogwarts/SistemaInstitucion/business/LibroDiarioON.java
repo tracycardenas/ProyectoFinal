@@ -9,7 +9,7 @@ import ec.edu.hogwarts.SistemaInstitucion.dao.LibroDiarioDAO;
 import ec.edu.hogwarts.SistemaInstitucion.model.LibroDiario;
 
 @Stateless
-public class LibroDiarioON implements LibroDiarioONLocal, LibroDiarioONRemote {
+public class LibroDiarioON implements LibroDiarioONLocal {
 
 	@Inject
 	private LibroDiarioDAO daoLibroDiario;

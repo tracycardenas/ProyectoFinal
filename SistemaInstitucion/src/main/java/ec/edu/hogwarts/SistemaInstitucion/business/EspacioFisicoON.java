@@ -9,7 +9,7 @@ import ec.edu.hogwarts.SistemaInstitucion.dao.EspacioFisicoDAO;
 import ec.edu.hogwarts.SistemaInstitucion.model.EspacioFisico;
 
 @Stateless
-public class EspacioFisicoON implements EspacioFisicoONLocal, EspacioFisicoONRemote {
+public class EspacioFisicoON implements EspacioFisicoONLocal {
 
 	@Inject
 	private EspacioFisicoDAO daoEspacioFisico;

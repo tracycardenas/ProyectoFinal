@@ -4,7 +4,8 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-
+import ec.edu.hogwarts.SistemaInstitucion.model.Docente;
+import ec.edu.hogwarts.SistemaInstitucion.model.Estudiante;
 import ec.edu.hogwarts.SistemaInstitucion.model.Persona;
 
 @Local
@@ -16,7 +17,13 @@ public interface PersonaONLocal {
 	
 	public void delete (int id) throws Exception;
 	
-	public List<Persona>getEstudiantes();
-	public List<Persona>getDocentes();
+	
+	public Estudiante getEstudiante(String cedula) ;
+	public Docente getDocente(String cedula);
+	public Persona acceder(Persona persona) ;
+	public Persona getPersona(String cedula);
+	
+	public List<Estudiante> getEstudiantes();
+	public List<Docente> getDocentes();
 	
 }

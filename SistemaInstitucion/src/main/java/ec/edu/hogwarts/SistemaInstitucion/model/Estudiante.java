@@ -17,8 +17,7 @@ public class Estudiante extends Persona{
 	@Column(name = "est_representante")
 	private String representante;
 	
-	@OneToMany
-	@JoinColumn(name = "est_cedula")
+	@OneToMany(mappedBy = "estudiante")
 	private List<Calificacion> calificacioness;
 
 	public String getRepresentante() {

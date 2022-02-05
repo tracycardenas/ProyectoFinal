@@ -9,7 +9,7 @@ import ec.edu.hogwarts.SistemaInstitucion.dao.MovimientoDAO;
 import ec.edu.hogwarts.SistemaInstitucion.model.Movimiento;
 
 @Stateless
-public class MovimientoON implements MovimientoONLocal, MovimientoONRemote {
+public class MovimientoON implements MovimientoONLocal{
 
 	@Inject
 	private MovimientoDAO daoMovimiento;

@@ -9,7 +9,7 @@ import ec.edu.hogwarts.SistemaInstitucion.dao.MateriaDAO;
 import ec.edu.hogwarts.SistemaInstitucion.model.Materia;
 
 @Stateless
-public class MateriaON implements MateriaONLocal, MateriaONRemote {
+public class MateriaON implements MateriaONLocal{
 
 	@Inject
 	private MateriaDAO daoMateria;
@@ -33,5 +33,9 @@ public class MateriaON implements MateriaONLocal, MateriaONRemote {
 	public List<Materia>getMateria(){
 		
 		return daoMateria.getList();
+	}
+	
+	public Materia getMateriaporCodigo(int id) {
+		return daoMateria.read(id);
 	}
 }

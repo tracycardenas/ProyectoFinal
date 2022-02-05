@@ -24,8 +24,8 @@ public class IngresoPersonasBean {
 	private Persona persona = new Persona();
 	private Estudiante estudiante = new Estudiante();
 	private Docente docente = new Docente();
-	private List<Persona> estudiantes;
-	private List<Persona> docentes;
+	private List<Estudiante> estudiantes;
+	private List<Docente> docentes;
 	
 
 	
@@ -47,22 +47,25 @@ public class IngresoPersonasBean {
 	
 
 	
-	public List<Persona> getEstudiantes() {
+	
+
+
+	public List<Estudiante> getEstudiantes() {
 		return estudiantes;
 	}
 
 
-	public void setEstudiantes(List<Persona> estudiantes) {
+	public void setEstudiantes(List<Estudiante> estudiantes) {
 		this.estudiantes = estudiantes;
 	}
 
 
-	public List<Persona> getDocentes() {
+	public List<Docente> getDocentes() {
 		return docentes;
 	}
 
 
-	public void setDocentes(List<Persona> docentes) {
+	public void setDocentes(List<Docente> docentes) {
 		this.docentes = docentes;
 	}
 
@@ -102,7 +105,7 @@ public class IngresoPersonasBean {
 			e.printStackTrace();
 			r= "InsertarEstudiantes?faces-redirect=true";
 		}
-		return r;
+		return null;
 	}
 	
 	public String guardarDocente() {
@@ -114,7 +117,7 @@ public class IngresoPersonasBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "Listado_Docentes?faces-redirect=true";
+		return null;
 	}
 	
 	public void loadPersonas() {

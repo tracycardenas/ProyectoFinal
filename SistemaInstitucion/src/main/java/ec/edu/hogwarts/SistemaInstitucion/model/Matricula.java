@@ -33,9 +33,9 @@ public class Matricula implements Serializable{
 	private double costoHora;
 	@Column(name = "matri_total_horas")
 	private int totalHoras;
-	@OneToMany
-	@JoinColumn(name="matri_id")
-	private List<Calificacion> calificacion;
+	
+	@OneToMany(mappedBy = "calificacion")
+	private List<Calificacion> calificaciones;
 	
 	public int getId() {
 		return id;
@@ -67,11 +67,12 @@ public class Matricula implements Serializable{
 	public void setTotalHoras(int totalHoras) {
 		this.totalHoras = totalHoras;
 	}
-	public List<Calificacion> getCalificacion() {
-		return calificacion;
+	public List<Calificacion> getCalificaciones() {
+		return calificaciones;
 	}
-	public void setCalificacion(List<Calificacion> calificacion) {
-		this.calificacion = calificacion;
+	public void setCalificaciones(List<Calificacion> calificaciones) {
+		this.calificaciones = calificaciones;
 	}
+	
 	
 }

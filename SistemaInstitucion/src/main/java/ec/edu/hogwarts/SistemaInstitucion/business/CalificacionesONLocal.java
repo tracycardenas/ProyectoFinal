@@ -18,4 +18,5 @@ public interface CalificacionesONLocal {
 	
 	public List<Calificacion>getCalificacion();
 	
+	
 }

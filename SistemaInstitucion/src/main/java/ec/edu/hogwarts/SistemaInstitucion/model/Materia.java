@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,12 +22,13 @@ public class Materia implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "mat_id")
 	private int id;
 	
-	@Id
+	
 	@Column(name = "mat_codigo")
 	private String codigo;
 	
@@ -57,13 +59,23 @@ public class Materia implements Serializable{
 	@JoinColumn(name = "mat_plan_analitico")
 	private PlanAnalitico planAnalitico;
 	
-	@OneToMany
-	@JoinColumn(name = "materia_id")
+	@OneToMany(mappedBy = "materia")
 	private List<Grupo> grupos;
 	
+
+
 	@OneToMany
 	@JoinColumn(name = "mat_id")
 	private List<Nivel> nivel;
+
+	
+	public List<Nivel> getNivel() {
+		return nivel;
+	}
+
+	public void setNivel(List<Nivel> nivel) {
+		this.nivel = nivel;
+	}
 
 	public int getId() {
 		return id;

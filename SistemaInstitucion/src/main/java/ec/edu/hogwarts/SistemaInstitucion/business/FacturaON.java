@@ -9,7 +9,7 @@ import ec.edu.hogwarts.SistemaInstitucion.dao.FacturaDAO;
 import ec.edu.hogwarts.SistemaInstitucion.model.Factura;
 
 @Stateless
-public class FacturaON implements FacturaONLocal, FacturaONRemote {
+public class FacturaON implements FacturaONLocal{
 
 	@Inject
 	private FacturaDAO daoFactura;

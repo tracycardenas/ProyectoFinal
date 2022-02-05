@@ -5,22 +5,11 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 
 <h:head></h:head> 
+<ui:composition template="/template/plantillaHome.xhtml">
+
 <body> 
-	 <h:form>
 
-	<h:outputLabel value="Fecha" />
-	<h:inputText value="#{ingresoInscripcion.inscripcion.fecha}" />
-	<br />
-	<h:outputLabel value="Estudiante" />
-	<br />
-	<h:outputLabel value="Carrera" />
-	<br />
-	
-	
 
-	<h:commandButton action="#{ingresoInscripcion.guardarInscripcion()}" value="Guardar" />
-
-</h:form>
-
-</body> 
+</body>
+</ui:composition> 
 </html>

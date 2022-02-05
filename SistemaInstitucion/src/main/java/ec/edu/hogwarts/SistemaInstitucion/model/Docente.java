@@ -18,9 +18,8 @@ public class Docente extends Persona{
 	@Column(name = "doc_especialidad")
 	private String especialidad;
 	
-	@OneToMany
-	@JoinColumn(name = "cod_docente")
-	private List<Grupo> gruposClase;
+	@OneToMany(mappedBy = "docente")
+	private List<Grupo> grupos;
 
 	public String getEspecialidad() {
 		return especialidad;
@@ -30,12 +29,16 @@ public class Docente extends Persona{
 		this.especialidad = especialidad;
 	}
 
-	public List<Grupo> getGruposClase() {
-		return gruposClase;
+	public List<Grupo> getGrupos() {
+		return grupos;
 	}
 
-	public void setGruposClase(List<Grupo> gruposClase) {
-		this.gruposClase = gruposClase;
+	public void setGrupos(List<Grupo> grupos) {
+		this.grupos = grupos;
 	}
+
+	
+
+	
 	
 }

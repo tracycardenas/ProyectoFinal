@@ -9,7 +9,7 @@ import ec.edu.hogwarts.SistemaInstitucion.dao.InscripcionDAO;
 import ec.edu.hogwarts.SistemaInstitucion.model.Inscripcion;
 
 @Stateless
-public class InscripcionON implements InscripcionONLocal, InscripcionONRemote {
+public class InscripcionON implements InscripcionONLocal{
 
 	@Inject
 	private InscripcionDAO daoInscripcion;

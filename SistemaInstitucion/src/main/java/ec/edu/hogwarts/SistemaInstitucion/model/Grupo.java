@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -40,9 +41,35 @@ public class Grupo implements Serializable{
 	@JoinColumn(name = "esp_id")
 	private EspacioFisico espacioFisico;
 	
-	@OneToMany
-	@JoinColumn(name = "grup_id")
+	@OneToMany(mappedBy = "grupo")
 	private List<Calificacion> calificaciones;
+	
+	@ManyToOne
+	@JoinColumn(name="mat_id")
+	private Materia materia;
+	
+	@ManyToOne
+	@JoinColumn(name="per_id")
+	private Docente docente;
+	
+	
+
+
+	public Docente getDocente() {
+		return docente;
+	}
+
+	public void setDocente(Docente docente) {
+		this.docente = docente;
+	}
+
+	public Materia getMateria() {
+		return materia;
+	}
+
+	public void setMateria(Materia materia) {
+		this.materia = materia;
+	}
 
 	public int getId() {
 		return id;

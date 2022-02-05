@@ -7,9 +7,10 @@ import javax.inject.Inject;
 
 import ec.edu.hogwarts.SistemaInstitucion.dao.GrupoDAO;
 import ec.edu.hogwarts.SistemaInstitucion.model.Grupo;
+import ec.edu.hogwarts.SistemaInstitucion.model.Materia;
 
 @Stateless
-public class GrupoON implements GrupoONLocal, GrupoONRemote {
+public class GrupoON implements GrupoONLocal{
 
 	@Inject
 	private GrupoDAO daoGrupo;
@@ -33,5 +34,13 @@ public class GrupoON implements GrupoONLocal, GrupoONRemote {
 	public List<Grupo>getGrupo(){
 		
 		return daoGrupo.getList();
+	}
+	
+	public List<Materia> getMaterias(String cedula){
+		return daoGrupo.obtenerMaterias(cedula);
+	}
+	
+	public Grupo getGrupoporCodigo(int id) {
+		return daoGrupo.read(id);
 	}
 }

@@ -6,10 +6,12 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import ec.edu.hogwarts.SistemaInstitucion.dao.PersonaDAO;
+import ec.edu.hogwarts.SistemaInstitucion.model.Docente;
+import ec.edu.hogwarts.SistemaInstitucion.model.Estudiante;
 import ec.edu.hogwarts.SistemaInstitucion.model.Persona;
 
 @Stateless
-public class PersonaON implements PersonaONLocal, PersonaONRemote {
+public class PersonaON implements PersonaONLocal {
 
 	@Inject
 	private PersonaDAO daoPersona;
@@ -30,12 +32,24 @@ public class PersonaON implements PersonaONLocal, PersonaONRemote {
 		daoPersona.Delete(id);
 	}
 	
-	public List<Persona>getEstudiantes(){
-		
+	public List<Estudiante> getEstudiantes(){
 		return daoPersona.getListEstudiantes();
 	}
-	public List<Persona>getDocentes(){
-		
+	
+	public List<Docente> getDocentes(){
 		return daoPersona.getListDocentes();
 	}
+	public Estudiante getEstudiante(String cedula) {
+		return daoPersona.readEstudiante(cedula);
+	}
+	public Docente getDocente(String cedula) {
+		return daoPersona.readDocente(cedula);
+	}
+	public Persona getPersona(String cedula) {
+		return daoPersona.read(cedula);
+	}
+	public Persona acceder(Persona persona) {
+		return daoPersona.iniciarSesion(persona);
+	}
+
 }

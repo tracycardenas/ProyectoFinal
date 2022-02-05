@@ -9,7 +9,7 @@ import ec.edu.hogwarts.SistemaInstitucion.dao.MallaCurricularDAO;
 import ec.edu.hogwarts.SistemaInstitucion.model.MallaCurricular;
 
 @Stateless
-public class MallaCurricularON implements MallaCurricularONLocal, MallaCurricularONRemote {
+public class MallaCurricularON implements MallaCurricularONLocal {
 
 	@Inject
 	private MallaCurricularDAO daoMallaCurricular;

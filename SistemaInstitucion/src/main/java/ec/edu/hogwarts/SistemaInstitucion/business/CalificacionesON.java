@@ -9,7 +9,7 @@ import ec.edu.hogwarts.SistemaInstitucion.dao.CalificacionDAO;
 import ec.edu.hogwarts.SistemaInstitucion.model.Calificacion;
 
 @Stateless
-public class CalificacionesON implements CalificacionesONLocal, CalificacionesONRemote{
+public class CalificacionesON implements CalificacionesONLocal{
 
 	@Inject
 	private CalificacionDAO daoCalificacion;
@@ -34,4 +34,6 @@ public class CalificacionesON implements CalificacionesONLocal, CalificacionesON
 		
 		return daoCalificacion.getList();
 	}
+	
+	
 }

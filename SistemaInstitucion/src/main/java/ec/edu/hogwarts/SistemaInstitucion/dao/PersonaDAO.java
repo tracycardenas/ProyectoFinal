@@ -8,6 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ec.edu.hogwarts.SistemaInstitucion.model.Docente;
+import ec.edu.hogwarts.SistemaInstitucion.model.Estudiante;
 import ec.edu.hogwarts.SistemaInstitucion.model.Persona;
 
 
@@ -27,9 +29,9 @@ public class PersonaDAO {
 		em.merge(op);
 	}
 	
-	public Persona read(int id) {
+	public Persona read(String cedula) {
 		
-		Persona op = em.find(Persona.class, id);
+		Persona op = em.find(Persona.class, cedula);
 	
 		return op;
 	}
@@ -40,9 +42,9 @@ public class PersonaDAO {
 		em.remove(op);
 	}
 	
-	public List<Persona> getListEstudiantes(){
+	public List<Estudiante> getListEstudiantes(){
 		 
-		List<Persona> listado = new ArrayList<Persona>();
+		List<Estudiante> listado = new ArrayList<Estudiante>();
 		
 		String jpql = "SELECT op FROM Persona op WHERE per_rol='Estudiante'";
 				
@@ -52,9 +54,9 @@ public class PersonaDAO {
 		
 		return listado;
 	}
-	public List<Persona> getListDocentes(){
+	public List<Docente> getListDocentes(){
 		 
-		List<Persona> listado = new ArrayList<Persona>();
+		List<Docente> listado = new ArrayList<Docente>();
 		
 		String jpql = "SELECT op FROM Persona op WHERE per_rol='Docente'";
 				
@@ -85,6 +87,38 @@ public class PersonaDAO {
 		
 		
 		return pro;
+	}
+	
+	public Estudiante readEstudiante(String cedula) {
+		Persona op = em.find(Persona.class, cedula);
+		Estudiante e = em.find(Estudiante.class, cedula);
+		
+		return e;
+	}
+	
+	public Docente readDocente(String cedula) {
+		Docente d = em.find(Docente.class, cedula);
+		return d;
+	}
+	
+	public Persona iniciarSesion(Persona per) {
+		Persona persona = null;
+		String consulta;
+		try {
+			consulta = "SELECT u FROM Persona u WHERE u.email=?1 and u.password=?2";
+			Query query = em.createQuery(consulta);
+			query.setParameter(1,per.getEmail());
+			query.setParameter(2, per.getPassword());
+			
+			List<Persona> lista = query.getResultList();
+			if(!lista.isEmpty()) {
+				persona = lista.get(0);
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		}
+		return persona;
 	}
 
 }

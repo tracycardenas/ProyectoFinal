@@ -9,7 +9,7 @@ import ec.edu.hogwarts.SistemaInstitucion.dao.CarreraDAO;
 import ec.edu.hogwarts.SistemaInstitucion.model.Carrera;
 
 @Stateless
-public class CarreraON implements CarreraONLocal, CarreraONRemote {
+public class CarreraON implements CarreraONLocal{
 
 	@Inject
 	private CarreraDAO daoCarrera;

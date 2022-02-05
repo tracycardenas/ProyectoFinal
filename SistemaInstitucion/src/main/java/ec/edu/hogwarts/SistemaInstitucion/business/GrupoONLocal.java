@@ -6,6 +6,7 @@ import javax.ejb.Local;
 
 
 import ec.edu.hogwarts.SistemaInstitucion.model.Grupo;
+import ec.edu.hogwarts.SistemaInstitucion.model.Materia;
 
 @Local
 public interface GrupoONLocal {
@@ -17,5 +18,8 @@ public interface GrupoONLocal {
 	public void delete (int id) throws Exception;
 	
 	public List<Grupo>getGrupo();
+	
+	public List<Materia> getMaterias(String cedula);
+	public Grupo getGrupoporCodigo(int id) ;
 	
 }

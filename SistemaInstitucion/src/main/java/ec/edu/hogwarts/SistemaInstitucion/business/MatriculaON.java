@@ -9,7 +9,7 @@ import ec.edu.hogwarts.SistemaInstitucion.dao.MatriculaDAO;
 import ec.edu.hogwarts.SistemaInstitucion.model.Matricula;
 
 @Stateless
-public class MatriculaON implements MatriculaONLocal, MatriculaONRemote {
+public class MatriculaON implements MatriculaONLocal {
 
 	@Inject
 	private MatriculaDAO daoMatricula;
