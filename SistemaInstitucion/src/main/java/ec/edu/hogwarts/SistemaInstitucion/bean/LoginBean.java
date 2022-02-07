@@ -83,7 +83,7 @@ public class LoginBean implements Serializable {
 			if (per==null) {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,"Aviso","Credenciales Incorrectas"));
 			} else if (per.getRol().equals("Estudiante")) {
-				redireccion="Perfil_Estudiante?faces-redirect=true&id="+per.getCedula();
+				redireccion="Estudiante_Perfil?faces-redirect=true&id="+per.getCedula();
 			} else if (per.getRol().equals("Docente")) {
 				redireccion="Docente_Perfil?faces-redirect=true&id="+per.getCedula();
 			}
@@ -115,6 +115,10 @@ public class LoginBean implements Serializable {
 		String redireccion ="GestionAcademicaDocente?faces-redirect=true&id="+cedula;
 		return redireccion;
 
+	}
+	
+	public String calificacionesEstudiante(String cedula) {
+		return "GestionAcademicaEstudiante?faces-redirect=true&id="+cedula;
 	}
 	
 	

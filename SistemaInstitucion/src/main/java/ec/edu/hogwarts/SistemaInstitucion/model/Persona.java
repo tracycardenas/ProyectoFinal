@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.swing.ImageIcon;
 
@@ -55,9 +56,11 @@ public class Persona implements Serializable{
 	@Column(name = "per_rol")
 	private String rol;
 	
-	@Column(name = "per_imagen")
-	private ImageIcon foto;
 	
+	
+	
+	
+
 	public String getCedula() {
 		return cedula;
 	}
@@ -112,12 +115,8 @@ public class Persona implements Serializable{
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
-	public ImageIcon getFoto() {
-		return foto;
-	}
-	public void setFoto(ImageIcon foto) {
-		this.foto = foto;
-	}
+	
+
 
 	public int getEdad() {
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");

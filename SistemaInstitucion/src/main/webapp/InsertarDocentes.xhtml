@@ -60,9 +60,12 @@
 				<p:outputLabel value="Especialidad:" />
 				<p:inputText value="#{ingresoPersonasBean.docente.especialidad}" />
 			</div>
+			
+		
+			
 
 			<div>
-				<h:commandButton action="#{ingresoPersonasBean.guardarDocente()}"
+				<p:commandButton ajax= "false" action="#{ingresoPersonasBean.guardarDocente()}"
 					value="Guardar" />
 			</div>
 

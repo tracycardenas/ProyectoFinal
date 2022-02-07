@@ -88,10 +88,9 @@
 								<p:inputText class="form-control" value="#{loginBean.persona.email}" /></div>
 								</div>
 								<div class="col-6">
-                                <div class="form-group"><label for="country" class=" form-control-label">Especialidad</label>
-                                <p:inputText class="form-control" value="#{loginBean.docente.especialidad}" /></div>
+                                <div class="form-group"><label for="country" class=" form-control-label">Representante</label>
+                                <p:inputText class="form-control" value="#{loginBean.estudiante.representante}" /></div>
                             	</div>
-                            	
                             </div>
                             </div>
                         </div>
@@ -106,8 +105,8 @@
 		</div>
 		<h:form>
 		<div class="enviar">
-				<h:commandButton action="#{loginBean.Calificaciones(loginBean.persona.cedula)}"
-					value="Ingresar Calificaciones" />
+				<h:commandButton action="#{loginBean.calificacionesEstudiante(loginBean.persona.cedula)}"
+					value="Revisar Calificaciones" />
 					
 					
 			</div>

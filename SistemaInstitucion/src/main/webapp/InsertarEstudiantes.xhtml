@@ -63,15 +63,17 @@
 				<p:password class="password" name="pw" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value="#{ingresoPersonasBean.estudiante.password}" ></p:password>
 			</div>
 			
-
 			<div class="info">
 				<p:outputLabel value="Nombre del Representante:" />
 				<p:inputText class="representante" value="#{ingresoPersonasBean.estudiante.representante}"  />
 			</div>
 
+		
+			
+
 			<div class="enviar">
-				<h:commandButton action="#{ingresoPersonasBean.guardarEstudiante()}"
-					value="Inscribir" />
+				<p:commandButton action="#{ingresoPersonasBean.guardarEstudiante()}"
+					value="Inscribir"  />
 					
 					
 			</div>

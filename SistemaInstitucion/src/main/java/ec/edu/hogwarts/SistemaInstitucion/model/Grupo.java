@@ -37,6 +37,9 @@ public class Grupo implements Serializable{
 	@Column(name = "grup_modalidad")
 	private String modalidad;
 	
+	@Column(name="grup_periodo")
+	private int periodo;
+	
 	@OneToOne
 	@JoinColumn(name = "esp_id")
 	private EspacioFisico espacioFisico;
@@ -54,6 +57,14 @@ public class Grupo implements Serializable{
 	
 	
 
+
+	public int getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(int periodo) {
+		this.periodo = periodo;
+	}
 
 	public Docente getDocente() {
 		return docente;

@@ -1,13 +1,25 @@
 package ec.edu.hogwarts.SistemaInstitucion.bean;
 
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.apache.poi.util.IOUtils;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
 
 import ec.edu.hogwarts.SistemaInstitucion.business.PersonaONLocal;
 import ec.edu.hogwarts.SistemaInstitucion.model.Docente;
@@ -15,8 +27,8 @@ import ec.edu.hogwarts.SistemaInstitucion.model.Estudiante;
 import ec.edu.hogwarts.SistemaInstitucion.model.Persona;
 
 @Named
-@RequestScoped
-public class IngresoPersonasBean {
+@ViewScoped
+public class IngresoPersonasBean implements Serializable{
 	
 	@Inject
 	private PersonaONLocal personasON;
@@ -27,8 +39,9 @@ public class IngresoPersonasBean {
 	private List<Estudiante> estudiantes;
 	private List<Docente> docentes;
 	
-
 	
+
+
 	public Persona getPersona() {
 		return persona;
 	}
@@ -135,6 +148,47 @@ public class IngresoPersonasBean {
 		
 			
 	}
+	
+	/*public void guardarDocente() {
+		String rutaCarpeta = "C:\\Users\\tracy\\OneDrive\\Documentos\\GitHub\\ProyectoFinal\\SistemaInstitucion\\src\\main\\resources\\Imagenes";
+		try {
+			System.out.println("entre al metodo de guardar Docente"+file.getSize());
+			if (file.getSize()>0) {
+				System.out.println("entre al if de guardarDocente");
+				docente.setRol("Docente");
+				docente.setNombreFoto(file.getFileName());
+				docente.setFoto(file.getContent());
+				try {
+					personasON.insert(this.docente);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				escribirBytes(IOUtils.toByteArray(file.getInputStream()), rutaCarpeta, file.getFileName());
+			
+				
+
+				
+				
+			}
+			
+		} catch (IOException e) {
+			System.out.println("ERROR EN GUARDAR DOCENTE "+e.getMessage());
+		}
+	}*/
+	
+	public void escribirBytes(byte[] bytes, String carpeta, String nombreImagen) {
+		try {
+			Path path = Paths.get(carpeta,nombreImagen);
+			Files.write(path, bytes);
+			
+		} catch (IOException e) {
+			// TODO: handle exception
+			System.out.println("error al escribir los bytes"+e.getMessage());
+		}
+	}
+	
+	
 			
 
 	

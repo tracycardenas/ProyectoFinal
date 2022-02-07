@@ -62,18 +62,19 @@ public class Materia implements Serializable{
 	@OneToMany(mappedBy = "materia")
 	private List<Grupo> grupos;
 	
-
-
-	@OneToMany
-	@JoinColumn(name = "mat_id")
-	private List<Nivel> nivel;
+	
+	@ManyToOne
+	@JoinColumn(name = "niv_id")
+	private Nivel nivel;
 
 	
-	public List<Nivel> getNivel() {
+
+
+	public Nivel getNivel() {
 		return nivel;
 	}
 
-	public void setNivel(List<Nivel> nivel) {
+	public void setNivel(Nivel nivel) {
 		this.nivel = nivel;
 	}
 
