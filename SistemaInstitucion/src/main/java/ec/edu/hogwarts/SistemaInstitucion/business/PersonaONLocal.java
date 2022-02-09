@@ -15,7 +15,7 @@ public interface PersonaONLocal {
 	
 	public void update (Persona op)throws Exception ;
 	
-	public void delete (int id) throws Exception;
+	public void delete (String id) throws Exception;
 	
 	
 	public Estudiante getEstudiante(String cedula) ;

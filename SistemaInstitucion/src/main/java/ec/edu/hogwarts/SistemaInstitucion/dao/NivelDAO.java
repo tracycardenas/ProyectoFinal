@@ -30,6 +30,7 @@ public class NivelDAO {
 	public Nivel read(int id) {
 		
 		Nivel op = em.find(Nivel.class, id);
+		op.getMaterias().size();
 		return op;
 	}
 	

@@ -8,7 +8,16 @@
 
 <head>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+ <f:metadata>
+ 	<f:viewParam name="id" value="#{buscadorBean.cedula}"></f:viewParam>
+    <f:viewAction action="#{ingresoPersonasBean.loadData()}"/>
+</f:metadata>
+      
+
 </head>
+
+
 
 <ui:composition template="/template/plantilla.xhtml">
 	swal("Oops!", "Something went wrong on the page!", "error");
@@ -64,7 +73,7 @@
 									<div class="row">
 										<div class="col-sm-8"><!-- Aqui empieza los elementos de la pag a desarrollar -->
 											
-											<h:form enctype="multipart/form-data" class="registro" style="width: 900px; margin-left: 15px; overflow: hidden;  border: 1px solid #c1c1c1;  ">
+											<h:form class="registro" style="width: 900px; margin-left: 15px; overflow: hidden;  border: 1px solid #c1c1c1;  ">
 											
 										
 											
@@ -125,12 +134,15 @@
 															<p:inputText class="representante" value="#{ingresoPersonasBean.estudiante.representante}"  
 															style="width: 214px; height: 35px;margin-left: 10px; padding-top: 15px;"/>
 														</div>
-
-
+														
+														<div class="info">
+															<p:outputLabel value="Subir Fotografia:" style="margin-left: 15px; padding-top: 15px;" />
+															
+														</div>
 
 														<div class="enviar" style="padding: 10px">
-															<h:commandButton action="#{ingresoPersonasBean.guardarEstudiante()}"
-																value="Inscribir" style="margin-left: 400px; "/>
+															<h:commandButton action="#{ingresoPersonasBean.update()}"
+																value="Actualizar" style="margin-left: 400px; "/>
 		
 														</div>
 														

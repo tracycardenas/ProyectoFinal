@@ -34,4 +34,9 @@ public class CarreraON implements CarreraONLocal{
 		
 		return daoCarrera.getList();
 	}
+	
+	public Carrera getCarrera(int id) {
+		
+		return daoCarrera.read(id);
+	}
 }

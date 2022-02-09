@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ <f:metadata>
+ 	<f:viewParam name="id" value="#{buscadorBean.cedula}"></f:viewParam>
+    <f:viewAction action="#{buscadorBean.loadData()}"/>
+    <f:viewAction action="#{buscadorBean.detalles_Filtrados_estudiantes(ingresoMatricula.estudiante_seleccionado)}"/>
+
+    
+</f:metadata>
+
+</head>
+
+<ui:composition template="/template/plantilla.xhtml">
+	swal("Oops!", "Something went wrong on the page!", "error");
+	<ui:define name="title">
+		Inscripcion de Estudiantes
+	</ui:define>
+	
+<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Dashboard</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li class="active">Materias</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Gestion de Inscripciones</strong>
+								<div class="float-right">
+								
+								            <div class="p-field p-col-12 p-md-4">
+								               
+									            
+								            </div>
+								
+									
+								</div>
+							</div>
+							<div class="card-body">
+								<div id="bootstrap-data-table_wrapper"
+									class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+									<div class="row">
+										<div class="col-sm-12 col-md-6">
+
+										</div>
+
+									</div>
+									<div class="row">
+										<div class="col-sm-8"><!-- Aqui empieza los elementos de la pag a desarrollar -->
+										
+										
+										<h:form id="form" style="width: 900px; margin-left: 15px; overflow: hidden;  border: 1px solid #c1c1c1;">
+								            <p:growl id="msgs" showDetail="true" />
+								
+								            <h:panelGrid columns="2" cellpadding="5">
+								
+								
+								            </h:panelGrid>
+								
+											 <p:outputLabel style="margin-left:15px;" value="Buscar Alumno : " for="autocompletar"/>
+								                  <p:autoComplete style="margin-left:15px;" id="autocompletar" minQueryLength="3" queryDelay="1000" maxResults="5"
+									                            value="#{buscadorBean.estudiante_seleccionado}" 
+									                            completeMethod="#{buscadorBean.autocompletar_Estudiantes}" 
+									                            var="objeto_est" itemLabel="#{objeto_est.cedula}" 
+									                            itemValue="#{objeto_est}"
+									                            converter="estudianteConverter" forceSelection="true" onclick="this.value='';">
+												<p:ajax event="itemSelect" update=":form:msgs :form:tabla_datos" />
+									
+									            </p:autoComplete>
+								
+								            <p:dataTable id="tabla_datos" value="#{buscadorBean.detalles_Filtrados_estudiantes(buscadorBean.estudiante_seleccionado)}" var="item" sortBy="#{item.nombre}">
+								                <p:column headerText="CEDULA">
+								                    <h:outputText value="#{item.cedula}"/>
+								                </p:column>
+								                <p:column headerText="NOMBRES">
+								                    <h:outputText value="#{item.nombre}"/>
+								                </p:column>
+								                <p:column headerText="CURSO">
+								                    <h:outputText value="#{item.email}"/>
+								                </p:column>
+								                <p:column headerText="CREDITOS" style="text-align: center;">
+								                    <h:outputText value="#{item.direccion}"/>
+								                </p:column>
+								
+								            </p:dataTable>
+								
+									
+								
+								        </h:form>
+										
+	
+										 <h:form id="formC" style="width: 900px; margin-left: 15px; margin-top: 30px; overflow: hidden;  border: 1px solid #c1c1c1;">
+								            <p:growl id="msgsC" showDetail="true" />
+								
+								            <h:panelGrid columns="2" cellpadding="5">
+								
+								
+								            </h:panelGrid>
+								
+											 <p:outputLabel style="margin-left:15px;" value="Buscar Carrera : " for="autocompletar"/>
+								                  <p:autoComplete style="margin-left:15px;" id="autocompletar" minQueryLength="3" queryDelay="1000" maxResults="5"
+									                            value="#{buscadorBean.carrera_seleccionada}" 
+									                            completeMethod="#{buscadorBean.autocompletar_cursos}" 
+									                            var="objeto_curso" itemLabel="#{objeto_curso.nombre}" 
+									                            itemValue="#{objeto_curso}"
+									                            converter="cursoConverter" forceSelection="true" onclick="this.value='';">
+												<p:ajax event="itemSelect" update=":formC:msgsC :formC:tabla_datosC" />
+									
+									            </p:autoComplete>
+								
+								            <p:dataTable id="tabla_datosC" value="#{buscadorBean.detalles_Filtrados(buscadorBean.carrera_seleccionada)}" var="item" sortBy="#{item.nombre}">
+								                <p:column headerText="CODIGO">
+								                    <h:outputText value="#{item.id}"/>
+								                </p:column>
+								                <p:column headerText="NOMBRE">
+								                    <h:outputText value="#{item.nombre}"/>
+								                </p:column>
+								                <p:column headerText="DESCRIPCION">
+								                    <h:outputText value="#{item.descripcion}"/>
+								                </p:column>
+								                <p:column headerText="MALLA" style="text-align: center;">
+								                    <h:outputText value="#{item.descripcion}"/>
+								                </p:column>
+								
+								           
+								            
+
+											 </p:dataTable>
+											 	<div class="enviar" style="padding: 10px">
+												<p:commandButton action="#{buscadorBean.guardarInscripcion}" onclick="PF('dlg1').show();"
+															value="INSCRIBIR" style="margin-left: 400px; "/>
+		
+												</div>
+
+								        </h:form>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+												<p:dialog header="Continua con tu Matricula !!" widgetVar="dlg1" minHeight="40" showEffect="fade">
+												    <h:outputText value="Estudia en la mejor Institucion a nivel mundial! 😊 😎" />
+												    <br/>
+												    <a href="InsertarMatricula.xhtml"> MATRICULATE AQUI !!</a>
+												</p:dialog>
+	</ui:define>
+</ui:composition>
+
+
+</html>

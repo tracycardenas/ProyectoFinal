@@ -18,4 +18,6 @@ public interface CarreraONLocal {
 	
 	public List<Carrera>getCarrera();
 	
+	public Carrera getCarrera(int id);
+	
 }

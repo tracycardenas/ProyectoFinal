@@ -31,6 +31,7 @@ public class CarreraDAO {
 	public Carrera read(int id) {
 		
 		Carrera op = em.find(Carrera.class, id);
+		op.getMallas().size();
 		return op;
 	}
 	

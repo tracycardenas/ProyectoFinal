@@ -38,7 +38,7 @@ public class IngresoPersonasBean implements Serializable{
 	private Docente docente = new Docente();
 	private List<Estudiante> estudiantes;
 	private List<Docente> docentes;
-	
+	private String cedula;
 	
 
 
@@ -56,13 +56,6 @@ public class IngresoPersonasBean implements Serializable{
 		this.loadPersonas();
 	}
 	
-
-	
-
-	
-	
-
-
 	public List<Estudiante> getEstudiantes() {
 		return estudiantes;
 	}
@@ -104,8 +97,8 @@ public class IngresoPersonasBean implements Serializable{
 	public void setEstudiante(Estudiante estudiante) {
 		this.estudiante = estudiante;
 	}
-
-
+	
+	
 	public String guardarEstudiante() {
 		
 		String r="";
@@ -118,7 +111,7 @@ public class IngresoPersonasBean implements Serializable{
 			e.printStackTrace();
 			r= "InsertarEstudiantes?faces-redirect=true";
 		}
-		return null;
+		return r;
 	}
 	
 	public String guardarDocente() {
@@ -148,45 +141,93 @@ public class IngresoPersonasBean implements Serializable{
 		
 			
 	}
-	
-	/*public void guardarDocente() {
-		String rutaCarpeta = "C:\\Users\\tracy\\OneDrive\\Documentos\\GitHub\\ProyectoFinal\\SistemaInstitucion\\src\\main\\resources\\Imagenes";
-		try {
-			System.out.println("entre al metodo de guardar Docente"+file.getSize());
-			if (file.getSize()>0) {
-				System.out.println("entre al if de guardarDocente");
-				docente.setRol("Docente");
-				docente.setNombreFoto(file.getFileName());
-				docente.setFoto(file.getContent());
-				try {
-					personasON.insert(this.docente);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				escribirBytes(IOUtils.toByteArray(file.getInputStream()), rutaCarpeta, file.getFileName());
-			
-				
 
-				
-				
-			}
-			
-		} catch (IOException e) {
-			System.out.println("ERROR EN GUARDAR DOCENTE "+e.getMessage());
-		}
-	}*/
+
+	// David Paguay
 	
-	public void escribirBytes(byte[] bytes, String carpeta, String nombreImagen) {
-		try {
-			Path path = Paths.get(carpeta,nombreImagen);
-			Files.write(path, bytes);
-			
-		} catch (IOException e) {
-			// TODO: handle exception
-			System.out.println("error al escribir los bytes"+e.getMessage());
-		}
+	public String getCedula() {
+		return cedula;
 	}
+
+
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
+	
+	public void loadData() {
+		if (cedula==null) 
+			return;
+			
+		Persona p = personasON.getPersona(cedula);
+		
+		persona =p;
+		Estudiante est = personasON.getEstudiante(cedula);
+		estudiante = est;
+		Docente doc = personasON.getDocente(cedula);
+		docente = doc;
+		
+	}
+	
+	public String editar(String cedula){
+
+		return "ActualizarEstudiantes?faces-redirect=true&id="+cedula;
+	}
+	
+	public String matricular(String cedula){
+
+		return "InsertarMatricula?faces-redirect=true&id="+cedula;
+	}
+	
+	
+	public String perfil(String cedula){
+		System.out.println(cedula);
+		return "ActualizarEstudiantes?faces-redirect=true&id="+cedula;
+	}
+	
+	public String eliminar(String cedula){
+		System.out.println(cedula);
+		
+		try {
+			personasON.delete(cedula);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return "Listar_Estudiantes?faces-redirect=true";
+	}
+	
+	public String update() {
+		
+		try {
+			estudiante.setRol("Estudiante");
+			personasON.update(this.estudiante);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "Listar_Estudiantes?faces-redirect=true";
+	}
+	
+	public String registrar(String cedula) {
+		
+		return "InsertarInscripcion?faces-redirect=true&id="+cedula;
+	}
+	
+	// Imagen
+	
+	
+	public void loadDataEst(String cedula) {
+		Estudiante p = personasON.getEstudiante(estudiante.getCedula());
+		estudiante = p;
+	}
+	
+
+	
+	
+	
 	
 	
 			

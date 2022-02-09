@@ -13,5 +13,6 @@ public interface NivelONLocal {
 	public void update (Nivel op) throws Exception;
 	public void delete (int id) throws Exception;
 	public List<Nivel>getNiveles();
+	public Nivel getNivel(int id);
 
 }

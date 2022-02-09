@@ -27,7 +27,7 @@ public class PersonaON implements PersonaONLocal {
 		daoPersona.update(op);
 	}
 	
-	public void delete (int id) throws Exception{
+	public void delete (String id) throws Exception{
 		
 		daoPersona.Delete(id);
 	}
@@ -35,6 +35,7 @@ public class PersonaON implements PersonaONLocal {
 	public List<Estudiante> getEstudiantes(){
 		return daoPersona.getListEstudiantes();
 	}
+	
 	
 	public List<Docente> getDocentes(){
 		return daoPersona.getListDocentes();

@@ -36,5 +36,10 @@ public class NivelON implements NivelONLocal {
 		return daoNivel.getList();
 	}
 	
+	public Nivel getNivel(int id) {
+		
+		return daoNivel.read(id);
+	}
+	
 
 }

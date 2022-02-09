@@ -36,7 +36,7 @@ public class PersonaDAO {
 		return op;
 	}
 	
-	public void Delete(int id) {
+	public void Delete(String id) {
 		
 		Persona op = em.find(Persona.class, id);
 		em.remove(op);
