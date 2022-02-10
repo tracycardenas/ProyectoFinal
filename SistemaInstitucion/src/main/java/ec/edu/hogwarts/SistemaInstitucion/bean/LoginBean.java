@@ -86,6 +86,8 @@ public class LoginBean implements Serializable {
 				redireccion="Estudiante_Perfil?faces-redirect=true&id="+per.getCedula();
 			} else if (per.getRol().equals("Docente")) {
 				redireccion="Docente_Perfil?faces-redirect=true&id="+per.getCedula();
+			}else if (per.getRol().equals("Administrador")) {
+				redireccion = "InsertarEstudiantes?faces-redirect";
 			}
 			
 		} catch (Exception e) {

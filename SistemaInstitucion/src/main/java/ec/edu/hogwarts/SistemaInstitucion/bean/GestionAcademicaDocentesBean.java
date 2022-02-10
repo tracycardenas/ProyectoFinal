@@ -244,30 +244,7 @@ public class GestionAcademicaDocentesBean implements Serializable {
 				if (grupoID == calificacionesBD.get(i).getGrupo().getId()) {
 					calificaciones.add(calificacionesBD.get(i));
 					System.out.println("antes de total************------------");
-					total= calificaciones.get(i).getAporte1()+calificaciones.get(i).getAporte2()+
-							calificaciones.get(i).getExamen1() +calificaciones.get(i).getExamen2();
 					
-					System.out.println("TOTAAL******** "+total);
-					calificaciones.get(i).setTotal(total);
-					
-						
-					if (calificaciones.get(i).getTotal()>69) {
-						calificaciones.get(i).setEstado("Aprobado");
-					}
-					if (calificaciones.get(i).getTotal()<69) {
-						calificaciones.get(i).setEstado("Reprobado");
-					}
-					if (calificaciones.get(i).getAporte1()==0 || calificaciones.get(i).getAporte2()==0 ||
-							calificaciones.get(i).getExamen1() ==0||calificaciones.get(i).getExamen2()==0) {
-						calificaciones.get(i).setEstado("Cursando");
-					}
-					try {
-						calificacionON.update(calificaciones.get(i));
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-					System.out.println("-----------------------------------------------------------------");
 				}
 				
 			}

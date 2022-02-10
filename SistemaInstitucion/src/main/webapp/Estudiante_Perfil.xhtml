@@ -50,7 +50,7 @@
 						<div class="card">
 							<div class="card-header">
 								<strong class="card-title">#{loginBean.estudiante.nombre}
-									#{loginBean.estudiante.apellido}</strong>
+									#{loginBean.estudiante.apellido} - #{loginBean.estudiante.rol}</strong>
 								<div class="float-right">
 									<h:form>
 										<p:commandButton class="p-col-12 p-md-2" value=""
@@ -92,7 +92,7 @@
 														<p:inputText class="form-control" value="#{loginBean.estudiante.fechaNacimiento}" disabled="true" /></div>
 
 													</div>
-												</div>
+												
 												<div class="col-4">
 													<div class="form-group">
 														<label for="city" class=" form-control-label">Direccion</label>
@@ -107,7 +107,8 @@
 															value="#{loginBean.estudiante.telefono}" disabled="true"/>
 													</div>
 												</div>
-											</div>
+												</div>
+											
 											<div class="row">
 												<div class="col-6">
 													<div class="form-group">
@@ -124,7 +125,7 @@
 													</div>
 												</div>
 											</div>
-											
+											</div>
 										</div>
 										
 										

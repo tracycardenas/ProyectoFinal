@@ -2,11 +2,11 @@ package ec.edu.hogwarts.SistemaInstitucion.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
@@ -14,9 +14,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import ec.edu.hogwarts.SistemaInstitucion.business.CalificacionesONLocal;
-import ec.edu.hogwarts.SistemaInstitucion.business.GrupoONLocal;
-import ec.edu.hogwarts.SistemaInstitucion.business.MateriaONLocal;
-import ec.edu.hogwarts.SistemaInstitucion.business.NivelONLocal;
+
 import ec.edu.hogwarts.SistemaInstitucion.business.PersonaONLocal;
 import ec.edu.hogwarts.SistemaInstitucion.model.Calificacion;
 import ec.edu.hogwarts.SistemaInstitucion.model.Estudiante;
@@ -39,49 +37,31 @@ public class GestionAcademicaEstudiantesBean implements Serializable {
 	@Inject
 	private PersonaONLocal personasON;
 
-	@Inject
-	private GrupoONLocal grupoON;
-
-	@Inject
-	private MateriaONLocal materiaON;
-	
-	@Inject
-	private NivelONLocal nivelON;
-
 	private Grupo grupo;
 
 	private int periodoID;
-	
+
 	private Nivel nivel;
-	
-	
 
 	private List<Nivel> niveles = new ArrayList<Nivel>();
 	private List<Estudiante> estudiantes;
-	private List<Grupo> grupos = new ArrayList<Grupo>() ;
+	private List<Integer> grupos = new ArrayList<Integer>();
 	private List<Calificacion> calificaciones = new ArrayList<Calificacion>();
 	private List<Calificacion> calificaciones2 = new ArrayList<Calificacion>();
 
 	private List<Materia> materias = new ArrayList<Materia>();
 
-	private List<Calificacion> calificacionesBD;
-
 	List<Estudiante> estudiantesGrupo;
-	
-
 
 	private Calificacion calificacion;
 	private String cedula;
-	
 
 	@PostConstruct
 	public void init() {
 		this.loadEstudiantes();
-	}	
-	
-	//Getters and Setters
-	
-	
+	}
+
+	// Getters and Setters
 
 	public List<Calificacion> getCalificaciones() {
 		return calificaciones;
@@ -103,8 +83,6 @@ public class GestionAcademicaEstudiantesBean implements Serializable {
 		this.nivel = nivel;
 	}
 
-	
-
 	public int getPeriodoID() {
 		return periodoID;
 	}
@@ -117,18 +95,14 @@ public class GestionAcademicaEstudiantesBean implements Serializable {
 		this.calificaciones = calificaciones;
 	}
 
-	
-	
-
-	public List<Grupo> getGrupos() {
+	public List<Integer> getGrupos() {
 		return grupos;
 	}
 
-	public void setGrupos(List<Grupo> grupos) {
+	public void setGrupos(List<Integer> grupos) {
 		this.grupos = grupos;
 	}
 
-	
 	public List<Estudiante> getEstudiantes() {
 		return estudiantes;
 	}
@@ -136,8 +110,6 @@ public class GestionAcademicaEstudiantesBean implements Serializable {
 	public void setEstudiantes(List<Estudiante> estudiantes) {
 		this.estudiantes = estudiantes;
 	}
-	
-
 
 	public List<Nivel> getNiveles() {
 		return niveles;
@@ -148,12 +120,12 @@ public class GestionAcademicaEstudiantesBean implements Serializable {
 	}
 
 	public String getCedula() {
-		System.out.println("GET CEDULA "+cedula);
+		System.out.println("GET CEDULA " + cedula);
 		return cedula;
 	}
 
 	public void setCedula(String cedula) {
-		System.out.println("SET CEDULA "+cedula);
+		System.out.println("SET CEDULA " + cedula);
 		this.cedula = cedula;
 	}
 
@@ -166,50 +138,43 @@ public class GestionAcademicaEstudiantesBean implements Serializable {
 	}
 
 	public Calificacion getCalificacion() {
-		//System.out.println("GET CALIFICACION "+calificacion.getEstudiante().getNombre());
 		return calificacion;
 	}
 
 	public void setCalificacion(Calificacion calificacion) {
-		System.out.println("SET CALIFICACION "+calificacion.getEstudiante().getNombre());
+		System.out.println("SET CALIFICACION " + calificacion.getEstudiante().getNombre());
 		this.calificacion = calificacion;
 	}
 
-	
-	//METODOS
-	
-	
+	// METODOS
 
 	public void cargarNiveles(String cedula) {
-		Grupo nivelAnterior = new Grupo();
-		nivelAnterior.setPeriodo(0);
-		System.out.println("ENTRE A CARGAR NIVELES "+cedula);
-		System.out.println(" niveles " +nivelON.getNiveles().size() );
-		
+		grupos = new ArrayList<Integer>();
+
+		List<Integer> gruposAnteriores = new ArrayList<Integer>();
+
 		for (int i = 0; i < calificacionON.getCalificacion().size(); i++) {
 			if (cedula.equals(calificacionON.getCalificacion().get(i).getEstudiante().getCedula())) {
 				calificaciones2.add(calificacionON.getCalificacion().get(i));
-				for (int j = 0; j <calificaciones2.size(); j++) {
-					grupo=calificaciones2.get(j).getGrupo();
-					
-					if (nivelAnterior.getPeriodo()==grupo.getPeriodo()) {
-						
-					
-					} else {
-						grupos.add(grupo);
-						
-						nivelAnterior=grupo;
-						
-					}
-					
-				}
-				
+
 			}
-			
+
 		}
+
+		for (int j = 0; j < calificaciones2.size(); j++) {
+			grupo = calificaciones2.get(j).getGrupo();
+			gruposAnteriores.add(grupo.getPeriodo());
+
+		}
+		
+		//ELIMINAR VALORES REPETIDOS
+		Set<Integer> hashSet = new HashSet<Integer>(gruposAnteriores);
+		gruposAnteriores.clear();
+		gruposAnteriores.addAll(hashSet);
+
+		grupos = gruposAnteriores;
+
 	}
-	
-	
 
 	public void loadEstudiantes() {
 		this.estudiantes = personasON.getEstudiantes();
@@ -219,48 +184,38 @@ public class GestionAcademicaEstudiantesBean implements Serializable {
 
 	}
 
-
-	
 	public void actualizarCalificaciones(AjaxBehaviorEvent e) {
-		System.out.println("*******************************************");
-		System.out.println("PERIODO ID " + periodoID);
-		calificaciones=new ArrayList<Calificacion>();
+
 		Materia materiaAnterior = new Materia();
+		calificaciones = new ArrayList<Calificacion>();
 		materiaAnterior.setNombre("");
-		if (periodoID!=0) {
-			
-				System.out.println("Calificaciones num: "+calificacionON.getCalificacion().size());
-			
-				for (int i = 0; i < calificacionON.getCalificacion().size(); i++) {
-					if (periodoID==calificacionON.getCalificacion().get(i).getGrupo().getPeriodo()) {
-						if (materiaAnterior.getNombre().equals(calificacionON.getCalificacion().get(i).getGrupo().getMateria().getNombre())) {
-							
-						} else {
-							calificacion= calificacionON.getCalificacion().get(i);
-							calificaciones.add(calificacion);
-							materiaAnterior = calificacionON.getCalificacion().get(i).getGrupo().getMateria();
-						}
-						
-					}
+		if (periodoID != 0) {
+
+			System.out.println("Calificaciones num: " + calificacionON.getCalificacion().size());
+
+			for (int i = 0; i < calificaciones2.size(); i++) {
+				if (periodoID == calificaciones2.get(i).getGrupo().getPeriodo()) {
+
+					calificacion = calificaciones2.get(i);
+					calificaciones.add(calificacion);
+					materiaAnterior = calificaciones2.get(i).getGrupo().getMateria();
+
 				}
-			
-			
+			}
+
 		}
-	}	
+	}
 
 	public List<SelectItem> getSelecItemPeriodoss() {
 		List<SelectItem> selectItems = new ArrayList<SelectItem>();
-		List<Grupo> listaPeriodos = grupos;
+		List<Integer> listaPeriodos = grupos;
 
-		for (Grupo mater : listaPeriodos) {
-			SelectItem item = new SelectItem(mater.getPeriodo());
+		for (Integer mater : listaPeriodos) {
+			SelectItem item = new SelectItem(mater.intValue());
 			selectItems.add(item);
 
 		}
 		return selectItems;
 	}
-	
-	
-	
 
 }
