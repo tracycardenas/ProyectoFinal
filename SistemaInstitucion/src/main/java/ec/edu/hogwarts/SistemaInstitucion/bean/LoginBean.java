@@ -121,6 +121,32 @@ public class LoginBean implements Serializable {
 		return "GestionAcademicaEstudiante?faces-redirect=true&id="+cedula;
 	}
 	
+	public void update() {
+		try {
+			
+			this.personasON.update(this.estudiante);
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void updateDocente() {
+		try {
+			
+			this.personasON.update(this.docente);
+			
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	
 

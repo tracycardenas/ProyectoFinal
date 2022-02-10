@@ -8,12 +8,12 @@
 
 <h:head>
 	<f:metadata>
-			<f:viewParam name="id" value="#{loginBean.cedula}"></f:viewParam>
-			<f:viewAction action="#{loginBean.loadData()}" />
-		</f:metadata>
+		<f:viewParam name="id" value="#{loginBean.cedula}"></f:viewParam>
+		<f:viewAction action="#{loginBean.loadData()}" />
+	</f:metadata>
 </h:head>
 
-<ui:composition template="/template/plantillaDocente.xhtml">
+<ui:composition template="/template/plantillaEstudiante.xhtml">
 	<ui:define name="title">
         Materias
     </ui:define>
@@ -46,72 +46,209 @@
 			<div class="animated fadeIn">
 				<div class="row">
 					<div class="col-md-12">
+					<h:form id="datosEstudiante">
 						<div class="card">
 							<div class="card-header">
-								<strong class="card-title">#{loginBean.persona.nombre} #{loginBean.persona.apellido}</strong>
+								<strong class="card-title">#{loginBean.estudiante.nombre}
+									#{loginBean.estudiante.apellido}</strong>
 								<div class="float-right">
-									<a class="btn btn-primary" href="IngresarMateria.xhtml" role="button"><i class="fa fa-edit"/></a>
+									<h:form>
+										<p:commandButton class="p-col-12 p-md-2" value=""
+											immediate="true" update=":formularioCal"
+											oncomplete="PF('dlg2').show()" icon="fa fa-edit"
+											style="width: 35px" />
+									</h:form>
 								</div>
 							</div>
-							<div class="card-body">
-								<div class="card">
-                            <div class="card-body card-block">
-                            <div class="row">
-	                            <div class="col-6">
-	                                <div class="form-group"><label for="nombre" class=" form-control-label">Nombre</label>
-	                                <p:inputText class="form-control" value="#{loginBean.persona.nombre}" /></div>
-	                            </div>
-	                            </div>
-	                            <div class="row">
-	                            <div class="col-6">
-	                                <div class="form-group"><label for="apellido" class=" form-control-label">Apellido</label>
-									<p:inputText class="form-control" value="#{loginBean.persona.apellido}" /></div>
+							
+								<div class="card-body">
+									<div class="card">
+										<div class="card-body card-block">
+										
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+													
+														<label for="nombre" class=" form-control-label">Nombre</label>
+														<p:inputText  class="form-control"
+															value="#{loginBean.estudiante.nombre}" disabled="true"/>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+														<label for="apellido" class=" form-control-label">Apellido</label>
+														<p:inputText  class="form-control"
+															value="#{loginBean.estudiante.apellido}" disabled="true" />
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-4">
+													<div class="form-group">
+														<label for="street" class=" form-control-label">Fecha
+															de Nacimiento</label>
+														<p:inputText class="form-control" value="#{loginBean.estudiante.fechaNacimiento}" disabled="true" /></div>
+
+													</div>
+												</div>
+												<div class="col-4">
+													<div class="form-group">
+														<label for="city" class=" form-control-label">Direccion</label>
+														<p:inputText class="form-control"
+															value="#{loginBean.estudiante.direccion}" disabled="true" />
+													</div>
+												</div>
+												<div class="col-4">
+													<div class="form-group">
+														<label for="postal-code" class=" form-control-label">Telefono</label>
+														<p:inputText type="tel" class="form-control"
+															value="#{loginBean.estudiante.telefono}" disabled="true"/>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+														<label for="apellido" class=" form-control-label">Email</label>
+														<p:inputText class="form-control"
+															value="#{loginBean.estudiante.email}" disabled="true"/>
+													</div>
+												</div>
+												<div class="col-6">
+													<div class="form-group">
+														<label for="country" class=" form-control-label">Representante</label>
+														<p:inputText class="form-control"
+															value="#{loginBean.estudiante.representante}" disabled="true"/>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+										
+										
+									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="col-4">
-	                                <div class="form-group"><label for="street" class=" form-control-label">Fecha de Nacimiento</label>
-									<p:inputText class="form-control" value="#{loginBean.persona.fechaNacimiento}" /></div>
-	                            </div>
-	                            <div class="col-4">    
-	                                <div class="form-group"><label for="city" class=" form-control-label">Direccion</label>
-	                                <p:inputText class="form-control" value="#{loginBean.persona.direccion}" /></div>
-	                             </div>  
-	                             <div class="col-4">  
-                                <div class="form-group"><label for="postal-code" class=" form-control-label">Telefono</label>
-                                <p:inputText type="tel" class="form-control" value="#{loginBean.persona.telefono}" /></div>
-                            	</div>
-                            </div>
-                            <div class="row">
-                            	<div class="col-6">
-                                <div class="form-group"><label for="apellido" class=" form-control-label">Email</label>
-								<p:inputText class="form-control" value="#{loginBean.persona.email}" /></div>
-								</div>
-								<div class="col-6">
-                                <div class="form-group"><label for="country" class=" form-control-label">Representante</label>
-                                <p:inputText class="form-control" value="#{loginBean.estudiante.representante}" /></div>
-                            	</div>
-                            </div>
-                            </div>
-                        </div>
-							</div>
+								</h:form>
 						</div>
+						
 					</div>
 
 
 				</div>
 			</div>
 			<!-- .animated -->
-		</div>
-		<h:form>
-		<div class="enviar">
-				<h:commandButton action="#{loginBean.calificacionesEstudiante(loginBean.persona.cedula)}"
-					value="Revisar Calificaciones" />
-					
-					
-			</div>
 
-		</h:form>
+		<p:dialog header="Calificaciones" widgetVar="dlg2" minHeight="30"
+			width="500" showEffect="fade" modal="true">
+			<h:form id="formularioCal">
+				<div class="animated fadeIn">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+
+								<div class="card-body">
+									<div class="card">
+										<div class="card-body card-block">
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+														<label for="street" class=" form-control-label"> <strong>
+																#{loginBean.estudiante.apellido}
+																#{loginBean.estudiante.nombre} </strong>
+
+														</label>
+													</div>
+												</div>
+
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+														<label for="street" class=" form-control-label">Nombre</label>
+														<p:inputText class="form-control"
+															value="#{loginBean.estudiante.nombre}" />
+													</div>
+												</div>
+												<div class="col-6">
+													<div class="form-group">
+														<label for="city" class=" form-control-label">Apellido</label>
+														<p:inputText class="form-control"
+															value="#{loginBean.estudiante.apellido}" />
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+														<label for="apellido" class=" form-control-label">Direccion</label>
+														<p:inputText class="form-control"
+															value="#{loginBean.estudiante.direccion}" />
+													</div>
+												</div>
+												<div class="col-6">
+													<div class="form-group">
+														<label for="country" class=" form-control-label">Telefono</label>
+														<p:inputText class="form-control"
+															value="#{loginBean.estudiante.telefono}" />
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+														<label for="apellido" class=" form-control-label">Fecha de nacimiento</label>
+														<p:calendar class="calendar"
+																value="#{loginBean.estudiante.fechaNacimiento}"
+																navigator="true" ></p:calendar>
+													</div>
+												</div>
+												<div class="col-6">
+													<div class="form-group">
+														<label for="country" class=" form-control-label">Email</label>
+														<p:inputText class="form-control"
+															value="#{loginBean.estudiante.email}" />
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												
+												<div class="col-6">
+													<div class="form-group">
+														<label for="country" class=" form-control-label">Representante</label>
+														<p:inputText class="form-control"
+															value="#{loginBean.estudiante.representante}" />
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-5">
+													<p:commandButton class="p-col-12 p-md-2" icon="fa fa-save"
+														style="width: 10rem" value="Guardar"
+														actionListener="#{loginBean.update()}"
+														update=":datosEstudiante formularioCal"
+														oncomplete="PF('dlg2').hide()" />
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</h:form>
+
+
+
+
+		</p:dialog>
+		
 
 	</ui:define>
 
