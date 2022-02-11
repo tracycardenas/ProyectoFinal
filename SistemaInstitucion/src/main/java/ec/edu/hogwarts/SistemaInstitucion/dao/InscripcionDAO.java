@@ -72,4 +72,27 @@ public class InscripcionDAO {
 		
 		return pro;
 	}
+	
+public Inscripcion buscarporCedula(String id) {
+		
+		System.out.println("Llegaste "+id);
+		Inscripcion pro = new Inscripcion();
+		List<Inscripcion> listado = new ArrayList<Inscripcion>();
+		
+		String jpql = "SELECT op FROM Inscripcion op JOIN op.estudiante p"
+		         + "     WHERE p.cedula = ?1"; 
+		
+		Query query = em.createQuery(jpql,Inscripcion.class);
+		query.setParameter(1, id);
+		try {
+			pro= (Inscripcion) query.getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+			pro=null;
+		}
+		
+		
+		return pro;
+	}
+
 }

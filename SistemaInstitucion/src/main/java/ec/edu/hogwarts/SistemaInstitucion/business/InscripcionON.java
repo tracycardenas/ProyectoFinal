@@ -34,4 +34,8 @@ public class InscripcionON implements InscripcionONLocal{
 		
 		return daoInscripcion.getList();
 	}
+	
+	public Inscripcion getInscripcionEstudiante(String cedula) {
+		return daoInscripcion.buscarporCedula(cedula);
+	}
 }

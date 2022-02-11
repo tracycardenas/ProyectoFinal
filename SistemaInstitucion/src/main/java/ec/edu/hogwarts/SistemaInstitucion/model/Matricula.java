@@ -34,7 +34,7 @@ public class Matricula implements Serializable{
 	@Column(name = "matri_total_horas")
 	private int totalHoras;
 	
-	@OneToMany(mappedBy = "calificacion")
+	@OneToMany(mappedBy = "matricula")
 	private List<Calificacion> calificaciones;
 	
 	public int getId() {

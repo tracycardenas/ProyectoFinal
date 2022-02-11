@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:metadata>
+		<f:viewAction action="#{cobrosInscripcionBean.cargarInstitucion}" />
+	</f:metadata>
+
+
+
+</h:head>
+
+<ui:composition template="/template/plantillaCobros.xhtml">
+	<ui:define name="title">
+        Pago Inscripcion
+    </ui:define>
+	<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Universidad Hogwarts</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Home</a></li>
+									<li class="active">Costo Inscripcion</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<h:form id="datos">
+						 <p:growl id="growl" showDetail="true" />
+							<div class="card">
+								<div class="card-header">
+									<strong class="card-title">Emisión de Factura </strong>
+									<div class="float-right">
+										<h:form>
+											<h:outputLabel value="Ingrese una cedula: &nbsp; &nbsp;" />
+											<p:inputText value="#{cobrosInscripcionBean.cedula}"
+												id="cedulaBuscar" />
+											<h:commandButton class="p-col-12 p-md-2" value="Buscar"
+												icon="fa fa-search" >
+												<f:ajax execute="cedulaBuscar" render="datos" />
+
+											</h:commandButton>
+										
+										</h:form>
+									</div>
+								</div>
+								<div class="card-body">
+									<div class="card">
+										<div class="card-body card-block">
+											<div class="container bootstrap snippets bootdeys">
+												<div class="row">
+													<div class="col-sm-12">
+														<div class="panel panel-default invoice" id="invoice">
+															<div class="panel-body">
+																<div class="invoice-ribbon">
+																	<div class="ribbon-inner"></div>
+																</div>
+																<div class="row">
+
+																	<div class="col-sm-6 top-left">
+																		<img src="template/images/logo.png" alt="Logo" />
+																	</div>
+
+																	<div class="col-sm-6 top-right">
+																		<h3 class="marginright"></h3>
+																		<span class="marginright"></span>
+																	</div>
+
+																</div>
+																<hr />
+																
+																	<div class="row">
+
+																		<div class="col-xs-4 from">
+																			<p class="lead marginbottom">De :
+																				#{cobrosInscripcionBean.configuracion.nombreInstitucion}</p>
+																			<p>#{cobrosInscripcionBean.configuracion.direccion}</p>
+																			<p>#{cobrosInscripcionBean.configuracion.razonSocial}</p>
+																			<p>#{cobrosInscripcionBean.configuracion.RUC}</p>
+																			<p>#{cobrosInscripcionBean.configuracion.telefono}</p>
+																		</div>
+
+																		<div style="margin-left: 100px; color: black;">
+																			<p class="lead marginbottom">
+																				<strong>Para :
+																					#{cobrosInscripcionBean.estudiante.apellido}
+																					#{cobrosInscripcionBean.estudiante.nombre}</strong>
+																			</p>
+																			<p>#{cobrosInscripcionBean.estudiante.cedula}</p>
+																			<p>#{cobrosInscripcionBean.estudiante.direccion}</p>
+																			<p>Telefono:
+																				#{cobrosInscripcionBean.estudiante.telefono}</p>
+																			<p>Email:
+																				#{cobrosInscripcionBean.estudiante.email}</p>
+
+																		</div>
+
+																		<div style="margin-left: 200px">
+																			<p class="lead marginbottom payment-info">Detalles
+																				de Pago</p>
+																			<p>Fecha: #{cobrosInscripcionBean.inscripcion.fecha}</p>
+																			<p>Total Amount: $ #{cobrosInscripcionBean.total}</p>
+																			<p>Metodo de Pago: Efectivo</p>
+																		</div>
+
+																	</div>
+
+																	<div class="row table-row">
+																		<table class="table table-striped">
+																			<thead>
+																				<tr>
+																					<th class="text-center" style="width: 5%">#</th>
+																					<th style="width: 50%">Carrera</th>
+																					<th class="text-right" style="width: 15%">Malla</th>
+																					<th class="text-right" style="width: 15%">Costo
+																						</th>
+																					
+																				</tr>
+																			</thead>
+																			<tbody>
+																				<tr>
+																					<td class="text-center">1</td>
+																					<td>#{cobrosInscripcionBean.inscripcion.carrera.nombre}</td>
+																					<td class="text-right">#{cobrosInscripcionBean.inscripcion.mallaCurricular.id}</td>
+																					<td class="text-right">$ #{cobrosInscripcionBean.inscripcion.costoInscripcion} </td>
+																				</tr>
+																				
+																			</tbody>
+																		</table>
+
+																	</div>
+
+																<div class="row">
+																	
+																	<div style="margin-left: 950px"
+																		class="col-xs-6 text-right pull-right invoice-total">
+																		<p>Subtotal : #{cobrosInscripcionBean.inscripcion.costoInscripcion}</p>
+																		<p>Descuento (0%) : $0</p>
+																		<p>IVA (12%) : $ #{cobrosInscripcionBean.iva}</p>
+																		<p>Total : $ #{cobrosInscripcionBean.total}</p>
+																	</div>
+																	
+																	<div class="col-xs-6 margintop">
+																		
+
+									
+																		 <p:commandButton icon="fa fa-money" actionListener="#{cobrosInscripcionBean.cobrarInscripcion()}"
+																		  update="growl datos" value="Cobrar Inscripcion" styleClass="p-mr-2" style="BACKGROUND-COLOR: green"  />
+
+																		
+																	</div>
+																</div>
+
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</h:form>
+					</div>
+
+
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+
+
+
+	</ui:define>
+
+</ui:composition>
+</html>

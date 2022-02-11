@@ -40,7 +40,7 @@ public class Calificacion implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="matri_id")
-	private Calificacion calificacion;
+	private Matricula matricula;
 	
 	@ManyToOne
 	@JoinColumn(name = "per_id")
@@ -100,17 +100,18 @@ public class Calificacion implements Serializable{
 		this.examen2 = examen2;
 	}
 	
-	public Calificacion getCalificacion() {
-		return calificacion;
-	}
-	public void setCalificacion(Calificacion calificacion) {
-		this.calificacion = calificacion;
-	}
+	
 	public String getEstado() {
 		return estado;
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public Matricula getMatricula() {
+		return matricula;
+	}
+	public void setMatricula(Matricula matricula) {
+		this.matricula = matricula;
 	}
 	
 	

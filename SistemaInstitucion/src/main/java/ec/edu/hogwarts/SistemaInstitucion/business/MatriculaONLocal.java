@@ -18,4 +18,6 @@ public interface MatriculaONLocal {
 	
 	public List<Matricula>getMatricula();
 	
+	public Matricula getMatriculaporCedula(String cedula);
+	
 }

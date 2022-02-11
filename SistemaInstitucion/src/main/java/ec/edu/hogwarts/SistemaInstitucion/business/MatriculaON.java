@@ -34,4 +34,8 @@ public class MatriculaON implements MatriculaONLocal {
 		
 		return daoMatricula.getList();
 	}
+	
+	public Matricula getMatriculaporCedula(String cedula) {
+		return daoMatricula.buscarporCedula(cedula);
+	}
 }

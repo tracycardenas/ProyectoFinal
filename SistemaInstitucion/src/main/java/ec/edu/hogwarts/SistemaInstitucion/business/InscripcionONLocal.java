@@ -18,4 +18,5 @@ public interface InscripcionONLocal {
 	
 	public List<Inscripcion>getInscripcion();
 	
+	public Inscripcion getInscripcionEstudiante(String cedula);
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -46,8 +47,10 @@ public class LibroDiario implements Serializable{
 	@Column(name = "lib_observacion")
 	private String observacion;
 	
-	@OneToMany
-	@JoinColumn(name="lib_id")
+	@Column(name = "lib_estado")
+	private boolean estado;
+	
+	@OneToMany( fetch = FetchType.EAGER, mappedBy = "libroDiario")
 	private List<Movimiento> movimientos;
 
 	public int getId() {
@@ -56,6 +59,14 @@ public class LibroDiario implements Serializable{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
 	}
 
 	public Date getFecha() {
@@ -112,6 +123,11 @@ public class LibroDiario implements Serializable{
 
 	public void setMovimientos(List<Movimiento> movimientos) {
 		this.movimientos = movimientos;
+	}
+
+	@Override
+	public String toString() {
+		return fecha.getDate()+"/"+fecha.getMonth()+"/"+fecha.getYear();
 	}
 
 }

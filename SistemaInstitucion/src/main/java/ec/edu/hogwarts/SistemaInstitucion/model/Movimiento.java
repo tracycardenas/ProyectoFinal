@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -31,6 +33,20 @@ public class Movimiento implements Serializable{
 	
 	@Column(name = "mov_tipo")
 	private String tipo;
+	
+	@ManyToOne
+	@JoinColumn(name = "lib_id")
+	private LibroDiario libroDiario;
+	
+	
+
+	public LibroDiario getLibroDiario() {
+		return libroDiario;
+	}
+
+	public void setLibroDiario(LibroDiario libroDiario) {
+		this.libroDiario = libroDiario;
+	}
 
 	public int getId() {
 		return id;

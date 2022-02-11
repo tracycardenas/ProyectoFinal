@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ec.edu.hogwarts.SistemaInstitucion.model.Inscripcion;
 import ec.edu.hogwarts.SistemaInstitucion.model.Matricula;
 
 @Stateless
@@ -59,6 +60,28 @@ public class MatriculaDAO {
 		
 		String jpql = "SELECT op FROM Matricula op"
 		         + "     WHERE op.cedula = ?1"; 
+		
+		Query query = em.createQuery(jpql,Matricula.class);
+		query.setParameter(1, id);
+		try {
+			pro= (Matricula) query.getSingleResult();
+		} catch (Exception e) {
+			// TODO: handle exception
+			pro=null;
+		}
+		
+		
+		return pro;
+	}
+	
+public Matricula buscarporCedula(String id) {
+		
+		System.out.println("Llegaste "+id);
+		Matricula pro = new Matricula();
+		List<Matricula> listado = new ArrayList<Matricula>();
+		
+		String jpql = "SELECT m FROM Calificacion cal JOIN cal.matricula m JOIN cal.estudiante p"
+		         + "     WHERE p.cedula = ?1"; 
 		
 		Query query = em.createQuery(jpql,Matricula.class);
 		query.setParameter(1, id);
