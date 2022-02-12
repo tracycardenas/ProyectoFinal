@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -224,6 +226,8 @@ public class BuscadorBean implements Serializable {
 			
 
 			inscripcionON.insert(this.inscripcion);
+			addMessage(FacesMessage.SEVERITY_INFO, "INSCRIPCION GUARDADA", "Realizar el pago");
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			
@@ -244,6 +248,10 @@ public class BuscadorBean implements Serializable {
 
 		
 	}
+	public void addMessage(FacesMessage.Severity severity, String summary, String detail) {
+        FacesContext.getCurrentInstance().
+                addMessage(null, new FacesMessage(severity, summary, detail));
+    }
     
     //BUSCADOR DE DOCENTE
 	

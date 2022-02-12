@@ -80,7 +80,7 @@ public Matricula buscarporCedula(String id) {
 		Matricula pro = new Matricula();
 		List<Matricula> listado = new ArrayList<Matricula>();
 		
-		String jpql = "SELECT m FROM Calificacion cal JOIN cal.matricula m JOIN cal.estudiante p"
+		String jpql = "SELECT op FROM Matricula op JOIN op.estudiante p"
 		         + "     WHERE p.cedula = ?1"; 
 		
 		Query query = em.createQuery(jpql,Matricula.class);
