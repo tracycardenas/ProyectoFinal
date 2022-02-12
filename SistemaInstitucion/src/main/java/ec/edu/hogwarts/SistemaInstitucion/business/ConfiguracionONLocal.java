@@ -18,6 +18,8 @@ public interface ConfiguracionONLocal {
 	
 	public List<Configuracion>getConfiguracion();
 	
-public Configuracion getConfiguracion(int id);
+	public Configuracion getConfiguracion(int id);
+
+	public void guardar(Configuracion p) throws Exception;
 	
 }

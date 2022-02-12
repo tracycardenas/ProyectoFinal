@@ -39,4 +39,11 @@ public class ConfiguracionON implements ConfiguracionONLocal{
 		
 		return daoConfiguracion.getList();
 	}
+	
+	public void guardar(Configuracion p) throws Exception {
+		if(daoConfiguracion.read(p.getId())==null)
+			daoConfiguracion.insert(p);
+		else
+			daoConfiguracion.update(p);
+	}
 }
