@@ -167,13 +167,19 @@ public class CobrosMatriculaBean implements Serializable {
 
 	public void setCedula(String cedula) {
 		System.out.println("SET CEDULA " + cedula);
-		estudiante = personasON.getEstudiante(cedula);
-		matricula = matriculaON.getMatriculaporCedula(cedula);
-		subtotal = (matricula.getCostoHora()*matricula.getTotalHoras())+matricula.getCostoMatricula();
-		iva = configuracionON.getConfiguracion().get(0).getConf_iva()*subtotal;
-		total = iva+subtotal;
 		
-		this.cedula = cedula;
+		try {
+			estudiante = personasON.getEstudiante(cedula);
+			matricula = matriculaON.getMatriculaporCedula(cedula);
+			subtotal = (matricula.getCostoHora()*matricula.getTotalHoras())+matricula.getCostoMatricula();
+			iva = (configuracionON.getConfiguracion().get(0).getConf_iva()*subtotal)/100;
+			total = iva+subtotal;
+			
+			this.cedula = cedula;
+		} catch (Exception e) {
+			addMessage(FacesMessage.SEVERITY_WARN, "EL ESTUDIANTE NO ESTA MATRICULADO", "Error de Busqueda");
+		}
+		
 	}
 
 

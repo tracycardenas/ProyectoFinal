@@ -70,15 +70,15 @@
 							<div class="row">
 								<div class="col-4">
 	                                <div class="form-group"><label for="street" class=" form-control-label">Ingresos</label>
-									<p:inputText class="form-control" value="#{arqueoCajaBean.ingresos}" disabled="true" /></div>
+									<p:inputText class="form-control" value="#{arqueoCajaBean.ingresos}"  /></div>
 	                            </div>
 	                            <div class="col-4">    
 	                                <div class="form-group"><label for="city" class=" form-control-label">Egresos</label>
-	                                <p:inputText class="form-control" value="#{arqueoCajaBean.egresos}" disabled="true" /></div>
+	                                <p:inputText class="form-control" value="#{arqueoCajaBean.egresos}"  /></div>
 	                             </div>  
 	                             <div class="col-4">  
                                 <div class="form-group"><label for="postal-code" class=" form-control-label">Inicio del Dia</label>
-                                <p:inputText type="tel" class="form-control" value="#{arqueoCajaBean.iniciodeldia}" disabled="true" /></div>
+                                <p:inputText type="tel" class="form-control" value="#{arqueoCajaBean.iniciodeldia}"  /></div>
                             	</div>
                             </div>
                             <div class="row">
@@ -88,14 +88,16 @@
 	                            </div>
 	                            <div class="col-6">
 	                                <div class="form-group"><label for="street" class=" form-control-label">Saldo</label>
-									<p:inputText class="form-control" value="#{arqueoCajaBean.saldo}" disabled="true" /></div>
+									<p:inputText class="form-control" value="#{arqueoCajaBean.saldo}" /></div>
 	                            </div>
 	                          
 	                           
 							</div>
 							<div class="row">
 								 <p:commandButton icon="fa fa-money" actionListener="#{arqueoCajaBean.generarLibroDiario()}"
-							update="growl datos" value="Generar Libro Diario" styleClass="p-mr-2" style="BACKGROUND-COLOR: green; margin-left:40%"  />
+							update=":datos tablaLibros" value="Generar Libro Diario" styleClass="p-mr-2" style="BACKGROUND-COLOR: green; margin-left:40%"  >
+								<f:ajax render="tablalibros"></f:ajax>
+							</p:commandButton>
 	                            
 	                            
                             </div>
@@ -110,6 +112,7 @@
 								
 								</div>
 							</div>
+							<h:form id="tablaLibros">
 				<h:dataTable id="tablaLibrosDiarios" var="lib" 
 											 value="#{arqueoCajaBean.librosDiarios}"
 											 class="table table-striped table-bordered dataTable no-footer"
@@ -159,6 +162,7 @@
 											
 											
 											</h:dataTable>
+											</h:form>
 						
 						
 						</h:form>

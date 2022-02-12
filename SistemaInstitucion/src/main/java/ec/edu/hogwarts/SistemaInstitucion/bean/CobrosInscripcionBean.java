@@ -141,11 +141,19 @@ public class CobrosInscripcionBean implements Serializable {
 
 	public void setCedula(String cedula) {
 		System.out.println("SET CEDULA " + cedula);
-		estudiante = personasON.getEstudiante(cedula);
-		inscripcion = inscripcionON.getInscripcionEstudiante(cedula);
-		iva = configuracionON.getConfiguracion().get(0).getConf_iva()*inscripcion.getCostoInscripcion();
-		total = iva+inscripcion.getCostoInscripcion();
-		this.cedula = cedula;
+		
+		try {
+			estudiante = personasON.getEstudiante(cedula);
+			inscripcion = inscripcionON.getInscripcionEstudiante(cedula);
+			iva = (configuracionON.getConfiguracion().get(0).getConf_iva()*inscripcion.getCostoInscripcion())/100;
+			total = iva+inscripcion.getCostoInscripcion();
+			this.cedula = cedula;
+			
+		} catch (Exception e) {
+			addMessage(FacesMessage.SEVERITY_WARN, "EL ESTUDIANTE NO ESTA INSCRITO", "Error de Busqueda");
+		}
+		
+		
 	}
 
 

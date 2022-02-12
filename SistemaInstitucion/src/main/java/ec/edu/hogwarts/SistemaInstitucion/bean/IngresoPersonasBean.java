@@ -115,15 +115,31 @@ public class IngresoPersonasBean implements Serializable{
 	}
 	
 	public String guardarDocente() {
-		
+		String r="";
 		try {
 			docente.setRol("Docente");
 			personasON.insert(this.docente);
+			r= "Listar_Docentes?faces-redirect=true";
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			r= "InsertarDocentes?faces-redirect=true";
 		}
 		return null;
+	}
+	
+	public String guardarAdministrador() {
+		String r="";
+		try {
+			persona.setRol("Administrador");
+			personasON.insert(this.persona);
+			r= "Login?faces-redirect=true";
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			r= "InsertarAdministradores?faces-redirect=true";
+		}
+		return r;
 	}
 	
 	public void loadPersonas() {
@@ -223,6 +239,11 @@ public class IngresoPersonasBean implements Serializable{
 		Estudiante p = personasON.getEstudiante(estudiante.getCedula());
 		estudiante = p;
 	}
+	
+	public void addMessage(FacesMessage.Severity severity, String summary, String detail) {
+        FacesContext.getCurrentInstance().
+                addMessage(null, new FacesMessage(severity, summary, detail));
+    }
 	
 
 	
