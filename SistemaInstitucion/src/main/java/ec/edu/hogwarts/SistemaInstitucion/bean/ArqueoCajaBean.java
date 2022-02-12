@@ -184,14 +184,18 @@ public class ArqueoCajaBean implements Serializable {
 	
 	public void generarLibroDiario() {
 		
-				libroDiarioAnterior.setEstado(false);
-				try {
-					librodiarioON.update(libroDiarioAnterior);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		if(librosDiarios.size()>0) {
+
+			libroDiarioAnterior.setEstado(false);
+			try {
+				librodiarioON.update(libroDiarioAnterior);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 			
+		}
 		
 		LibroDiario libroDiarioNuevo = new LibroDiario();
 		libroDiarioNuevo.setFecha(fecha);

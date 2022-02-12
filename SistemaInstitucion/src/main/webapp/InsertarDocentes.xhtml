@@ -6,72 +6,162 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
+<head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
 <ui:composition template="/template/plantilla.xhtml">
+	swal("Oops!", "Something went wrong on the page!", "error");
 	<ui:define name="title">
-		Crear Docente
+		Inscripcion de Estudiantes
 	</ui:define>
-	<ui:define name="content">
-		<h:form>
-			<div class="columna_izquierda">
-				<p:outputLabel for="fieldCedula" value="Cedula:" class="columna_izquierda"/>
-				<p:inputText id="fieldCedula" value="#{ingresoPersonasBean.docente.cedula}" />
+	
+<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Dashboard</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li class="active">Materias</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Gestion Usuarios</strong>
+								<div class="float-right">
+									<a class="btn btn-primary" href="InsertarDocentes.xhtml" role="button"><i class="fa fa-plus-square"/></a>
+								</div>
+							</div>
+							<div class="card-body">
+								<div id="bootstrap-data-table_wrapper"
+									class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+									<div class="row">
+										<div class="col-sm-12 col-md-6">
+
+										</div>
+
+									</div>
+									<div class="row">
+										<div class="col-sm-8"><!-- Aqui empieza los elementos de la pag a desarrollar -->
+											
+											<h:form enctype="multipart/form-data" class="registro" style="width: 900px; margin-left: 15px; overflow: hidden;  border: 1px solid #c1c1c1;  ">
+											
+										
+											
+														<div class="info">
+															<p:outputLabel for="fieldCedula" value="Cedula:" style="margin-left: 15px; padding-top: 15px;" />
+															<p:inputText class="cedula" id="fieldCedula" value="#{ingresoPersonasBean.docente.cedula}"  
+															required="true" label="Error: Cedula Incorrecta"
+															>
+															<f:validateLength minimum="10" maximum="10"/>
+															</p:inputText>
+															<h:message for="fieldCedula"/>
+														</div>
+											
+											
+														<div class="info">
+															<p:outputLabel value="Nombre:" style="margin-left: 15px; padding-top: 15px;"  />
+															<p:inputText class="nombre" id="fieldNombre" value="#{ingresoPersonasBean.docente.nombre}" 
+															style="width: 214px; height: 35px;margin-left: 5px; padding-top: 15px;" required="true" label="Error: Ingrese su nombre"/>
+															<h:message for="fieldNombre"/>
+														</div>
+											
+														<div class="info">
+															<p:outputLabel value="Apellido:" style="margin-left: 15px; padding-top: 15px;" />
+															<p:inputText class="apellido" id="fieldApellido" value="#{ingresoPersonasBean.docente.apellido}" 
+															style="width: 214px; height: 35px;margin-left: 5px; padding-top: 15px;" required="true" label="Error: Ingrese su Apellido"/>
+															<h:message for="fieldApellido"/>
+														</div>
+											
+														<div class="info">
+															<p:outputLabel value="Fecha de Nacimiento:" style="margin-left: 15px; padding-top: 15px;" />
+															<p:calendar class="calendar" id="fielFecha"
+																value="#{ingresoPersonasBean.docente.fechaNacimiento}"
+																navigator="true" style="height: 5px;margin-left: 25px; padding-top: 15px;" required="true" label="Error: Seleccione su Fecha de nacimiento"></p:calendar>
+																<h:message for="fielFecha"/>
+														</div>
+														
+														<div class="info">
+															<p:outputLabel value="Direccion:" style="margin-left: 15px; padding-top: 15px;" />
+															<p:inputText class="direccion" id="fieldDireccion" value="#{ingresoPersonasBean.docente.direccion}"
+															style="width: 214px; height: 35px;margin-left: 5px; padding-top: 15px;" required="true" label="Error: Ingrese su Direccion" />
+															<h:message for="fieldDireccion"/>
+														</div>
+											
+														<div class="info">
+															<p:outputLabel value="Telefono:" style="margin-left: 15px; padding-top: 15px;"  />
+															<p:inputText type="tel" id="fieldTelefono" pattern="\+?\d{0,3}[\s\(\-]?([0-9]{2,3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})" class="telefono" value="#{ingresoPersonasBean.docente.telefono}"
+															style="width: 214px; height: 35px;margin-left: 10px; padding-top: 15px;" required="true" label="Error: Ingrese su numero de telefono/celular">
+																	<f:validateLength minimum="7" maximum="10"/>
+															</p:inputText>
+															<h:message for="fieldTelefono"/>
+														</div>
+											
+														<div class="info">
+															<p:outputLabel value="Email:" style="margin-left: 15px; padding-top: 15px;"  />
+															<p:inputText type="email" class="email" id="fieldEmail" value="#{ingresoPersonasBean.docente.email}" 
+															style="width: 214px; height: 35px;margin-left: 33px; padding-top: 15px;" required="true" label="Error: Ingrese un correo valido"/>
+															<h:message for="fieldEmail"/>
+														</div>
+											
+														<div class="info">
+															<p:outputLabel value="Password:" style="margin-left: 15px; padding-top: 15px;" />
+															<p:password class="password" id="fieldPassword" name="pw" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value="#{ingresoPersonasBean.docente.password}"
+															style="width: 214px; height: 35px; margin-left: 5px; padding-top: 15px;" label="Error: Ingrese una contraseña"></p:password>
+															<h:message for="fieldPassword"/>
+														</div>
+														
+											
+														<div class="info">
+															<p:outputLabel value="Especialidad:" style="margin-left: 15px; padding-top: 15px;" required="true"/>
+															<p:inputText class="representante" id="fieldEspecialidad" value="#{ingresoPersonasBean.docente.especialidad}"  
+															style="width: 214px; height: 35px;margin-left: 10px; padding-top: 15px;" required="true" label="Error: Ingrese su Especialidad"/>
+															<h:message for="fieldEspecialidad"/>
+														</div>
 
 
-			<div class="columna_izquierda">
-				<p:outputLabel value="Nombre:" />
-				<p:inputText value="#{ingresoPersonasBean.docente.nombre}" />
-			</div>
 
-			<div class="columna_izquierda">
-				<p:outputLabel value="Apellido:" />
-				<p:inputText value="#{ingresoPersonasBean.docente.apellido}" />
-			</div>
-
-			<div class="columna_izquierda">
-				<p:outputLabel value="Fecha de Nacimiento:" />
-				<p:calendar
-					value="#{ingresoPersonasBean.docente.fechaNacimiento}"
-					navigator="true"></p:calendar>
-			</div>
-
-			<div class="columna_derecho">
-				<p:outputLabel value="Direccion:" />
-				<p:inputText value="#{ingresoPersonasBean.docente.direccion}" />
-			</div>
-
-			<div class="columna_derecho">
-				<p:outputLabel value="Telefono:" />
-				<p:inputText value="#{ingresoPersonasBean.docente.telefono}" />
-			</div>
-
-			<div class="columna_derecho">
-				<p:outputLabel value="Email:" />
-				<p:inputText value="#{ingresoPersonasBean.docente.email}" />
-			</div>
-
-			<div class="columna_derecho">
-				<p:outputLabel value="Password:" />
-				<p:password value="#{ingresoPersonasBean.docente.password}"></p:password>
-			</div>
-
-
-			<div class="columna_derecho">
-				<p:outputLabel value="Especialidad:" />
-				<p:inputText value="#{ingresoPersonasBean.docente.especialidad}" />
-			</div>
-			
+														<div class="enviar" style="padding: 10px">
+															<h:commandButton action="#{ingresoPersonasBean.guardarDocente()}"
+																value="Inscribir" style="margin-left: 400px; "/>
 		
-			
+														</div>
+														
+											
+													</h:form>
+										</div>
+									</div>
 
-			<div>
-				<p:commandButton ajax= "false" action="#{ingresoPersonasBean.guardarDocente()}"
-					value="Guardar" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+			<!-- .animated -->
+		</div>
 
-		</h:form>
 	</ui:define>
-
 </ui:composition>
 
 

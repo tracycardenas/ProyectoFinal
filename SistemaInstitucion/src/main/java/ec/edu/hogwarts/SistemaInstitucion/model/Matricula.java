@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -34,9 +35,23 @@ public class Matricula implements Serializable{
 	@Column(name = "matri_total_horas")
 	private int totalHoras;
 	
-	@OneToMany(mappedBy = "matricula")
+	@OneToMany
+	@JoinColumn(name="matri_id")
 	private List<Calificacion> calificaciones;
 	
+	@OneToOne
+	@JoinColumn(name = "est_id")   //Apuesta de 20$ - que si va a funcionar
+	private Estudiante estudiante;
+	
+	
+	
+	
+	public Estudiante getEstudiante() {
+		return estudiante;
+	}
+	public void setEstudiante(Estudiante estudiante) {
+		this.estudiante = estudiante;
+	}
 	public int getId() {
 		return id;
 	}

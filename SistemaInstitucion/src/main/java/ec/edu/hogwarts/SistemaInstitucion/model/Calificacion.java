@@ -38,9 +38,6 @@ public class Calificacion implements Serializable{
 	@Column(name = "cal_total")
 	private double total;
 	
-	@ManyToOne
-	@JoinColumn(name="matri_id")
-	private Matricula matricula;
 	
 	@ManyToOne
 	@JoinColumn(name = "per_id")
@@ -107,13 +104,7 @@ public class Calificacion implements Serializable{
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public Matricula getMatricula() {
-		return matricula;
-	}
-	public void setMatricula(Matricula matricula) {
-		this.matricula = matricula;
-	}
-	
+
 	
 
 	

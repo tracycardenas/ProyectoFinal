@@ -80,7 +80,7 @@
 										<div class="col-sm-8"><!-- Aqui empieza los elementos de la pag a desarrollar -->
 										
 										
-																				 <h:form id="form" style="width: 900px; margin-left: 15px; overflow: hidden;  border: 1px solid #c1c1c1;">
+										<h:form id="form" style="width: 900px; margin-left: 15px; overflow: hidden;  border: 1px solid #c1c1c1;">
 								            <p:growl id="msgs" showDetail="true" />
 								
 								            <h:panelGrid columns="2" cellpadding="5">
@@ -116,12 +116,16 @@
 								            </p:dataTable>
 								
 								        </h:form>
-								        
+								         <p:growl id="msg"/>
 								        		<h:form>
+								        		 <p:growl id="msg"/>
+								        		 
 												<br/>
-												<label style="margin-left: 17px">PERIODO  
+												<label style="margin-left: 17px">Nivel 
 												<br/>
 												<br/>
+												
+												
 												<h:selectOneMenu value="#{ingresoMatricula.nivel_id}" id="comboNiveles">
 													<f:selectItem itemLabel="Seleccione" itemValue="0" />
 													<f:selectItems  value="#{ingresoMatricula.selecItemNiveles}"/>
@@ -131,53 +135,58 @@
 												   	
 												</h:selectOneMenu>
 												</label>
-												
+
 															<h:dataTable id="tablaMaterias" var="mat" 
-															 value="#{ingresoMatricula.materias_selecionadas}"
+															 value="#{ingresoMatricula.grupos_seleccionados}"
 															 class="table table-striped table-bordered dataTable no-footer"
 																role="grid" aria-describedby="bootstrap-data-table_info" style="width: 900px; margin-left: 15px; overflow: hidden;  border: 1px solid #c1c1c1;">
-																
-																<h:column>
-																	 <p:selectOneRadio id="console"  unselectable="true"  style="max-width:20px; max-length:20px;" >
-															            <f:selectItem  itemValue="#{mat.id}" />
-															            <f:ajax   />
-															        </p:selectOneRadio>
-				
-																</h:column>
 								
 																<h:column>
-																	<f:facet name="header">Id</f:facet>
-																	<h:outputText disabled="true" value="#{mat.id} " />
+																	<p:growl id="msg1"/>	
+																	        <p:selectBooleanCheckbox value="#{ingresoMatricula.value2}">
+																	            <p:ajax update="msg1" listener="#{ingresoMatricula.addMessage(mat.id,mat.materia.nombre)}"/>
+																	        </p:selectBooleanCheckbox>       
+				
+																</h:column>
+																<h:column>
+																	<f:facet name="header">Cupos</f:facet>
+																	<h:outputText disabled="true" value="#{mat.cupos} " />
 				
 																</h:column>
 																
 																<h:column>
-																	<f:facet name="header">codigo</f:facet>
-																	<h:outputText disabled="true" value="#{mat.codigo} " />
+																	<f:facet name="header">Materia</f:facet>
+																	<h:outputText disabled="true" value="#{mat.materia.nombre} " />
 				
 																</h:column>
 																
 																<h:column>
-																	<f:facet name="header">Nombre</f:facet>
+																	<f:facet name="header">Grupo</f:facet>
 																	<h:outputText disabled="true" value="#{mat.nombre}" />
 				
 																</h:column>
+																<h:column>
+																	<f:facet name="header">Nivel</f:facet>
+																	<h:outputText disabled="true" value="#{mat.materia.nivel.nivel}" />
+				
+																</h:column>
 																
+																																<h:column>
+																	<f:facet name="header">Horas</f:facet>
+																	<h:outputText disabled="true" value="#{mat.materia.horasClase}" />
+				
+																</h:column>
 															
 																</h:dataTable>
-																<p:commandButton class="p-col-12 p-md-2" action="#{ingresoCarreras.eliminar(per.id)}" value="Matricular" immediate="true"   
-																	 style=" margin-left:350px " >
-														            <p:confirm header="Confirmation" message="Esta seguro de eliminar esta carrera?" />
-														        </p:commandButton>
-														
-														        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
-														            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
-														            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" />
-														        </p:confirmDialog>
-																
-												
+																<p:commandButton class="p-col-12 p-md-2" value="MATRICULAR"
+																	action="#{ingresoMatricula.guardarMatricula()}"
+																	update="formularioCal"
+																	immediate="true" 
+																	oncomplete="PF('dlg2').show()" 
+																	style="width: 200px; margin-left: 350px; " />
+
 												</h:form>
-											
+												
 										</div>
 									</div>
 
@@ -189,6 +198,158 @@
 			</div>
 			<!-- .animated -->
 		</div>
+		
+		
+		<p:dialog header="PRE-FACTURA" widgetVar="dlg2" minHeight="30"
+			width="700" showEffect="fade" modal="true">
+			<h:form id="formularioCal">
+				<div class="animated fadeIn">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="card">
+
+								<div class="card-body">
+									<div class="card">
+										
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+
+													</div>
+												</div>
+
+											</div>
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+														<label for="street" class=" form-control-label">Nombre</label>
+														<p:inputText class="form-control"
+															value="#{ingresoMatricula.estudiante_seleccionado.nombre}" disabled="true" />
+													</div>
+												</div>
+												<div class="col-6">
+													<div class="form-group">
+														<label for="city" class=" form-control-label">Apellido</label>
+														<p:inputText class="form-control"
+															value="#{ingresoMatricula.estudiante_seleccionado.apellido}" disabled="true"/>
+													</div>
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-6">
+													<div class="form-group">
+														<label for="apellido" class=" form-control-label">Direccion</label>
+														<p:inputText class="form-control"
+															value="#{ingresoMatricula.estudiante_seleccionado.direccion}" disabled="true"/>
+													</div>
+												</div>
+												
+												<div class="col-6">
+													<div class="form-group">
+														<label for="country" class=" form-control-label">Email</label>
+														<p:inputText class="form-control"
+															value="#{ingresoMatricula.estudiante_seleccionado.email}" disabled="true"/>
+													</div>
+												</div>
+											</div>
+											
+
+											<h:dataTable id="tablaMaterias" var="mat" 
+															 value="#{ingresoMatricula.grupos_matriculas}"
+															 class="table table-striped table-bordered dataTable no-footer"
+																role="grid" aria-describedby="bootstrap-data-table_info" style=" overflow: hidden;  border: 1px solid #c1c1c1;">
+		
+																
+																<h:column style="max-width:20px" >
+																	<f:facet name="header" style="max-width:20px" >Materia</f:facet>
+																	<h:outputText disabled="true" value="#{mat.materia.nombre} " style="max-width:20px" />
+				
+																</h:column>
+																
+																<h:column>
+																	<f:facet name="header">Horas</f:facet>
+																	<h:outputText disabled="true" value="#{mat.materia.horasUnidad}" />
+				
+																</h:column>
+																<h:column>
+																	<f:facet name="header">Nivel</f:facet>
+																	<h:outputText disabled="true" value="#{mat.materia.nivel.nivel}" />
+				
+																</h:column>
+																
+																																<h:column>
+																	<f:facet name="header">Horas</f:facet>
+																	<h:outputText disabled="true" value="#{mat.cupos}" />
+				
+																</h:column>
+															
+																</h:dataTable>
+																
+																<h:dataTable id="tablaM" var="mat" 
+															 value="#{ingresoMatricula.matricula}"
+															 class="table table-striped table-bordered dataTable no-footer"
+																role="grid" aria-describedby="bootstrap-data-table_info" style=" overflow: hidden;  border: 1px solid #c1c1c1;">
+		
+																
+																<h:column style="max-width:20px" >
+																	<f:facet name="header" style="max-width:20px" >Id</f:facet>
+																	<h:outputText disabled="true" value="#{mat.id} " style="max-width:20px" />
+				
+																</h:column>
+																
+																<h:column>
+																	<f:facet name="header">Total Horas</f:facet>
+																	<h:outputText disabled="true" value="#{mat.totalHoras}" />
+				
+																</h:column>
+																<h:column>
+																	<f:facet name="header">Costo Hora</f:facet>
+																	<h:outputText disabled="true" value="#{mat.costoHora}" />
+				
+																</h:column>
+																
+																																<h:column>
+																	<f:facet name="header">Costo Matricula</f:facet>
+																	<h:outputText disabled="true" value="#{mat.costoMatricula}" />
+				
+																</h:column>
+																
+													>
+																
+																<h:column>
+																	<f:facet name="header">Total</f:facet>
+																	<h:outputText disabled="true" value="#{mat.costoMatricula+(mat.costoHora*mat.totalHoras)}" />
+				
+																</h:column>
+															
+																</h:dataTable>
+																
+												<div class="row">
+												<div class="col-5">
+													<p:commandButton class="p-col-12 p-md-2" icon="fa fa-save"
+														style="width: 10rem" value="Aceptar"
+														
+														
+														oncomplete="PF('dlg2').hide()" />
+
+												</div>
+											</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</h:form>
+
+
+
+
+		</p:dialog>
 
 	</ui:define>
 </ui:composition>
