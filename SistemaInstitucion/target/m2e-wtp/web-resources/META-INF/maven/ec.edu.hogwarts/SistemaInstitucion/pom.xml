@@ -193,6 +193,14 @@
 			<version>11.0.0</version>
 		</dependency>
 		
+		 <dependency>
+			<groupId>javax.json.bind</groupId>
+			<artifactId>javax.json.bind-api</artifactId>
+			<version>1.0.0-M1</version>
+		</dependency>
+		<!-- Thanks for using https://jar-download.com -->
+
+		
 		
 		
 	</dependencies>

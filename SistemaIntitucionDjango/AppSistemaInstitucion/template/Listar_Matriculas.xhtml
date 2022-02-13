@@ -1,0 +1,102 @@
+{% extends "plantilla.xhtml" %}
+
+{% block content %}	
+<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Dashboard</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li class="active">Lista de Matriculas</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">LISTA DE MATRICULAS</strong>
+
+							</div>
+							<div class="card-body">
+								<div id="bootstrap-data-table_wrapper"
+									class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+									<div class="row">
+										<div class="col-sm-12 col-md-6">
+											<div class="dataTables_length"
+												id="bootstrap-data-table_length">
+												<label>Show <select
+													name="bootstrap-data-table_length"
+													aria-controls="bootstrap-data-table"
+													class="form-control form-control-sm"><option
+															value="10">10</option>
+														<option value="20">20</option>
+														<option value="50">50</option>
+														<option value="-1">All</option></select> entries
+												</label>
+											</div>
+										</div>
+										
+									</div>
+									<div class="row">
+										<div class="col-sm-12"><!-- Aqui empieza los elementos de la pag a desarrollar -->
+											<div class="container">
+												<div class="section">
+													<table class="table table-striped">
+														<thead>
+															<tr>
+																<th>ID</th>
+																<th>Costo Hora</th>
+																<th>Costo Matricula</th>
+																<th>Total Horas</th>
+																<th>Estado</th>
+															</tr>
+														</thead>
+														<tbody id="res">
+
+														</tbody>
+													</table>
+												</div>
+											</div>
+
+
+
+
+											<div id = "results"></div>
+											<script src="../static/js/matriculas.js"></script>
+											
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+
+	</ui:define>
+
+
+</ui:composition>
+{% endblock%}
+

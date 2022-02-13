@@ -1,15 +1,17 @@
 package ec.edu.hogwarts.SistemaInstitucion.model;
 
 import java.io.Serializable;
-import java.util.List;
+
+
+import javax.json.bind.annotation.JsonbTransient;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -21,6 +23,7 @@ public class Matricula implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,14 +38,12 @@ public class Matricula implements Serializable{
 	@Column(name = "matri_total_horas")
 	private int totalHoras;
 	
-	@OneToMany
-	@JoinColumn(name="matri_id")
-	private List<Calificacion> calificaciones;
+
 	
-	@OneToOne
-	@JoinColumn(name = "est_id")   //Apuesta de 20$ - que si va a funcionar
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "est_id")
+	@JsonbTransient
 	private Estudiante estudiante;
-	
 	
 	
 	
@@ -82,12 +83,7 @@ public class Matricula implements Serializable{
 	public void setTotalHoras(int totalHoras) {
 		this.totalHoras = totalHoras;
 	}
-	public List<Calificacion> getCalificaciones() {
-		return calificaciones;
-	}
-	public void setCalificaciones(List<Calificacion> calificaciones) {
-		this.calificaciones = calificaciones;
-	}
+
 	
 	
 }

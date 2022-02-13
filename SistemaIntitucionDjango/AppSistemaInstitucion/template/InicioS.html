@@ -1,0 +1,35 @@
+{% load static %} 
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Inicio</title>
+	<link rel="stylesheet" href="{% static 'css/Inicio.css'%}"   >
+</head>
+	
+	
+		  
+	
+	
+<body> 
+	<div class="login">
+	
+	<img class="avatar" src="{% static 'Imagenes/Plantas.jpg'%}"  alt="Holii">
+	<h1>Inicie Sesion</h1>
+		 <form >
+		
+			<label for="Usuario">User Name</label>
+			<input type="text" placeholder="Ingrese Nombre del usuario">
+			 
+			 <label for ="password">Password </label>
+			 <input type="password" placeholder="Ingrese password">
+					
+			<p> <input type ="submit" value="Log In"></p>
+			 
+			<a href="Registro.html">No tengo una cuenta?</a>
+			  <a href="#">Olvide mi password?</a>
+		</form>
+	</div>
+	</body>
+	
+</html>

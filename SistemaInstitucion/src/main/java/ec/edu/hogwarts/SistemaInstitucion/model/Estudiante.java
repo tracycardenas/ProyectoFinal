@@ -1,14 +1,16 @@
 package ec.edu.hogwarts.SistemaInstitucion.model;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.json.bind.annotation.JsonbPropertyOrder;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Estudiante extends Persona{
+public class Estudiante extends Persona implements Serializable{
 	/**
 	 * 
 	 */

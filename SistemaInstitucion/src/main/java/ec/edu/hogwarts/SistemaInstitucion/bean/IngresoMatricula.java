@@ -141,7 +141,6 @@ public class IngresoMatricula implements Serializable{
 		}
 		}
 		
-		this.matricula.setCalificaciones(lista_calificacioness);
 		this.matricula.setCostoHora(2.5);
 		this.matricula.setCostoMatricula(configuracionON.getConfiguracion(1).getConf_costoMatricula());
 		this.matricula.setEstado(false);

@@ -1,5 +1,6 @@
 package ec.edu.hogwarts.SistemaInstitucion.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tbl_docentes")
-public class Docente extends Persona{
+public class Docente extends Persona implements Serializable{
 	/**
 	 * 
 	 */
