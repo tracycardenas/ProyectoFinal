@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/template/plantilla.xhtml">
+	<ui:define name="title">
+		Lista de Estudiantes
+	</ui:define>
+<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Dashboard</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li class="active">Materias</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Gestion Usuarios</strong>
+								<div class="float-right">
+									<a class="btn btn-primary" href="InsertarEstudiantes.xhtml" role="button"><i class="fa fa-plus-square"/></a>
+								</div>
+							</div>
+							<div class="card-body">
+								<div id="bootstrap-data-table_wrapper"
+									class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+									<div class="row">
+										<div class="col-sm-12 col-md-6">
+											<div class="dataTables_length"
+												id="bootstrap-data-table_length">
+												<label>Show <select
+													name="bootstrap-data-table_length"
+													aria-controls="bootstrap-data-table"
+													class="form-control form-control-sm"><option
+															value="10">10</option>
+														<option value="20">20</option>
+														<option value="50">50</option>
+														<option value="-1">All</option></select> entries
+												</label>
+											</div>
+										</div>
+										<div class="col-sm-12 col-md-6">
+											<div id="bootstrap-data-table_filter"
+												class="dataTables_filter">
+												Search:<h:inputText value=""  type="search"
+													class="form-control form-control-sm" placeholder=""
+													aria-controls="bootstrap-data-table"/>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-12"><!-- Aqui empieza los elementos de la pag a desarrollar -->
+											
+											<h:form>
+												<p:growl id="message" showDetail="true"/>
+										        <h:dataTable var="per" class="table table-striped" value="#{ingresoPersonasBean.docentes}">
+										
+													<h:column>
+														<f:facet name="header">Cedula</f:facet>
+														#{per.cedula}
+													</h:column>
+													<h:column>
+														<f:facet name="header">Nombre</f:facet>
+														#{per.nombre} #{per.apellido}
+													</h:column>
+													<h:column>
+														<f:facet name="header">E-mail</f:facet>
+														#{per.email}
+													</h:column>
+													
+													<h:column>
+														<f:facet name="header">Telefono</f:facet>
+														#{per.telefono}
+													</h:column>
+													
+													<h:column>
+														<f:facet name="header">Acciones</f:facet>
+
+																	
+														<p:commandButton class="p-col-12 p-md-2" action="#{ingresoPersonasBean.editarD(per.cedula)}" value="" immediate="true"  icon="pi pi-pencil" style="width: 35px"/>
+
+														 <p:commandButton class="p-col-12 p-md-2" action="#{ingresoPersonasBean.perfilD(per.cedula)}" value="" immediate="true"  icon="pi pi-home"
+														 style="margin-left: 7px; width: 35px " />
+		
+														<p:growl id="message" showDetail="true"/>
+													
+ 														<p:commandButton class="p-col-12 p-md-2" action="#{ingresoPersonasBean.eliminar(per.cedula)}" value="" immediate="true"  icon="pi pi-trash" 
+														 style="margin-left: 7px; width: 35px " >
+														            <p:confirm header="Confirmation" message="Esta seguro de eliminar este usuario?" icon="pi pi-info-circle"/>
+														        </p:commandButton>
+														
+														        <p:confirmDialog global="true" icon="pi pi-info-circle" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+														            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+														            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" />
+														        </p:confirmDialog>
+													</h:column>
+												
+												
+												</h:dataTable>
+											</h:form>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-12 col-md-5">
+											<div class="dataTables_info" id="bootstrap-data-table_info"
+												role="status" aria-live="polite">Showing 1 to 10 of 57
+												entries</div>
+										</div>
+										<div class="col-sm-12 col-md-7">
+											<div class="dataTables_paginate paging_simple_numbers"
+												id="bootstrap-data-table_paginate">
+												<ul class="pagination">
+													<li class="paginate_button page-item previous disabled"
+														id="bootstrap-data-table_previous"><a href="#"
+														aria-controls="bootstrap-data-table" data-dt-idx="0"
+														tabindex="0" class="page-link">Previous</a></li>
+													<li class="paginate_button page-item active"><a
+														href="#" aria-controls="bootstrap-data-table"
+														data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+													<li class="paginate_button page-item "><a href="#"
+														aria-controls="bootstrap-data-table" data-dt-idx="2"
+														tabindex="0" class="page-link">2</a></li>
+													<li class="paginate_button page-item "><a href="#"
+														aria-controls="bootstrap-data-table" data-dt-idx="3"
+														tabindex="0" class="page-link">3</a></li>
+													<li class="paginate_button page-item "><a href="#"
+														aria-controls="bootstrap-data-table" data-dt-idx="4"
+														tabindex="0" class="page-link">4</a></li>
+													<li class="paginate_button page-item "><a href="#"
+														aria-controls="bootstrap-data-table" data-dt-idx="5"
+														tabindex="0" class="page-link">5</a></li>
+													<li class="paginate_button page-item "><a href="#"
+														aria-controls="bootstrap-data-table" data-dt-idx="6"
+														tabindex="0" class="page-link">6</a></li>
+													<li class="paginate_button page-item next"
+														id="bootstrap-data-table_next"><a href="#"
+														aria-controls="bootstrap-data-table" data-dt-idx="7"
+														tabindex="0" class="page-link">Next</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+
+	</ui:define>
+
+
+</ui:composition>
+
+
+</html>

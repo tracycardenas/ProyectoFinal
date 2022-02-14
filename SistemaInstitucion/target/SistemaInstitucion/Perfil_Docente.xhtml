@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<f:metadata>
+			<f:viewParam name="id" value="#{loginBean.cedula}"></f:viewParam>
+			<f:viewAction action="#{loginBean.loadData()}" />
+		</f:metadata>
+	</h:head>
+
+<ui:composition template="/template/plantillaDocente.xhtml">
+	<ui:define name="title">
+		PÁGINA PERSONAL
+	</ui:define>
+	
+	<ui:define name="content">
+	<br/>
+	<br/>
+	<div class="col-lg-12">
+   	<div class="card">
+	<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Mi Perfil</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li class="active">Mi Perfil</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+	
+	
+	
+		
+		<div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body card-block">
+                            
+                                <div class="form-group"><label for="nombre" class=" form-control-label">Nombre</label>
+                                <p:inputText class="form-control" value="#{loginBean.persona.nombre}" /></div>
+                                
+                                <div class="form-group"><label for="apellido" class=" form-control-label">Apellido</label>
+								<p:inputText class="form-control" value="#{loginBean.persona.apellido}" /></div>
+							
+								
+                                <div class="form-group"><label for="street" class=" form-control-label">Fecha de Nacimiento</label>
+								<p:inputText class="form-control" value="#{loginBean.persona.fechaNacimiento}" /></div>
+                                    
+                                <div class="form-group"><label for="city" class=" form-control-label">Direccion</label>
+                                <p:inputText class="form-control" value="#{loginBean.persona.direccion}" /></div>
+                                    
+                                <div class="form-group"><label for="postal-code" class=" form-control-label">Telefono</label>
+                                <p:inputText type="tel" class="form-control" value="#{loginBean.persona.telefono}" /></div>
+                                
+                                <div class="form-group"><label for="apellido" class=" form-control-label">Email</label>
+								<p:inputText class="form-control" value="#{loginBean.persona.email}" /></div>
+								
+                                <div class="form-group"><label for="country" class=" form-control-label">Especialidad</label>
+                                <p:inputText class="form-control" value="#{loginBean.docente.especialidad}" /></div>
+                            </div>
+                        </div>
+		
+
+		
+		</div>
+		
+		<h:form>
+		<div class="enviar">
+				<h:commandButton action="#{loginBean.Calificaciones(loginBean.persona.cedula)}"
+					value="Ingresar Calificaciones" />
+					
+					
+			</div>
+
+		</h:form>
+		
+		<div class="mensaje">
+			
+			
+			<div class="escudo">
+			</div>
+			
+			
+		</div>
+	</ui:define>
+
+</ui:composition>
+
+
+</html>

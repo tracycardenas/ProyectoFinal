@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<ui:composition template="/template/plantilla.xhtml">
+	swal("Oops!", "Something went wrong on the page!", "error");
+	<ui:define name="title">
+		Administrador
+	</ui:define>
+	
+<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>ADMINISTRADOR</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#"></a>HOME</li>
+									<li class="active"></li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title"></strong>
+								<div class="float-right">
+								
+								            <div class="p-field p-col-12 p-md-4">
+								               
+									            
+								            </div>
+								
+									
+								</div>
+							</div>
+							<div class="card-body">
+								<div id="bootstrap-data-table_wrapper"
+									class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+									<div class="row">
+										<div class="col-sm-12 col-md-6">
+
+										</div>
+
+									</div>
+									<div class="row">
+										<div class="col-sm-12"><!-- Aqui empieza los elementos de la pag a desarrollar -->
+										<br />
+										<h1 style="text-align: center;">BIENVENIDO</h1>
+										<br />
+										<img src="" alt="" style=" margin-left:320px;  background: url('https://1000marcas.net/wp-content/uploads/2020/02/Logo-Hogwarts.png');
+										background-size:cover; 
+										min-height: 250px; min-width: 400px"/>
+										
+										<br />
+										<br />
+										<br />
+										<h4 style="text-align: center;">Sistema Universidad de " Hogwarts "</h4>
+										<br />
+										
+	
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+
+	</ui:define>
+</ui:composition>
+
+
+</html>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:metadata>
+		<f:viewAction action="#{configuracionesGeneralesBean.cargarConfiguracion()}" />
+	
+	</f:metadata>
+
+
+
+</h:head>
+
+<ui:composition template="/template/plantilla.xhtml">
+	swal("Oops!", "Something went wrong on the page!", "error");
+	<ui:define name="title">
+		Configuraciones
+	</ui:define>
+
+	<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>UNIVERSIDAD HOGWARTS</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#"></a>HOME</li>
+									<li class="active">Configuraciones</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title"></strong>
+								<div class="float-right">
+
+									<div class="p-field p-col-12 p-md-4"></div>
+
+
+								</div>
+							</div>
+							<h:form id="datosGenerales">
+								<p:growl id="growl" showDetail="true" />
+								<div class="card-body">
+									<div id="bootstrap-data-table_wrapper"
+										class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+										<h1 style="text-align: center;">
+											<strong> UNIVERSIDAD HOGWARTS</strong>
+										</h1>
+										<br /> <br />
+										<div class="row">
+											<div class="col-4">
+												<div class="form-group">
+													<label for="apellido" class=" form-control-label">Nombre
+														de la Institucion</label>
+													<p:inputText class="form-control"
+														value="#{configuracionesGeneralesBean.configuracion.nombreInstitucion}" />
+												</div>
+											</div>
+											<div class="col-4">
+												<div class="form-group">
+													<label for="country" class=" form-control-label">RUC</label>
+													<p:inputText class="form-control"
+														value="#{configuracionesGeneralesBean.configuracion.RUC}" />
+												</div>
+											</div>
+											<div class="col-4">
+												<div class="form-group">
+													<label for="country" class=" form-control-label">Direccion</label>
+													<p:inputText class="form-control"
+														value="#{configuracionesGeneralesBean.configuracion.direccion}" />
+												</div>
+											</div>
+
+										</div>
+										<div class="row">
+											<div class="col-6">
+												<div class="form-group">
+													<label for="country" class=" form-control-label">Razon
+														Social</label>
+													<p:inputText class="form-control"
+														value="#{configuracionesGeneralesBean.configuracion.razonSocial}" />
+												</div>
+											</div>
+											<div class="col-6">
+												<div class="form-group">
+													<label for="country" class=" form-control-label">Telefono</label>
+													<p:inputText class="form-control"
+														value="#{configuracionesGeneralesBean.configuracion.telefono}" />
+												</div>
+											</div>
+										</div>
+
+										<div class="row">
+
+											<div class="col-4">
+												<div class="form-group">
+													<label for="country" class=" form-control-label">Costo
+														de Inscripcion</label>
+													<p:inputText class="form-control"
+														value="#{configuracionesGeneralesBean.configuracion.conf_costoInscripcion}" />
+												</div>
+											</div>
+											<div class="col-4">
+												<div class="form-group">
+													<label for="country" class=" form-control-label">Costo
+														de Matricula</label>
+													<p:inputText class="form-control"
+														value="#{configuracionesGeneralesBean.configuracion.conf_costoMatricula}" />
+												</div>
+											</div>
+											<div class="col-4">
+												<div class="form-group">
+													<label for="country" class=" form-control-label">IVA</label>
+													<p:inputText class="form-control"
+														value="#{configuracionesGeneralesBean.configuracion.conf_iva}" />
+												</div>
+											</div>
+
+										</div>
+
+										<br />
+										<div class="row">
+										<p:commandButton icon="fa fa-save"
+											actionListener="#{configuracionesGeneralesBean.guardarConfiguraciones()}"
+											update="growl datosGenerales" value="Guardar Cambios"
+											styleClass="p-mr-2"
+											style="BACKGROUND-COLOR: green; margin-left:42%" />
+											
+										
+										</div>
+										<div class="row"></div>
+										<div class="col-sm-12">
+											<!-- Aqui empieza los elementos de la pag a desarrollar -->
+											<br /> <br /> <img src="" alt=""
+												style="margin-left: 320px; background: url('https://1000marcas.net/wp-content/uploads/2020/02/Logo-Hogwarts.png'); background-size: cover; min-height: 250px; min-width: 400px" />
+
+											<br /> <br /> <br /> <br />
+
+
+										</div>
+
+
+									</div>
+
+
+								</div>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+
+	</ui:define>
+</ui:composition>
+
+
+</html>

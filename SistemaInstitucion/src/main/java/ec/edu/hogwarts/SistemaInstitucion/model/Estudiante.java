@@ -19,7 +19,7 @@ public class Estudiante extends Persona implements Serializable{
 	@Column(name = "est_representante")
 	private String representante;
 	
-	@OneToMany(mappedBy = "estudiante")
+	@OneToMany(mappedBy = "estudiante" ,orphanRemoval= true)
 	private List<Calificacion> calificacioness;
 
 	public String getRepresentante() {

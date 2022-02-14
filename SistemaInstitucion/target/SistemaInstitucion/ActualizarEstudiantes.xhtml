@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+ <f:metadata>
+ 	<f:viewParam name="id" value="#{ingresoPersonasBean.cedula}"></f:viewParam>
+    <f:viewAction action="#{ingresoPersonasBean.loadData()}"/>
+</f:metadata>
+      
+
+</head>
+
+
+
+<ui:composition template="/template/plantilla.xhtml">
+	swal("Oops!", "Something went wrong on the page!", "error");
+	<ui:define name="title">
+		Inscripcion de Estudiantes
+	</ui:define>
+	
+<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Dashboard</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li class="active">Materias</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Gestion Usuarios</strong>
+								<div class="float-right">
+									<a class="btn btn-primary" href="InsertarEstudiantes.xhtml" role="button"><i class="fa fa-plus-square"/></a>
+								</div>
+							</div>
+							<div class="card-body">
+								<div id="bootstrap-data-table_wrapper"
+									class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+									<div class="row">
+										<div class="col-sm-12 col-md-6">
+
+										</div>
+
+									</div>
+									<div class="row">
+										<div class="col-sm-8"><!-- Aqui empieza los elementos de la pag a desarrollar -->
+											
+											<h:form class="registro" style="width: 900px; margin-left: 15px; overflow: hidden;  border: 1px solid #c1c1c1;  ">
+											
+										
+											<div class="info">
+															<p:outputLabel for="fieldCedula" value="Cedula:" style="margin-left: 15px; padding-top: 15px;" />
+															<p:inputText class="cedula" id="fieldCedula" value="#{ingresoPersonasBean.estudiante.cedula}"  
+															required="true" label="Error: Cedula Incorrecta"
+															>
+															<f:validateLength minimum="10" maximum="10"/>
+															</p:inputText>
+															<h:message for="fieldCedula"/>
+														</div>
+											
+											
+														<div class="info">
+															<p:outputLabel value="Nombre:" style="margin-left: 15px; padding-top: 15px;"  />
+															<p:inputText class="nombre" id="fieldNombre" value="#{ingresoPersonasBean.estudiante.nombre}" 
+															style="width: 214px; height: 35px;margin-left: 5px; padding-top: 15px;" required="true" label="Error: Ingrese su nombre"/>
+															<h:message for="fieldNombre"/>
+														</div>
+											
+														<div class="info">
+															<p:outputLabel value="Apellido:" style="margin-left: 15px; padding-top: 15px;" />
+															<p:inputText class="apellido" id="fieldApellido" value="#{ingresoPersonasBean.estudiante.apellido}" 
+															style="width: 214px; height: 35px;margin-left: 5px; padding-top: 15px;" 
+															required="true" label="Error: Ingrese su Apellido"/>
+															<h:message for="fieldApellido"/>
+														</div>
+											
+														<div class="info">
+															<p:outputLabel value="Fecha de Nacimiento:" style="margin-left: 15px; padding-top: 15px;" />
+															<p:calendar class="calendar" id="fielFecha"
+																value="#{ingresoPersonasBean.estudiante.fechaNacimiento}"
+																navigator="true" style="height: 5px;margin-left: 25px; padding-top: 15px;" 
+																required="true" label="Error: Seleccione su Fecha de nacimiento" ></p:calendar>
+																<h:message for="fielFecha"/>
+														</div>
+														
+														<div class="info">
+															<p:outputLabel value="Direccion:" style="margin-left: 15px; padding-top: 15px;" />
+															<p:inputText class="direccion" id="fieldDireccion" value="#{ingresoPersonasBean.estudiante.direccion}"
+															style="width: 214px; height: 35px;margin-left: 5px; padding-top: 15px;" 
+															required="true" label="Error: Ingrese su Direccion"/>
+															<h:message for="fieldDireccion"/>
+														</div>
+											
+														<div class="info">
+															<p:outputLabel value="Telefono:" style="margin-left: 15px; padding-top: 15px;"  />
+															<p:inputText type="tel" id="fieldTelefono" pattern="\+?\d{0,3}[\s\(\-]?([0-9]{2,3})[\s\)\-]?([\s\-]?)([0-9]{3})[\s\-]?([0-9]{2})[\s\-]?([0-9]{2})" class="telefono" value="#{ingresoPersonasBean.estudiante.telefono}"
+															style="width: 214px; height: 35px;margin-left: 10px; padding-top: 15px;"  label="Error: Ingrese una contraseña"/>
+															<h:message for="fieldPassword"/>
+														</div>
+											
+														<div class="info">
+															<p:outputLabel value="Email:" style="margin-left: 15px; padding-top: 15px;"  />
+															<p:inputText type="email" id="fieldEmail" class="email" value="#{ingresoPersonasBean.estudiante.email}" 
+															style="width: 214px; height: 35px;margin-left: 33px; padding-top: 15px;"/>
+														</div>
+											
+														<div class="info">
+															<p:outputLabel value="Password:" style="margin-left: 15px; padding-top: 15px;" />
+															<p:password class="password" id="fieldPassword" name="pw" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" value="#{ingresoPersonasBean.estudiante.password}"
+															style="width: 214px; height: 35px;margin-left: 5px; padding-top: 15px;" ></p:password>
+															<h:message for="fieldPassword"/>
+														</div>
+														
+											
+														<div class="info">
+															<p:outputLabel value="Nombre del Representante:" style="margin-left: 15px; padding-top: 15px;" />
+															<p:inputText class="representante" id="fieldRepresentante" value="#{ingresoPersonasBean.estudiante.representante}"  
+															style="width: 214px; height: 35px;margin-left: 10px; padding-top: 15px;"/>
+															<h:message for="fieldRepresentante"/>
+														</div>
+														<div class="enviar" style="padding: 10px">
+															<h:commandButton action="#{ingresoPersonasBean.update()}"
+																value="Actualizar" style="margin-left: 400px; "/>
+		
+														</div>
+														
+											
+													</h:form>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+
+	</ui:define>
+</ui:composition>
+
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      	xmlns:p="http://primefaces.org/ui">
+       
+
+<h:head></h:head> 
+
+<body> 
+<ui:composition template="/template/plantillaLogin.xhtml">
+	<ui:define name="title">
+		PORTAL WEB
+	</ui:define>
+	<ui:define name="content">
+	
+		
+		<div class="col-lg-10">
+                        <div class="card-body card-block">
+                            <h:form>
+                             <p:growl id="growl" showDetail="true" />
+                            	<div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="margin-left: 500px">Cedula</div>
+										<p:inputText value="#{ingresoPersonasBean.persona.cedula}" id="txtCedula" required="true" style="width:265px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                    </div>
+                                </div>
+                            	 <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="margin-left: 500px">Nombres</div>
+										<p:inputText value="#{ingresoPersonasBean.persona.nombre}" id="txtNombres" required="true" style="width:248px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                    </div>
+                                </div>
+                                
+                                 <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="margin-left: 500px">Apellidos</div>
+										<p:inputText value="#{ingresoPersonasBean.persona.apellido}" id="txtApellidos" required="true" style="width:250px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="margin-left: 500px">Fecha de Nacimiento</div>
+										<p:calendar navigator="true" value="#{ingresoPersonasBean.persona.fechaNacimiento}" id="txtNacimiento" required="true" style="width:162px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="margin-left: 500px">Direccion</div>
+										<p:inputText value="#{ingresoPersonasBean.persona.direccion}" id="txtDireccion" required="true" style="width:250px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="margin-left: 500px">Telefono</div>
+										<p:inputText value="#{ingresoPersonasBean.persona.telefono}" id="txtTelefono" required="true" style="width:255px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="margin-left: 500px">Email</div>
+										<p:inputText value="#{ingresoPersonasBean.persona.email}" id="txtEmail" required="true" style="width:280px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="margin-left: 500px">Password</div>
+										<p:password value="#{ingresoPersonasBean.persona.password}" id="txtClave" required="true" style="width:250px"   />
+                                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="form-actions form-group">
+									<h:commandButton icon="ui-icon-key" style="margin-left: 650px" value="Guardar" update=":growl"
+									 action="#{ingresoPersonasBean.guardarAdministrador()}"/>                                </div>
+                            </h:form>
+                        </div>
+                    </div>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

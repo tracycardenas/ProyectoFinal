@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+ <f:metadata>
+ 	<f:viewParam name="id" value="#{ingresoCarreras.id}"></f:viewParam>
+    <f:viewAction action="#{ingresoCarreras.loadData()}"/>
+</f:metadata>
+      
+
+</head>
+
+<ui:composition template="/template/plantilla.xhtml">
+	swal("Oops!", "Something went wrong on the page!", "error");
+	<ui:define name="title">
+		Inscripcion de Estudiantes
+	</ui:define>
+	
+<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Dashboard</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li class="active">Materias</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Gestion Usuarios</strong>
+								<div class="float-right">
+									<a class="btn btn-primary" href="InsertarEstudiantes.xhtml" role="button"><i class="fa fa-plus-square"/></a>
+								</div>
+							</div>
+							<div class="card-body">
+								<div id="bootstrap-data-table_wrapper"
+									class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+									<div class="row">
+										<div class="col-sm-12 col-md-6">
+
+										</div>
+
+									</div>
+									<div class="row">
+										<div class="col-sm-8"><!-- Aqui empieza los elementos de la pag a desarrollar -->
+											
+											<h:form class="registro" style="width: 920px; margin-left: 15px; overflow: hidden;  border: 1px solid #c1c1c1;  ">
+			
+														<div style="float: left; ">
+															<p:outputLabel value="Nombre:" style="margin-left: 15px; padding-top: 15px;"  />
+															<p:inputText class="nombre" value="#{ingresoCarreras.carrera.nombre}" 
+															style="width: 214px; height: 35px;margin-left: 5px; padding-top: 15px;"/>
+														</div>
+											
+														<div style="float: right; margin-right: 20px;">
+															<p:outputLabel value="Malla:" style="margin-left: 15px;padding-top: 15px; float-right;" />
+															<p:inputText class="Malla:" value="#{ingresoCarreras.mallaD}"
+															style="width: 214px; height: 35px;margin-left: 5px; padding-top: 15px;"/>
+														</div>
+
+														
+														<div class="info">
+															<p:outputLabel value="Descripcion:" style="margin-left: 15px; padding-top: 15px;" />
+															<p:inputText class="Descripcion" value="#{ingresoCarreras.carrera.descripcion}" 
+															style="width: 214px; height: 35px;margin-left: 5px; padding-top: 15px;" />
+														</div>
+											
+														<div class="enviar" style="padding: 10px">
+														
+														<p:growl id="message" showDetail="true"/>
+													
+ 														<p:commandButton action="#{ingresoCarreras.update()}"
+																value="ENVIAR" style="margin-left: 400px; " >
+														   		<p:confirm header="Confirmation" message="Esta seguro?" icon="pi pi-info-circle"/>
+														        </p:commandButton>
+														
+														        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+														            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+														            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" />
+														        </p:confirmDialog>
+														        
+														
+		
+														</div>
+														
+											
+													</h:form>
+													
+											<h:form style="width: 920px; margin-left: 15px; margin-top:25px; overflow: hidden;  border: 1px solid #c1c1c1; ">
+												<p:growl id="message" showDetail="true"/>
+										        <h:dataTable var="per" class="table table-striped" value="#{ingresoCarreras.carreras}">
+											
+													<h:column>
+														<f:facet name="header">Id</f:facet>
+														#{per.id} 
+													</h:column>
+
+													<h:column>
+														<f:facet name="header">Nombre</f:facet>
+														#{per.nombre} 
+													</h:column>
+													<h:column>
+														<f:facet name="header">Descipcion</f:facet>
+														#{per.descripcion}
+													</h:column>
+
+													
+													<h:column>
+														<f:facet name="header">ADMINISTRAR</f:facet>
+
+																	
+														<p:commandButton class="p-col-12 p-md-2" action="#{ingresoCarreras.editar(per.id)}" value="" immediate="true"  icon="pi pi-pencil" style="width: 35px"/>
+														<p:commandButton class="p-col-12 p-md-2" action="#{ingresoPersonasBean.editar(per.cedula)}" value="" immediate="true"  icon="pi pi-user-plus"
+														 style="margin-left: 7px; width: 35px " />
+
+		
+														<p:growl id="message" showDetail="true"/>
+													
+ 														<p:commandButton class="p-col-12 p-md-2" action="#{ingresoCarreras.eliminar(per.id)}" value="" immediate="true"  icon="pi pi-trash" 
+														 style="margin-left: 7px; width: 35px " >
+														            <p:confirm header="Confirmation" message="Esta seguro de eliminar esta carrera?" icon="pi pi-info-circle"/>
+														        </p:commandButton>
+														
+														        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+														            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+														            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" />
+														        </p:confirmDialog>
+													</h:column>
+												
+												
+												</h:dataTable>
+											</h:form>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+
+	</ui:define>
+</ui:composition>
+
+
+</html>

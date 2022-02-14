@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      	xmlns:p="http://primefaces.org/ui">
+       
+
+<h:head></h:head> 
+
+<body> 
+<ui:composition template="/template/plantillaLogin.xhtml">
+	<ui:define name="title">
+		PORTAL WEB
+	</ui:define>
+	<ui:define name="content">
+	
+		
+		<div class="col-lg-10">
+                        <div class="card-body card-block">
+                            <h:form>
+                                
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="margin-left: 500px">Email</div>
+										<p:inputText value="#{loginBean.persona.email}" id="txtUsuario" required="true" style="width:230px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon" style="margin-left: 500px">Password</div>
+										<p:password value="#{loginBean.persona.password}" id="txtClave" required="true"></p:password>
+                                        <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="form-actions form-group">
+									<h:commandButton icon="ui-icon-key" style="margin-left: 550px; margin-right:20px" value="Iniciar Sesion" action="#{loginBean.iniciarSesion()}"/>                              
+                            
+							<a class="documentation-link" href="../InsertarAdministradores.xhtml" target="_blank">
+		                                    <i class="pi pi-external-link"></i>
+		                                    <span>Registrarse</span>
+		                                </a>
+		
+							  </div>
+						
+                            
+                            </h:form>
+                        </div>
+                    </div>
+	</ui:define>
+
+</ui:composition>
+
+</body>
+</html>

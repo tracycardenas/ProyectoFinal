@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<f:metadata>
+			<f:viewParam name="id" value="#{loginBean.cedula}"></f:viewParam>
+			<f:viewAction action="#{loginBean.loadData()}" />
+		</f:metadata>
+	</h:head>
+
+<ui:composition template="/template/plantillaEstudiante.xhtml">
+	<ui:define name="title">
+		PÁGINA PERSONAL
+	</ui:define>
+	
+	<ui:define name="content">
+		<h:form class="registro">
+			<div class="info">
+				<p:outputLabel for="fieldCedula" value="Cedula:" />
+				<p:inputText class="cedula" id="fieldCedula" value="#{loginBean.persona.cedula}" 
+				onblur="return validarCedula(this)" onkeypress="return validarNumeros( this)"/>
+			</div>
+
+
+			<div class="info">
+				<p:outputLabel value="Nombre:" />
+				<p:inputText class="nombre" value="#{loginBean.persona.nombre}" />
+			</div>
+
+			<div class="info">
+				<p:outputLabel value="Apellido:" />
+				<p:inputText class="apellido" value="#{loginBean.persona.apellido}" />
+			</div>
+
+			<div class="info">
+				<p:outputLabel value="Fecha de Nacimiento:" />
+				<p:calendar class="calendar"
+					value="#{loginBean.persona.fechaNacimiento}"
+					navigator="true"></p:calendar>
+			</div>
+			
+			<div class="info">
+				<p:outputLabel value="Direccion:" />
+				<p:inputText class="direccion" value="#{loginBean.persona.direccion}" />
+			</div>
+
+			<div class="info">
+				<p:outputLabel value="Telefono:" />
+				<p:inputText type="tel" class="telefono" value="#{loginBean.persona.telefono}" />
+			</div>
+
+			<div class="info">
+				<p:outputLabel value="Email:" />
+				<p:inputText type="email" class="email" value="#{loginBean.persona.email}" />
+			</div>
+			
+			<div class="info">
+				<p:outputLabel value="Nombre del Representante:" />
+				<p:inputText class="representante" value="#{loginBean.estudiante.representante}" />
+			</div>
+
+			<div class="enviar">
+				<h:commandButton action="#{ingresoPersonasBean.guardarEstudiante()}"
+					value="Inscribir" />
+					
+					
+			</div>
+
+		</h:form>
+		
+		<div class="mensaje">
+			
+			
+			<div class="escudo">
+			</div>
+			
+			
+		</div>
+	</ui:define>
+
+</ui:composition>
+
+
+</html>
+
