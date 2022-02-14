@@ -200,7 +200,14 @@
 		</dependency>
 		<!-- Thanks for using https://jar-download.com -->
 
-		
+			<!-- https://mvnrepository.com/artifact/javax.el/javax.el-api -->
+
+		<!-- https://mvnrepository.com/artifact/javax.el/javax.el-api -->
+		<dependency>
+		    <groupId>javax.el</groupId>
+		    <artifactId>javax.el-api</artifactId>
+		    <version>3.0.0</version>
+		</dependency>
 		
 		
 	</dependencies>

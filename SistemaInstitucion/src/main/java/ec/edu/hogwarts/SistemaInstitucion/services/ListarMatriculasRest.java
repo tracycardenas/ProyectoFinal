@@ -13,16 +13,18 @@ import ec.edu.hogwarts.SistemaInstitucion.business.MatriculaONLocal;
 import ec.edu.hogwarts.SistemaInstitucion.model.LibroDiario;
 import ec.edu.hogwarts.SistemaInstitucion.model.Matricula;
 
-@Path("librosDiarios")
+@Path("matriculas")
 public class ListarMatriculasRest {
 	
+	
+	
 	@Inject
-	private LibroDiarioONLocal libroDiarioON;
+	private MatriculaONLocal matriculaON;
 		
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<LibroDiario> getLibrosDiarios(){
-		return libroDiarioON.getLibroDiario();
+	public List<Matricula> getMatriculas(){
+		return matriculaON.getMatricula();
 	}
 	
 

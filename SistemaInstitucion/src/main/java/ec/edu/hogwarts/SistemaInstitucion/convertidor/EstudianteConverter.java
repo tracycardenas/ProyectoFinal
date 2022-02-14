@@ -1,5 +1,6 @@
 package ec.edu.hogwarts.SistemaInstitucion.convertidor;
 
+import javax.el.ValueExpression;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -12,8 +13,6 @@ import ec.edu.hogwarts.SistemaInstitucion.bean.BuscadorBean;
 import ec.edu.hogwarts.SistemaInstitucion.model.Carrera;
 import ec.edu.hogwarts.SistemaInstitucion.model.Estudiante;
 import ec.edu.hogwarts.SistemaInstitucion.model.Persona;
-
-import javax.el.ValueExpression;
 
 @Named
 @FacesConverter(value="estudianteConverter", managed = true)
