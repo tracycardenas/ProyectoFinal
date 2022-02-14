@@ -16,7 +16,7 @@ public interface MateriaONLocal {
 	
 	public void delete (int id) throws Exception ;
 	
-	public List<Materia>getMateria();
+	public List<Materia>getMaterias();
 	
 	public Materia getMateriaporCodigo(int id);
 	

@@ -30,8 +30,7 @@ public class MateriaON implements MateriaONLocal{
 		daoMateria.Delete(id);
 	}
 	
-	public List<Materia>getMateria(){
-		
+	public List<Materia>getMaterias(){
 		return daoMateria.getList();
 	}
 	

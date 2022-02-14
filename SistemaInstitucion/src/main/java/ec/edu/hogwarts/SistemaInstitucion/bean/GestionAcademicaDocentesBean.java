@@ -180,9 +180,9 @@ public class GestionAcademicaDocentesBean implements Serializable {
 	public void cargarMaterias(String cedula) {
 		Materia matAnterior = new Materia();
 		matAnterior.setNombre("");
-		for (int i = 0; i < grupoON.getGrupo().size(); i++) {
-			if (cedula.equals(grupoON.getGrupo().get(i).getDocente().getCedula())) {
-				materia = grupoON.getGrupo().get(i).getMateria();
+		for (int i = 0; i < grupoON.getGrupos().size(); i++) {
+			if (cedula.equals(grupoON.getGrupos().get(i).getDocente().getCedula())) {
+				materia = grupoON.getGrupos().get(i).getMateria();
 				System.out.println("MAT ANTERIOR antes del if"+matAnterior.getNombre());
 				System.out.println("MAT ACTUAL "+materia.getNombre());
 				if (matAnterior.getNombre().equals(materia.getNombre())) {
@@ -217,7 +217,7 @@ public class GestionAcademicaDocentesBean implements Serializable {
 		System.out.println("GRUPO ID de actualizar grupos " + grupoID);
 		System.out.println();
 		selecItemGrupos = new ArrayList<SelectItem>();
-		List<Grupo> listGrupos = grupoON.getGrupo();
+		List<Grupo> listGrupos = grupoON.getGrupos();
 
 		for (Grupo grup : listGrupos) {
 			if (grup.getMateria().getId() == materiaID) {

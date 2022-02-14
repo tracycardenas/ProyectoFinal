@@ -3,6 +3,7 @@ package ec.edu.hogwarts.SistemaInstitucion.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,7 +29,6 @@ public class Materia implements Serializable{
 	@Column(name = "mat_id")
 	private int id;
 	
-	
 	@Column(name = "mat_codigo")
 	private String codigo;
 	
@@ -47,36 +47,29 @@ public class Materia implements Serializable{
 	@Column(name = "mat_horas_unidad")
 	private int horasUnidad;
 	
-	@OneToMany
-	@JoinColumn(name = "mat_requisito")
-	private List<Materia> prerequisitos;
+	@Column(name = "mat_unidad")
+	private String unidad;
+	
+	@Column(name = "mat_nivel")
+	private int numeroNivel;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_materia")
+	private List<MateriaPrerrequisito> prerequisitos;
 	
 	@OneToOne
 	@JoinColumn(name = "mat_equivalencia")
 	private Materia equivalencia;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "mat_plan_analitico")
 	private PlanAnalitico planAnalitico;
 	
 	@OneToMany(mappedBy = "materia")
 	private List<Grupo> grupos;
 	
-	
-	@ManyToOne
-	@JoinColumn(name = "niv_id")
-	private Nivel nivel;
-
-	
-
-
-	public Nivel getNivel() {
-		return nivel;
-	}
-
-	public void setNivel(Nivel nivel) {
-		this.nivel = nivel;
-	}
+	@OneToMany(mappedBy = "materia")
+	private List<Nivel> niveles;
 
 	public int getId() {
 		return id;
@@ -133,12 +126,20 @@ public class Materia implements Serializable{
 	public void setHorasUnidad(int horasUnidad) {
 		this.horasUnidad = horasUnidad;
 	}
+	
+	public String getUnidad() {
+		return unidad;
+	}
 
-	public List<Materia> getPrerequisitos() {
+	public void setUnidad(String unidad) {
+		this.unidad = unidad;
+	}
+	
+	public List<MateriaPrerrequisito> getPrerequisitos() {
 		return prerequisitos;
 	}
 
-	public void setPrerequisitos(List<Materia> prerequisitos) {
+	public void setPrerequisitos(List<MateriaPrerrequisito> prerequisitos) {
 		this.prerequisitos = prerequisitos;
 	}
 
@@ -166,4 +167,24 @@ public class Materia implements Serializable{
 		this.grupos = grupos;
 	}
 
+	public int totalHoras() {
+		return this.horasClase+this.horasPracticas+this.horasUnidad;
+	}
+
+	public int getNumeroNivel() {
+		return numeroNivel;
+	}
+
+	public void setNumeroNivel(int numeroNivel) {
+		this.numeroNivel = numeroNivel;
+	}
+
+	public List<Nivel> getNiveles() {
+		return niveles;
+	}
+
+	public void setNiveles(List<Nivel> niveles) {
+		this.niveles = niveles;
+	}
+	
 }

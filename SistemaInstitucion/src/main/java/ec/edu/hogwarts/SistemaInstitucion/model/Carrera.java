@@ -29,6 +29,10 @@ public class Carrera implements Serializable{
 	private String nombre;
 	@Column(name = "carr_descripcion")
 	private String descripcion;
+	@Column(name = "carr_modalidad")
+	private String modalidad;
+	@Column(name = "carr_duracion")
+	private int duracion;
 	@OneToMany
 	@JoinColumn(name="carr_id")
 	private List<MallaCurricular> mallas;
@@ -39,33 +43,37 @@ public class Carrera implements Serializable{
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
 	public List<MallaCurricular> getMallas() {
 		return mallas;
 	}
-
 	public void setMallas(List<MallaCurricular> mallas) {
 		this.mallas = mallas;
 	}
-	
+	public String getModalidad() {
+		return modalidad;
+	}
+	public void setModalidad(String modalidad) {
+		this.modalidad = modalidad;
+	}
+	public int getDuracion() {
+		return duracion;
+	}
+	public void setDuracion(int duracion) {
+		this.duracion = duracion;
+	}
 }

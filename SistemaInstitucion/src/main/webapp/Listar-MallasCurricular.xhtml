@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:metadata>
+		<!-- f:viewParam name="id" value="#{clienteBean.cedula}"></f:viewParam> 
+		<f:viewAction action="#{clienteBean.loadData()}"/-->
+	</f:metadata>
+</h:head>
+
+<ui:composition template="/template/plantilla.xhtml">
+	<ui:define name="title">
+        Materias
+    </ui:define>
+	<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Dashboard</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li class="active">Mallas Curriculares</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Gestion Mallas Curricular</strong>
+								<div class="float-right">
+									<a class="btn btn-primary" href="Insertar-MallaCurricular.xhtml" role="button"><i class="fa fa-plus-square"/></a>
+								</div>
+							</div>
+							<div class="card-body">
+									<h:form id="form">
+										<p:growl id="messages" showDetail="true"/>
+										<div class="table-stats order-table ov-h">
+										<p:dataTable var="malla" value="#{mallasAcademicasView.mallas}">
+										<!--p:dataTable id="dt-mallas" var="malla" value="#{mallasAcademicasView.mallas}" widgetVar="tablaMallasCurricular"
+													 emptyMessage="No hay mallas curriculares que mostrar. =C)"
+													 filteredValue="#{mallasAcademicasView.mallasFiltro}"
+													 globalFilterFunction="#{mallasAcademicasView.globalFilterFunctionMallasCurrilares}"-->
+											<f:facet name="header">
+												<!--div class="header">
+													<p:inputText id="globalFilter" onkeyup="PF('tablaMallasCurricular').filter()" 
+																	 style="width:300px" placeholder="Buscar..."/>
+													
+												</div-->
+												<h:outputText value="Listado de Mallas Curriculares" />
+											</f:facet>
+											<p:column headerText="Descripción" filterable="false">
+												<h:outputText value="#{malla.descripcion}" />
+											</p:column>
+											
+											<p:column headerText="Estado" filterable="false">
+												<h:outputText value="#{malla.estado}" />
+											</p:column>
+											
+											<p:column>
+												<p:commandButton type="button" icon="pi pi-eye" styleClass="rounded-button ui-button-flat" />
+												<p:commandButton type="button" icon="pi pi-pencil" styleClass="rounded-button ui-button-info ui-button-flat" />
+												<p:commandButton icon="pi pi-trash" styleClass="rounded-button ui-button-danger ui-button-flat"
+																 process="@this" oncomplete="PF('deleteProductDialog').show()">
+													<f:setPropertyActionListener value="#{malla}" target="#{mallasAcademicasView.mallaSeleccionada}"/>
+												</p:commandButton>
+											</p:column>
+										</p:dataTable>
+										</div>
+										<p:confirmDialog widgetVar="deleteProductDialog" showEffect="fade" width="300"
+								                         message="Borrar malla?" header="Confirmar" severity="warn">
+								            <p:commandButton value="Si" icon="pi pi-check" actionListener="#{mallasAcademicasView.borrarMalla}"
+								                             process="@this" oncomplete="PF('deleteProductDialog').hide()"/>
+								            <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
+								                             onclick="PF('deleteProductDialog').hide()"/>
+								        </p:confirmDialog>
+									</h:form>
+							
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+</html>

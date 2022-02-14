@@ -31,8 +31,7 @@ public class GrupoON implements GrupoONLocal{
 		daoGrupo.Delete(id);
 	}
 	
-	public List<Grupo>getGrupo(){
-		
+	public List<Grupo>getGrupos(){
 		return daoGrupo.getList();
 	}
 	

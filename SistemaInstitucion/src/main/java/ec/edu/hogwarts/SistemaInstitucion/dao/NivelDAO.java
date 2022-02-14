@@ -28,9 +28,7 @@ public class NivelDAO {
 	}
 	
 	public Nivel read(int id) {
-		
 		Nivel op = em.find(Nivel.class, id);
-		op.getMaterias().size();
 		return op;
 	}
 	
@@ -41,15 +39,10 @@ public class NivelDAO {
 	}
 	
 	public List<Nivel> getList(){
-		 
 		List<Nivel> listado = new ArrayList<Nivel>();
-		
 		String jpql = "SELECT op FROM Nivel op";
-				
-		
 		Query query = em.createQuery(jpql,Nivel.class);
 		listado=query.getResultList();
-		
 		return listado;
 	}
 	

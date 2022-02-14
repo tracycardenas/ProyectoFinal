@@ -1,5 +1,6 @@
 package ec.edu.hogwarts.SistemaInstitucion.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -7,13 +8,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_niveles")
-public class Nivel {
+public class Nivel implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "niv_id")
@@ -22,8 +30,9 @@ public class Nivel {
 	@Column(name = "niv_nivel")
 	private int nivel;
 	
-	@OneToMany(mappedBy = "nivel")
-	private List<Materia> materias;
+	@ManyToOne
+	@JoinColumn(name = "mat_id")
+	private Materia materia;
 
 	public int getId() {
 		return id;
@@ -41,13 +50,12 @@ public class Nivel {
 		this.nivel = nivel;
 	}
 
-	public List<Materia> getMaterias() {
-		return materias;
+	public Materia getMateria() {
+		return materia;
 	}
 
-	public void setMaterias(List<Materia> materias) {
-		this.materias = materias;
+	public void setMateria(Materia materia) {
+		this.materia = materia;
 	}
-	
 	
 }

@@ -350,13 +350,13 @@ public class IngresoMatricula implements Serializable{
 			materias_selecionadas=new ArrayList<Materia>();
 			grupos_seleccionados=new ArrayList<Grupo>();
 			
-			grupos= grupoON.getGrupo();
+			grupos= grupoON.getGrupos();
 	
 			for (int i = 0; i < grupos.size(); i++) {
 
 				Grupo gru=grupos.get(i);
-				
-				if(gru.getMateria().getNivel().getId()==nivel_id) {
+				//Redifinir lo que haya estado intentando hacer :v
+				/*if(gru.getMateria().getNivel().getId()==nivel_id) {
 		
 					try {
 						grupos_seleccionados.add(gru);
@@ -365,13 +365,13 @@ public class IngresoMatricula implements Serializable{
 						System.out.println("No guarde");
 					}
 					
-				}
+				}*/
 				
 			}
 			
 			
 			nivel=nivelON.getNivel(nivel_id);	
-			materias_selecionadas=nivel.getMaterias();
+			//materias_selecionadas=nivel.getMaterias();
 			
 			
 			

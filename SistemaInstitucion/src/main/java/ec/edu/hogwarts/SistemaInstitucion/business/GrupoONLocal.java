@@ -17,7 +17,7 @@ public interface GrupoONLocal {
 	
 	public void delete (int id) throws Exception;
 	
-	public List<Grupo>getGrupo();
+	public List<Grupo>getGrupos();
 	
 	public List<Materia> getMaterias(String cedula);
 	public Grupo getGrupoporCodigo(int id) ;
