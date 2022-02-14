@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -51,6 +52,7 @@ public class LibroDiario implements Serializable{
 	private boolean estado;
 	
 	@OneToMany( fetch = FetchType.EAGER, mappedBy = "libroDiario")
+	@JsonbTransient
 	private List<Movimiento> movimientos;
 
 	public int getId() {

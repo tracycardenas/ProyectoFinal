@@ -161,6 +161,10 @@ public class IngresoMatricula implements Serializable{
 		return null;
 	}
 	
+	public String cobrarMatricula() {
+		return "CostoMatricula?faces-redirect=true";
+	}
+	
 	
 	
 	

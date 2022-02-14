@@ -83,7 +83,7 @@ public class IngresoInscripcion {
 			System.out.println("INGRESE AQUI");
 			e.printStackTrace();
 		}
-		return null;
+		return "CostInscripcion?faces-redirect=true";
 	}
 
 	public Estudiante getEst() {

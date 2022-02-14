@@ -197,7 +197,7 @@ public class BuscadorBean implements Serializable {
 
    }
    
-	public void guardarInscripcion() {
+	public String guardarInscripcion() {
 		
 		
 		fecha = new Date();
@@ -233,6 +233,7 @@ public class BuscadorBean implements Serializable {
 			
 			e.printStackTrace();
 		}
+		return "CostoInscripcion?faces-redirect=true";
 		
 	}
 	

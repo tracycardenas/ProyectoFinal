@@ -8,21 +8,19 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import ec.edu.hogwarts.SistemaInstitucion.business.LibroDiarioONLocal;
 import ec.edu.hogwarts.SistemaInstitucion.business.MatriculaONLocal;
-import ec.edu.hogwarts.SistemaInstitucion.model.LibroDiario;
 import ec.edu.hogwarts.SistemaInstitucion.model.Matricula;
 
-@Path("librosDiarios")
-public class ListarMatriculasRest {
+@Path("matriculas")
+public class ListarLibrosDiariosRest {
 	
 	@Inject
-	private LibroDiarioONLocal libroDiarioON;
+	private MatriculaONLocal matriculaON;
 		
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<LibroDiario> getLibrosDiarios(){
-		return libroDiarioON.getLibroDiario();
+	public List<Matricula> getMatriculas(){
+		return matriculaON.getMatricula();
 	}
 	
 
