@@ -26,10 +26,8 @@ public class Nivel implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "niv_id")
 	private int id;
-	
 	@Column(name = "niv_nivel")
 	private int nivel;
-	
 	@ManyToOne
 	@JoinColumn(name = "mat_id")
 	private Materia materia;
@@ -37,25 +35,19 @@ public class Nivel implements Serializable{
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public int getNivel() {
 		return nivel;
 	}
-
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-
 	public Materia getMateria() {
 		return materia;
 	}
-
 	public void setMateria(Materia materia) {
 		this.materia = materia;
 	}
-	
 }

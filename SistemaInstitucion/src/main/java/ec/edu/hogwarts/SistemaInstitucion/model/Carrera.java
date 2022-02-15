@@ -33,8 +33,7 @@ public class Carrera implements Serializable{
 	private String modalidad;
 	@Column(name = "carr_duracion")
 	private int duracion;
-	@OneToMany
-	@JoinColumn(name="carr_id")
+	@OneToMany(mappedBy = "carrera")
 	private List<MallaCurricular> mallas;
 	@OneToMany
 	@JoinColumn(name="carr_id")

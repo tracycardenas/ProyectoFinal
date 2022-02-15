@@ -57,21 +57,12 @@
 									<h:form id="form">
 										<p:growl id="messages" showDetail="true"/>
 										<div class="table-stats order-table ov-h">
-										<p:dataTable var="malla" value="#{mallasAcademicasView.mallas}">
-										<!--p:dataTable id="dt-mallas" var="malla" value="#{mallasAcademicasView.mallas}" widgetVar="tablaMallasCurricular"
-													 emptyMessage="No hay mallas curriculares que mostrar. =C)"
-													 filteredValue="#{mallasAcademicasView.mallasFiltro}"
-													 globalFilterFunction="#{mallasAcademicasView.globalFilterFunctionMallasCurrilares}"-->
+										<p:dataTable var="malla" value="#{mallasCurricularesView.mallas}">
 											<f:facet name="header">
-												<!--div class="header">
-													<p:inputText id="globalFilter" onkeyup="PF('tablaMallasCurricular').filter()" 
-																	 style="width:300px" placeholder="Buscar..."/>
-													
-												</div-->
 												<h:outputText value="Listado de Mallas Curriculares" />
 											</f:facet>
 											<p:column headerText="Descripción" filterable="false">
-												<h:outputText value="#{malla.descripcion}" />
+												<h:outputText value="#{malla.carrera.nombre}" />
 											</p:column>
 											
 											<p:column headerText="Estado" filterable="false">
@@ -79,22 +70,36 @@
 											</p:column>
 											
 											<p:column>
-												<p:commandButton type="button" icon="pi pi-eye" styleClass="rounded-button ui-button-flat" />
+												<p:commandButton icon="pi pi-eye" styleClass="rounded-button ui-button-flat"
+																 process="@this" oncomplete="PF('verMallaDialog').show()">
+													<f:setPropertyActionListener value="#{malla}" target="#{mallasCurricularesView.mallaSeleccionada}"/>
+												</p:commandButton>
+												
 												<p:commandButton type="button" icon="pi pi-pencil" styleClass="rounded-button ui-button-info ui-button-flat" />
+												
 												<p:commandButton icon="pi pi-trash" styleClass="rounded-button ui-button-danger ui-button-flat"
 																 process="@this" oncomplete="PF('deleteProductDialog').show()">
-													<f:setPropertyActionListener value="#{malla}" target="#{mallasAcademicasView.mallaSeleccionada}"/>
+																 
+													<f:setPropertyActionListener value="#{malla}" target="#{mallasCurricularesView.mallaSeleccionada}"/>
 												</p:commandButton>
 											</p:column>
 										</p:dataTable>
 										</div>
 										<p:confirmDialog widgetVar="deleteProductDialog" showEffect="fade" width="300"
 								                         message="Borrar malla?" header="Confirmar" severity="warn">
-								            <p:commandButton value="Si" icon="pi pi-check" actionListener="#{mallasAcademicasView.borrarMalla}"
+								            <p:commandButton value="Si" icon="pi pi-check" actionListener="#{mallasCurricularesView.borrarMalla}"
 								                             process="@this" oncomplete="PF('deleteProductDialog').hide()"/>
 								            <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
 								                             onclick="PF('deleteProductDialog').hide()"/>
 								        </p:confirmDialog>
+								        <!-- MODAL PARA VISUALIZAR LA MALLA CURRICULAR -->
+								        <p:dialog header="Agregar Carrera" widgetVar="verMallaDialog" minHeight="450" width="750" showEffect="fade" modal="true"
+								        			>
+											<h:outputText  value="#{mallasCurricularesView.mallaSeleccionada.carrera.nombre}" />
+											
+											<p:commandButton value="Cerrar" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
+								                             onclick="PF('verMallaDialog').hide()"/>
+										</p:dialog><!-- FIN MODAL -->
 									</h:form>
 							
 							</div>
