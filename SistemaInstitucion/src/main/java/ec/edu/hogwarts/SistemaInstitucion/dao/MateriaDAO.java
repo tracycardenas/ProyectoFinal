@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ec.edu.hogwarts.SistemaInstitucion.model.Materia;
+import ec.edu.hogwarts.SistemaInstitucion.model.MateriaPrerrequisito;
 
 @Stateless
 public class MateriaDAO {
@@ -29,6 +30,7 @@ public class MateriaDAO {
 	public Materia read(int id) {
 		
 		Materia op = em.find(Materia.class, id);
+		op.getPrerequisitos().size();
 		return op;
 	}
 	
@@ -72,4 +74,17 @@ public class MateriaDAO {
 		
 		return pro;
 	}
+	
+	/*public List<MateriaPrerrequisito> getPreRequisitos(){
+		 
+		List<MateriaPrerrequisito> listado = new ArrayList<MateriaPrerrequisito>();
+		
+		String jpql = "SELECT op FROM Materia op";
+				
+		
+		Query query = em.createQuery(jpql,MateriaPrerrequisito.class);
+		listado=query.getResultList();
+		
+		return listado;
+	}*/
 }

@@ -67,6 +67,20 @@ public class PersonaDAO {
 		return listado;
 	}
 	
+	public List<Persona> getListPersonas(){
+		 
+		List<Persona> listado = new ArrayList<Persona>();
+		
+		String jpql = "SELECT op FROM Persona op";
+				
+		
+		Query query = em.createQuery(jpql,Persona.class);
+		listado=query.getResultList();
+		
+		return listado;
+	}
+	
+	
 	public Persona buscar(String id) {
 		
 		System.out.println("Llegaste "+id);

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import ec.edu.hogwarts.SistemaInstitucion.dao.MateriaDAO;
 import ec.edu.hogwarts.SistemaInstitucion.model.Materia;
+import ec.edu.hogwarts.SistemaInstitucion.model.MateriaPrerrequisito;
 
 @Stateless
 public class MateriaON implements MateriaONLocal{
@@ -37,4 +38,5 @@ public class MateriaON implements MateriaONLocal{
 	public Materia getMateriaporCodigo(int id) {
 		return daoMateria.read(id);
 	}
+
 }

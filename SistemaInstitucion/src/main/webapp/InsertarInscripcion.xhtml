@@ -96,7 +96,7 @@
 									                            var="objeto_est" itemLabel="#{objeto_est.cedula}" 
 									                            itemValue="#{objeto_est}"
 									                            converter="estudianteConverter" forceSelection="true" onclick="this.value='';">
-												<p:ajax event="itemSelect" update=":form:msgs :form:tabla_datos" />
+												<p:ajax event="itemSelect" update=":form:tabla_datos" />
 									
 									            </p:autoComplete>
 								
@@ -136,7 +136,7 @@
 									                            var="objeto_curso" itemLabel="#{objeto_curso.nombre}" 
 									                            itemValue="#{objeto_curso}"
 									                            converter="cursoConverter" forceSelection="true" onclick="this.value='';">
-												<p:ajax event="itemSelect" update=":formC:msgsC :formC:tabla_datosC" />
+												<p:ajax event="itemSelect" update=":formC:tabla_datosC" />
 									
 									            </p:autoComplete>
 								

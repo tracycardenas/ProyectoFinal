@@ -17,5 +17,5 @@ public interface MallaCurricularONLocal {
 	public void delete (int id) throws Exception;
 	
 	public List<MallaCurricular>getMallaCurricular();
-	
+	public MallaCurricular getMalla(int id) ;
 }

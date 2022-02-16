@@ -36,6 +36,12 @@ public class PersonaON implements PersonaONLocal {
 		return daoPersona.getListEstudiantes();
 	}
 	
+	public List<Persona> getPersonas(){
+		
+		return daoPersona.getListPersonas();
+	}
+	
+	
 	
 	public List<Docente> getDocentes(){
 		return daoPersona.getListDocentes();

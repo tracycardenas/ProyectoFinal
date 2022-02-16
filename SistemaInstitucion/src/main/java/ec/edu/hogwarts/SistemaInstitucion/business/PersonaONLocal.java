@@ -26,4 +26,7 @@ public interface PersonaONLocal {
 	public List<Estudiante> getEstudiantes();
 	public List<Docente> getDocentes();
 	
+	public List<Persona> getPersonas();
+	
+	
 }

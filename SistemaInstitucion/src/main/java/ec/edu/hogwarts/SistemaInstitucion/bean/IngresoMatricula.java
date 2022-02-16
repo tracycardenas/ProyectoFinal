@@ -2,6 +2,7 @@ package ec.edu.hogwarts.SistemaInstitucion.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,6 +18,10 @@ import javax.inject.Named;
 import ec.edu.hogwarts.SistemaInstitucion.business.CalificacionesONLocal;
 import ec.edu.hogwarts.SistemaInstitucion.business.ConfiguracionONLocal;
 import ec.edu.hogwarts.SistemaInstitucion.business.GrupoONLocal;
+import ec.edu.hogwarts.SistemaInstitucion.business.InscripcionONLocal;
+import ec.edu.hogwarts.SistemaInstitucion.business.MallaCurricularONLocal;
+import ec.edu.hogwarts.SistemaInstitucion.business.MateriaONLocal;
+import ec.edu.hogwarts.SistemaInstitucion.business.MateriaPrerrequisitoONLocal;
 import ec.edu.hogwarts.SistemaInstitucion.business.MatriculaONLocal;
 import ec.edu.hogwarts.SistemaInstitucion.business.NivelONLocal;
 import ec.edu.hogwarts.SistemaInstitucion.business.PersonaONLocal;
@@ -24,7 +29,10 @@ import ec.edu.hogwarts.SistemaInstitucion.model.Calificacion;
 import ec.edu.hogwarts.SistemaInstitucion.model.Configuracion;
 import ec.edu.hogwarts.SistemaInstitucion.model.Estudiante;
 import ec.edu.hogwarts.SistemaInstitucion.model.Grupo;
+import ec.edu.hogwarts.SistemaInstitucion.model.Inscripcion;
+import ec.edu.hogwarts.SistemaInstitucion.model.MallaCurricular;
 import ec.edu.hogwarts.SistemaInstitucion.model.Materia;
+import ec.edu.hogwarts.SistemaInstitucion.model.MateriaPrerrequisito;
 import ec.edu.hogwarts.SistemaInstitucion.model.Matricula;
 import ec.edu.hogwarts.SistemaInstitucion.model.Nivel;
 import ec.edu.hogwarts.SistemaInstitucion.model.Persona;
@@ -51,6 +59,18 @@ public class IngresoMatricula implements Serializable{
 	@Inject
 	private ConfiguracionONLocal configuracionON;
 	
+	@Inject
+	private MallaCurricularONLocal mallaON;
+	
+	@Inject
+	private InscripcionONLocal inscripcionON;
+	
+	@Inject
+	private MateriaONLocal materiaON;
+	
+	@Inject
+	private MateriaPrerrequisitoONLocal prereON; 
+	
 	private Matricula matricula = new Matricula();
 	private List<Matricula>listado_matriculas;
 	private List<Estudiante> estudiantes_seleccionados;
@@ -61,14 +81,18 @@ public class IngresoMatricula implements Serializable{
 	private List<Nivel> niveles;
 	private int nivel_id;
 	private List<Materia>materias_selecionadas;
+	private List<Materia>materias;
 	private Grupo grupo;
 	private List<Grupo>grupos;
 	private List<Grupo>grupos_seleccionados;
 	private List<Grupo>grupos_matriculas;
 	private Calificacion calificacion;
 	private List<Calificacion>lista_calificacioness;
+	private List<Calificacion>calificaciones;
 	private Configuracion configuracion;
-	
+	private MallaCurricular malla;
+	private Inscripcion inscripcion;
+	private boolean estado=false;
 	
 
 	@PostConstruct
@@ -79,8 +103,22 @@ public class IngresoMatricula implements Serializable{
 		this.loadCarreras();
 		this.loadNiveles();
 		this.listado_matriculas=matriculaON.getMatricula();
+		this.niveles= new ArrayList<Nivel>();
+		
 		
 	}
+	
+	
+	public List<Calificacion> getCalificaciones() {
+		return calificaciones;
+	}
+
+
+	public void setCalificaciones(List<Calificacion> calificaciones) {
+		this.calificaciones = calificaciones;
+	}
+
+
 	public void loadCarreras() {
 		
 		this.estudiantes_seleccionados=personaON.getEstudiantes();
@@ -172,6 +210,30 @@ public class IngresoMatricula implements Serializable{
 	
 	
 	
+	public List<Materia> getMaterias() {
+		return materias;
+	}
+	public void setMaterias(List<Materia> materias) {
+		this.materias = materias;
+	}
+	public MallaCurricular getMalla() {
+		return malla;
+	}
+	public void setMalla(MallaCurricular malla) {
+		this.malla = malla;
+	}
+	public Inscripcion getInscripcion() {
+		return inscripcion;
+	}
+	public void setInscripcion(Inscripcion inscripcion) {
+		this.inscripcion = inscripcion;
+	}
+	public boolean isEstado() {
+		return estado;
+	}
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
 	public List<Estudiante> getEstudiantes_seleccionados() {
 	return estudiantes_seleccionados;
 	}
@@ -287,6 +349,7 @@ public class IngresoMatricula implements Serializable{
     //BUSCADOR DE ESTUDIANTE
     
 	public List<Persona> autocompletar_Estudiantes(String query) {
+		this.estado=false;
    	 List<Persona> lista_resultado = new ArrayList<Persona>();
         for (Persona c : estudiantes_seleccionados) {
             if (c.getCedula().toLowerCase().contains(query.toLowerCase())) {
@@ -333,49 +396,179 @@ public class IngresoMatricula implements Serializable{
 		   return nivelON.getNiveles();
 	   }
 	   
-		public List<SelectItem> getSelecItemNiveles() {
-			List<SelectItem> selectItems = new ArrayList<SelectItem>();
-			List<Nivel> listaNiveles= niveles;
 
-			for (Nivel mater : listaNiveles) {
-				SelectItem item = new SelectItem(mater.getNivel());
-				selectItems.add(item);
-
-			}
-			return selectItems;
-		}
 	   
-		public void actualizarMaterias(AjaxBehaviorEvent e) {
+		public List<Grupo> actualizarMaterias() {
 
-			materias_selecionadas=new ArrayList<Materia>();
-			grupos_seleccionados=new ArrayList<Grupo>();
+			if(estudiante_seleccionado!=null) {
+				
 			
-			grupos= grupoON.getGrupos();
-	
-			for (int i = 0; i < grupos.size(); i++) {
+				grupos= grupoON.getGrupos();
+				
+				inscripcion=inscripcionON.getInscripcionEstudiante(estudiante_seleccionado.getCedula());
 
-				Grupo gru=grupos.get(i);
-				//Redifinir lo que haya estado intentando hacer :v
-				/*if(gru.getMateria().getNivel().getId()==nivel_id) {
+				malla=mallaON.getMalla(inscripcion.getMallaCurricular().getId());
+				
+				niveles=malla.getNiveles();
+				calificaciones=new ArrayList<Calificacion>();
+				materias=new ArrayList<Materia>();
+			
+				int mayor=0;
+				materias_selecionadas=new ArrayList<Materia>();
+				grupos_seleccionados=new ArrayList<Grupo>();
+				
+				//Verifica si el estudiante tiene registrada alguna calificacion
+				
+				
+				if(calificacionON.getCalificacion().size()>0) {
+				
+				for(Calificacion cali : calificacionON.getCalificacion()) {
 		
-					try {
-						grupos_seleccionados.add(gru);
-					} catch (Exception e2) {
-						// TODO: handle exception
-						System.out.println("No guarde");
+					
+					if(estudiante_seleccionado.getCedula().equalsIgnoreCase(cali.getEstudiante().getCedula())) {
+					
+						if(mayor<cali.getGrupo().getMateria().getNumeroNivel()) {
+						mayor=cali.getGrupo().getMateria().getNumeroNivel();
+						}
+						calificaciones.add(cali);
+						
+						estado=true;
+					}
+				}}
+				
+				// Cargar Informacion de : grupos, inscripcion,malla y niveles;
+				
+	
+				
+				// Cargar grupos seleccionados
+	
+				if(estado) {
+					
+					//Mayor: esta variable contiene el nivel mas alto que a cursado el estudiante
+					//A continuacion se obtendra todas las materias del nivel "mayor" e inferiores para 
+					//verificar que todas esten aprobadas 
+					
+					for (Nivel niv: niveles) {
+						
+						for(Calificacion cal: calificaciones) {
+							
+							if(niv.getNivel() <= mayor &&  niv.getMateria().getId()==cal.getGrupo().getMateria().getId() && cal.getEstado().equalsIgnoreCase("Reprobado")) {
+								
+								materias.add(niv.getMateria());
+								for(Grupo g: grupoON.getGrupos()) {
+									
+									if(g.getMateria().getId()==niv.getMateria().getId()) {
+										
+										boolean b=true;
+										for(Grupo grup: grupos_seleccionados) {
+											
+											if(grup.getMateria().getId()==g.getMateria().getId()) {
+												b=false;
+											}
+										}
+										
+										if(b) {
+										grupos_seleccionados.add(g);
+										}
+										
+										
+									}
+								}
+								
+							}
+							
+						}
+	
 					}
 					
-				}*/
+					for(Nivel niv : niveles) {
+						
+						if (niv.getNivel()==mayor+1) {
+						
+							for(Grupo g: grupoON.getGrupos()) {
+								
+								if(g.getMateria().getId()==niv.getMateria().getId() ) {
+									
+									grupos_seleccionados.add(g);
+									
+								}
+							}
+							
+					}
+						
+					}
+					
+					
+					
+				}else {
+					
+					
+					
+					for(Nivel niv: niveles) {
+						
+						if(niv.getNivel()==1) {
+							
+							for(Grupo g: grupoON.getGrupos()) {
+								
+								if(g.getMateria().getId()==niv.getMateria().getId()) {
+									
+									grupos_seleccionados.add(g);
+								}
+								
+							}
 				
-			}
+						}
+					}
+	
+					
+				}
+				
+				
+				
+				}
+				
+				return grupos_seleccionados;
+				
+			}	
+	public boolean Estado(int mat_cod) {
+				
+				boolean estado_materia=false;
+				
+				System.out.println("Cod: "+mat_cod);
+				
+				if(materiaON.getMateriaporCodigo(mat_cod).getNumeroNivel()!=1) {
+				
+				if(estado) {
+					
+					List<MateriaPrerrequisito>pre=new ArrayList<MateriaPrerrequisito>();
+
+					pre=materiaON.getMateriaporCodigo(mat_cod).getPrerequisitos();
+						
+						
+			
+				
+				 for(MateriaPrerrequisito mp :pre) {
+					 
+					 for(Materia m : materias) {
+						 m.setPrerequisitos(pre);
+						 
+						 if(mp.getMateriaRequerida().getId()==m.getId()) {
+							 
+							 System.out.println("mp: "+mp.getMateriaRequerida().getId());
+							 System.out.println("m: "+m.getId());
+							 estado_materia=true;
+						 }
+					 }
+					 
+				 }
+				
+
+			}}
 			
 			
-			nivel=nivelON.getNivel(nivel_id);	
-			//materias_selecionadas=nivel.getMaterias();
 			
-			
-			
-		}	
+			return estado_materia;
+		}
 	   
 
 	   
@@ -455,6 +648,12 @@ public class IngresoMatricula implements Serializable{
 	    }
 	    
 	    // Listar
+	    
+	   public void construirObjetos() {
+		   
+		   
+		   
+	   }
 	    
 	    
 

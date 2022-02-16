@@ -21,7 +21,7 @@ public class EstudianteConverter implements Converter{
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
     	
-    	System.out.println("Legue : "+ value);
+    	
         if (context == null) {
             throw new NullPointerException("context");
         }
@@ -56,7 +56,7 @@ public class EstudianteConverter implements Converter{
         if (component == null) {
             throw new NullPointerException("component");
         }
-        System.out.println("return : "+String.valueOf(((Persona) value).getCedula()));
+       
         return String.valueOf(((Persona) value).getCedula());
     }
 

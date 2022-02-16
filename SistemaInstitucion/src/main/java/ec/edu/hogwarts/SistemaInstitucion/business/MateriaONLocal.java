@@ -6,6 +6,7 @@ import javax.ejb.Local;
 
 
 import ec.edu.hogwarts.SistemaInstitucion.model.Materia;
+import ec.edu.hogwarts.SistemaInstitucion.model.MateriaPrerrequisito;
 
 @Local
 public interface MateriaONLocal {
@@ -19,5 +20,6 @@ public interface MateriaONLocal {
 	public List<Materia>getMaterias();
 	
 	public Materia getMateriaporCodigo(int id);
+
 	
 }

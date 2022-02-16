@@ -55,7 +55,7 @@ public class CursoConverter implements Converter{
         if (component == null) {
             throw new NullPointerException("component");
         }
-        System.out.println("return : "+String.valueOf(((Carrera) value).getId()));
+        
         return String.valueOf(((Carrera) value).getId());
     }
 

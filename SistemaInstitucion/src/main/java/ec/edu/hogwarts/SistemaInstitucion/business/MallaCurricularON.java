@@ -34,4 +34,9 @@ public class MallaCurricularON implements MallaCurricularONLocal {
 		
 		return daoMallaCurricular.getList();
 	}
+	
+	public MallaCurricular getMalla(int id) {
+		
+		return daoMallaCurricular.read(id);
+	}
 }

@@ -29,6 +29,7 @@ public class MallaCurricularDAO {
 	public MallaCurricular read(int id) {
 		
 		MallaCurricular op = em.find(MallaCurricular.class, id);
+		op.getNiveles().size();
 		return op;
 	}
 	
