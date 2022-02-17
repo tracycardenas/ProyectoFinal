@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -21,7 +21,7 @@ import ec.edu.hogwarts.SistemaInstitucion.model.MateriaPrerrequisito;
 import ec.edu.hogwarts.SistemaInstitucion.model.PlanAnalitico;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class MateriasView implements Serializable{
 	
 	/**
@@ -30,6 +30,9 @@ public class MateriasView implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Inject
 	private MateriaONLocal materiaON;
+	
+	private int id;
+	
 	private Materia materia;
 	private Materia materiaActual;
 	private PlanAnalitico planAnalitico;
@@ -64,6 +67,15 @@ public class MateriasView implements Serializable{
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+	
+	public String editarMateria() {
+		return "Insertar-Materia?faces-redirect=true&id="+this.materiaActual.getId();
+	}
+	
+	public void cargarDatosMateria() {
+		Materia m = materiaON.getMateriaporCodigo(this.id);
+		this.materia = m;
 	}
 	
 	public void borrarMateria() {
@@ -270,5 +282,10 @@ public class MateriasView implements Serializable{
 	public void setMateriasSeleccionadas(List<Materia> materiasSeleccionadas) {
 		this.materiasSeleccionadas = materiasSeleccionadas;
 	}
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 }
