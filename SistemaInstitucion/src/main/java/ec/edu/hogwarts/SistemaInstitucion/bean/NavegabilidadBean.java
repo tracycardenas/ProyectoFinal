@@ -96,6 +96,11 @@ public class NavegabilidadBean implements Serializable {
 	}
 		
 
-	
+	public String listarMaterias() {
+		return "Listar-Materia?faces-redirect=true";
+	}
+	public String listarGrupos() {
+		return "Listar-Grupos?faces-redirect=true";
+	}
 
 }
