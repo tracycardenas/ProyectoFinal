@@ -7,10 +7,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<f:metadata>
-		<!-- f:viewParam name="id" value="#{clienteBean.cedula}"></f:viewParam> 
-		<f:viewAction action="#{clienteBean.loadData()}"/-->
-	</f:metadata>
+	
 </h:head>
 
 <ui:composition template="/template/plantilla.xhtml">
@@ -78,8 +75,14 @@
 											<p:column field="totalHoras()" headerText="Créditos" filterable="false"/>
 											<p:column field="numeroNivel" headerText="Nivel" filterable="false"/>
 											<p:column>
-												<p:commandButton type="button" icon="pi pi-eye" styleClass="rounded-button ui-button-flat" />
-												<p:commandButton type="button" icon="pi pi-pencil" styleClass="rounded-button ui-button-info ui-button-flat" />
+												<p:commandButton icon="pi pi-eye" styleClass="rounded-button ui-button-flat"
+																 oncomplete="PF('verMateria').show()" process="@this" update="@none">
+													<f:setPropertyActionListener value="#{materia}" target="#{materiasView.materiaActual}"/>
+												</p:commandButton>
+												<p:commandButton icon="pi pi-pencil" styleClass="rounded-button ui-button-info ui-button-flat"
+																 action="#{materiasView.editarMateria()}">
+													<f:setPropertyActionListener value="#{materia}" target="#{materiasView.materiaActual}"/>
+												</p:commandButton>
 												<!-- Funcionando correctamente -->
 												<p:commandButton icon="pi pi-trash" styleClass="rounded-button ui-button-danger ui-button-flat"
 																 process="@this" oncomplete="PF('deleteProductDialog').show()">
@@ -95,6 +98,11 @@
 								            <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
 								                             onclick="PF('deleteProductDialog').hide()"/>
 								        </p:confirmDialog>
+								        
+								        <p:dialog id="verMateria" header="Detalle Materia" widgetVar="verMateria" minHeight="450" width="550" showEffect="fade" modal="true">
+											<p:autoUpdate/>
+												#{materiasView.materia.codigo}
+										</p:dialog>
 									</h:form>
 							
 							</div>
