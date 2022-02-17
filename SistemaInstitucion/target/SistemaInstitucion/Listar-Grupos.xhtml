@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:metadata>
+		<!-- f:viewParam name="id" value="#{clienteBean.cedula}"></f:viewParam> 
+		<f:viewAction action="#{clienteBean.loadData()}"/-->
+	</f:metadata>
+</h:head>
+
+<ui:composition template="/template/plantilla.xhtml">
+	<ui:define name="title">
+        Oferta Académica
+    </ui:define>
+	<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Dashboard</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li class="active">Grupos</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Grupos Ofertados</strong>
+								<div class="float-right">
+									<a class="btn btn-primary" href="Insertar-Grupo.xhtml" role="button"><i class="fa fa-plus-square"/></a>
+								</div>
+							</div>
+							<div class="card-body">
+									<h:form id="form">
+										<p:growl id="messages" showDetail="true"/>
+										<div class="table-stats order-table ov-h">
+										<p:dataTable id="dt-grupos" var="grupo" value="#{gruposOfertadosView.grupos}" widgetVar="tablaGrupos"
+													 emptyMessage="No hay grupos que mostrar. =C"
+													 filteredValue="#{gruposOfertadosView.gruposFiltro}"
+													 globalFilterFunction="#{gruposOfertadosView.globalFilterFunctionGrupos}">
+											<f:facet name="header">
+												<div class="header">
+													<p:inputText id="globalFilter" onkeyup="PF('tablaGrupos').filter()" 
+																	 style="width:300px" placeholder="Buscar..."/>
+													<div class="float-right">
+														<p:commandButton value="Exportar" icon="pi pi-upload" styleClass="ui-button-help" ajax="false">
+									                    	<p:dataExporter type="pdf" target="dt-grupos" fileName="grupos"/>
+									                	</p:commandButton>
+													</div>
+												</div>
+											</f:facet>
+											<p:column headerText="Nombre">
+												<h:outputText value="#{grupo.nombre}" />
+											</p:column>
+											<p:column headerText="Materia">
+												<h:outputText value="#{grupo.materia.nombre}" />
+											</p:column>
+											<p:column headerText="Modalidad">
+												<h:outputText value="#{grupo.modalidad}" />
+											</p:column>
+											<p:column headerText="Cupos">
+												<h:outputText value="#{grupo.cupos}" />
+											</p:column>
+											<p:column headerText="Docente">
+												<h:outputText value="#{grupo.docente.nombre} #{grupo.docente.apellido}"/>
+											</p:column>
+											<p:column headerText="Aula">
+												<h:outputText value="#{grupo.espacioFisico.descripcion}"/>
+											</p:column>
+											<p:column>
+												<p:commandButton type="button" icon="pi pi-eye" styleClass="rounded-button ui-button-flat" />
+												<p:commandButton type="button" icon="pi pi-pencil" styleClass="rounded-button ui-button-info ui-button-flat" />
+												<!-- Funcionando correctamente -->
+												<p:commandButton icon="pi pi-trash" styleClass="rounded-button ui-button-danger ui-button-flat"
+																 process="@this" oncomplete="PF('deleteProductDialog').show()">
+													<f:setPropertyActionListener value="#{grupo}" target="#{gruposOfertadosView.grupoActual}"/>
+												</p:commandButton>
+											</p:column>
+										</p:dataTable>
+										</div>
+										<p:confirmDialog widgetVar="deleteProductDialog" showEffect="fade" width="300"
+								                         message="Borrar grupo?" header="Confirmar" severity="warn">
+								            <p:commandButton value="Si" icon="pi pi-check" actionListener="#{gruposOfertadosView.borrarGrupo}"
+								                             process="@this" oncomplete="PF('deleteProductDialog').hide()"/>
+								            <p:commandButton value="No" type="button" styleClass="ui-button-secondary" icon="pi pi-times"
+								                             onclick="PF('deleteProductDialog').hide()"/>
+								        </p:confirmDialog>
+									</h:form>
+							
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+</html>

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.json.bind.annotation.JsonbPropertyOrder;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -20,6 +21,7 @@ public class Estudiante extends Persona implements Serializable{
 	private String representante;
 	
 	@OneToMany(mappedBy = "estudiante" ,orphanRemoval= true)
+	@JsonbTransient
 	private List<Calificacion> calificacioness;
 
 	public String getRepresentante() {

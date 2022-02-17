@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:metadata>
+		<!-- f:viewParam name="id" value="#{clienteBean.cedula}"></f:viewParam> 
+		<f:viewAction action="#{clienteBean.loadData()}"/-->
+	</f:metadata>
+</h:head>
+
+<ui:composition template="/template/plantilla.xhtml">
+	<ui:define name="title">
+        Materias
+    </ui:define>
+	<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Dashboard</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li><a href="Listar-Materia.xhtml">Materias</a></li>
+									<li class="active">Agregar Materia</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Agregar Materia</strong>
+							</div>
+							<div class="card-body">
+								<h:form id="form">
+									<div class="row">
+										<div class="col-6">
+											<div class="col-12 ui-fluid p-field">
+												<h5>Información General</h5>
+											</div><hr/>
+											<div class="row">
+												<div class="col-6 ui-fluid">
+													<span class="ui-float-label">
+														<p:inputText id="codigo" value="#{materiasView.materia.codigo}" required="true"/>
+														<p:outputLabel for="@previous" value="Código"/>
+													</span>
+												</div>
+												<div class="col-6 ui-fluid">
+													<span class="ui-float-label">
+														<p:inputNumber id="nivel" value="#{materiasView.materia.numeroNivel}" required="true"/>
+														<p:outputLabel for="@previous" value="Nivel"/>
+													</span>
+												</div>
+											</div><br/>
+											<div class="row">
+												<div class="col-12 ui-fluid">
+													<span class="ui-float-label">
+														<p:inputText id="nombre" value="#{materiasView.materia.nombre}" required="true"/>
+														<p:outputLabel for="@previous" value="Nombre"/>
+													</span>
+												</div>
+												
+											</div><br/>
+											<div class="col-12 ui-fluid p-field">
+													<h5>Campo de formación</h5>
+											</div><hr/>
+											<div class="row">
+												<div class="col-12 ui-fluid p-field">
+									                <p:selectOneMenu id="option" value="#{materiasView.materia.descripcion}">
+									                    <f:selectItem itemLabel="Fundamentos Teóricos" itemValue="FUNDAMENTOS TEÓRICOS"/>
+									                    <f:selectItem itemLabel="Integración de saberes, contextos y cultura" itemValue="INTEGRACIÓN DE SABERES, CONTEXTOS Y CULTURA"/>
+									                    <f:selectItem itemLabel="Comunicación y Lenguajes" itemValue="COMUNICACIÓN Y LENGUAJES"/>
+									                    <f:selectItem itemLabel="Epistemología y Metodología de la investigación" itemValue="EPISTEMOLOGÍA Y METODOLOGÍA DE LA INVESTIGACIÓN"/>
+									                    <f:selectItem itemLabel="Praxis Profesional" itemValue="PRAXIS PROFESIONAL"/>
+									                    <f:facet name="footer">
+									                        <p:divider styleClass="p-mt-0" />
+									                        <h:outputText value="5 optiones" style="font-weight:bold;"/>
+									                    </f:facet>
+									                </p:selectOneMenu>
+									            </div>
+											</div><br/>
+											<div class="col-12 ui-fluid p-field">
+													<h5>Unidad de formación</h5>
+											</div><hr/>
+											<div class="row">
+												<div class="col-12 ui-fluid p-field">
+													<p:selectOneRadio id="unidad" value="#{materiasView.materia.unidad}" layout="responsive" columns="3">
+														<f:selectItem itemValue="BÁSICA" itemLabel="Básica"/>
+														<f:selectItem itemValue="PROFESIONAL" itemLabel="Profesional"/>
+														<f:selectItem itemValue="TITULACIÓN" itemLabel="Titulación"/>
+													</p:selectOneRadio>	
+												</div>
+											</div><br/>
+											<div class="col-12 ui-fluid p-field">
+												<h5>Horas propuestas</h5>
+											</div><hr/>
+											<div class="row">
+												<div class="col-4 ui-fluid p-field">
+													<span class="ui-float-label">
+												       <p:inputNumber id="horasClase" value="#{materiasView.materia.horasClase}"/>
+												       <p:outputLabel for="@previous" value="Clase"/>
+													</span>
+												</div>
+												<div class="col-4 ui-fluid p-field">
+													<span class="ui-float-label">
+												       <p:inputNumber id="horasPractica"  value="#{materiasView.materia.horasPracticas}"/>
+												       <p:outputLabel for="@previous" value="Laboratorio"/>
+													</span>
+												</div>
+												<div class="col-4 ui-fluid p-field">
+													<span class="ui-float-label">
+												       <p:inputNumber id="horasUnidad" value="#{materiasView.materia.horasUnidad}"/>
+												       <p:outputLabel for="@previous" value="Unidad"/>
+													</span>
+												</div>
+											</div><br/>
+											<div class="row">
+												<div class="col-5 ui-fluid p-field">
+													Materias Requeridas
+												</div>
+													<p:commandButton type="button" icon="pi pi-plus" onclick="PF('agregarMateriasRequeridas').show()"/>
+											</div><hr/>
+											<div class="row">
+												<div class="col-12 ui-fluid p-field">
+													<p:dataTable id="dt-materias-seleccion" var="materia" value="#{materiasView.materiasSeleccionadas}" allowUnsorting="false">
+							                    		<p:column field="codigo" headerText="Código" filterable="false" />
+														<p:column field="nombre" headerText="Nombre" filterable="false" />
+														<p:column>
+															<p:commandButton icon="pi pi-trash" styleClass="rounded-button ui-button-danger ui-button-flat"
+																			 process="@this" action="#{materiasView.borrarMateriasSeleccion()}">
+																<f:setPropertyActionListener value="#{materia}" target="#{materiasView.materiaActual}"/>
+															</p:commandButton>
+														</p:column>
+							                    	</p:dataTable>
+							                    	
+							                    	<!-- MODAL PARA AGREGAR MATERIAS -->
+							                    	<p:dialog header="Agregar Materia" widgetVar="agregarMateriasRequeridas" minHeight="450" width="550" showEffect="fade" modal="true">
+														<p:dataTable id="dt-materias-preseleccion" var="m" value="#{materiasView.materias}" 
+																	 widgetVar="tablaMaterias" emptyMessage="No hay materias"
+														    		 filteredValue="#{materiasView.materiasFiltro}" scrollable="true" scrollHeight="250"
+																	 globalFilterFunction="#{materiasView.globalFilterFunctionMaterias}">
+														    <f:facet name="header">
+																	<p:inputText id="globalFilter" onkeyup="PF('tablaMaterias').filter()" style="width:300px" placeholder="Buscar..."/>
+															</f:facet>
+															<p:column field="codigo" headerText="Código" filterable="false"/>
+															<p:column field="nombre" headerText="Nombre" filterable="false"/>
+															<p:column headerText="Agregar">
+																<p:commandButton icon="pi pi-check" styleClass="rounded-button ui-button-flat"
+																			 	 process="@this" action="#{materiasView.agregarMateriasSeleccion}">
+																	<f:setPropertyActionListener value="#{m}" target="#{materiasView.materiaActual}"/>
+																</p:commandButton>
+															</p:column>
+														</p:dataTable>
+													</p:dialog><!-- FIN MODAL -->
+							                    	
+												</div>
+											</div>
+										</div>
+										
+										<div class="col-6">
+											<div class="col-12 ui-fluid p-field">
+												<h5>Plan Analítico</h5> <hr/>
+											</div>
+											<div class="col-12 ui-fluid p-field"> <!-- PLAN ANALITICO - intención -->
+												<span class="ui-float-label">
+													<p:inputText id="intencion" value="#{materiasView.planAnalitico.intencion}"/>
+													<p:outputLabel for="@previous" value="Intension de la materia"/>
+												</span>
+							                </div><br/>
+							                <div class="col-12 ui-fluid p-field"> <!-- PLAN ANALITICO - objetivo general -->
+												<span class="ui-float-label">
+													<p:inputTextarea id="objetivoGeneral" value="#{materiasView.planAnalitico.objetivoGeneral}"/>
+													<p:outputLabel for="@previous" value="Objetivo General"/>
+												</span>
+											</div><br/>
+											<div class="col-12 ui-fluid p-field"> <!-- PLAN ANALITICO - temas -->
+												<span class="ui-float-label">
+													<p:inputTextarea id="temas" value="#{materiasView.planAnalitico.temas}"/>
+													<p:outputLabel for="@previous" value="Temas de la asignatura"/>
+												</span>
+											</div><br/>
+											<div class="col-12 ui-fluid p-field"> <!-- PLAN ANALITICO - politicas de evaluación -->
+												<span class="ui-float-label">
+													<p:inputTextarea id="politica" value="#{materiasView.planAnalitico.politicaEvaluacion}"/>
+													<p:outputLabel for="@previous" value="Política de evaluación"/>
+												</span>
+											</div><br/>
+											<div class="col-12 ui-fluid p-field">
+												<span class="ui-float-label">
+													<p:inputTextarea id="bibliografias" value="#{materiasView.planAnalitico.bibliografia}"/>
+													<p:outputLabel for="@previous" value="Bibliografías"/>
+												</span>
+											</div>
+										</div><br/><br/>
+										<div class="col-12">
+											<hr/>
+											<p:commandButton value="Guardar" icon="pi pi-check" 
+															 action="#{materiasView.guardarMateria}"/>
+										</div>
+									</div>
+								</h:form>
+							
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+</html>

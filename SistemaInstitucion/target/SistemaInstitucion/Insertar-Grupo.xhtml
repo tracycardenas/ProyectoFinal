@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:metadata>
+		<!-- f:viewParam name="id" value="#{clienteBean.cedula}"></f:viewParam> 
+		<f:viewAction action="#{clienteBean.loadData()}"/-->
+	</f:metadata>
+</h:head>
+
+<ui:composition template="/template/plantilla.xhtml">
+	<ui:define name="title">
+        Agregar Grupo
+    </ui:define>
+	<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Dashboard</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li><a href="Listar-Grupos.xhtml">Grupos</a></li>
+									<li class="active">Agregar Grupo</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Agregar Grupo</strong>
+							</div>
+							<div class="card-body">
+								<h:form id="form">
+									<div class="row">
+										<div class="col-6"> <!-- FIN LADO IZQUIERDO -->
+											<div class="col-12 ui-fluid p-field">
+												<h5>Información General</h5>
+											</div><hr/>
+											<div class="row">
+												<div class="col-12 ui-fluid">
+													<span class="ui-float-label">
+														<p:inputText id="codigo" value="#{gruposOfertadosView.grupo.nombre}" required="true"/>
+														<p:outputLabel for="@previous" value="Nombre"/>
+													</span>
+												</div><br/><br/><br/>
+												<div class="col-6 ui-fluid">
+													<span class="ui-float-label">
+														<p:inputText id="cupos" value="#{gruposOfertadosView.grupo.cupos}" required="true"/>
+														<p:outputLabel for="@previous" value="Cupos"/>
+													</span>
+												</div>
+												<div class="col-6 ui-fluid">
+													<span class="ui-float-label">
+														<p:inputText id="nombre" value="#{gruposOfertadosView.grupo.periodo}" required="true"/>
+														<p:outputLabel for="@previous" value="Periodo"/>
+													</span>
+												</div>
+											</div><br/>
+											
+											<div class="col-12 ui-fluid p-field">
+													<h5>Modalidad</h5>
+											</div><hr/>
+											<div class="row">
+												<div class="col-12 ui-fluid p-field">
+													<p:selectOneRadio id="modalidad" value="#{gruposOfertadosView.grupo.modalidad}" layout="responsive" columns="1">
+														<f:selectItem itemValue="MATUTINA" itemLabel="Matutina"/>
+														<f:selectItem itemValue="VESPERTINA" itemLabel="Vespertina"/>
+														<f:selectItem itemValue="NOCTURNA" itemLabel="Nocturna"/>
+													</p:selectOneRadio>	
+												</div>
+											</div><br/>
+											
+										</div> <!-- FIN LADO IZQUIERDO -->
+										
+										<div class="col-6"> <!-- INICIO LADO DERECHO -->
+											<div class="row"> <!-- Materias -->
+												<div class="col-12 ui-fluid p-field">
+													Materia
+													<p:commandButton type="button" icon="pi pi-plus-circle" onclick="PF('agregarMateriasRequeridas').show()"
+																	 styleClass="rounded-button ui-button-info ui-button-flat"/>	
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-12 ui-fluid p-field">
+													<p:dataTable id="dt-materias-seleccionada" var="materia" value="#{gruposOfertadosView.materiaSeleccionada}" allowUnsorting="false">
+							                    		<p:column headerText="Código">
+							                    			<h:outputText value="#{materia.codigo}" />
+							                    		</p:column>
+							                    		<p:column headerText="Nombre">
+							                    			<h:outputText value="#{materia.nombre}" />
+							                    		</p:column>
+							                    	</p:dataTable>
+							                    	
+							                    	<!-- MODAL PARA AGREGAR MATERIAS -->
+							                    	<p:dialog header="Agregar Materia" widgetVar="agregarMateriasRequeridas" minHeight="450" width="550" showEffect="fade" modal="true">
+														<p:dataTable id="dt-materias-seleccion" var="m" value="#{gruposOfertadosView.materias}"
+																	 widgetVar="tablaMaterias" emptyMessage="No hay materias"
+														    		 filteredValue="#{gruposOfertadosView.materiasFiltro}" scrollable="true" scrollHeight="250"
+																	 globalFilterFunction="#{gruposOfertadosView.globalFilterFunctionMaterias}">
+														    <f:facet name="header">
+																	<p:inputText id="globalFilter" onkeyup="PF('tablaMaterias').filter()" style="width:300px" placeholder="Buscar..."/>
+															</f:facet>
+															<p:column field="codigo" headerText="Código" filterable="false"/>
+															<p:column field="nombre" headerText="Nombre" filterable="false"/>
+															<p:column headerText="Agregar">
+																<p:commandButton icon="pi pi-check" styleClass="rounded-button ui-button-flat"
+																				 oncomplete="PF('agregarMateriasRequeridas').hide()"
+																			 	 process="@this" action="#{gruposOfertadosView.asignarMateria}">
+																	<f:setPropertyActionListener value="#{m}" target="#{gruposOfertadosView.materiaSeleccionada}"/>
+																</p:commandButton>
+															</p:column>
+														</p:dataTable>
+													</p:dialog><!-- FIN MODAL -->
+												</div>
+											</div><br/>
+											
+											<div class="row"> <!-- **********************Docente********************** -->
+												<div class="col-12 ui-fluid p-field">
+													Docente Asignado
+													<p:commandButton type="button" icon="pi pi-user-plus" onclick="PF('agregarDocente').show()"
+																	 styleClass="rounded-button ui-button-info ui-button-flat" />
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-12 ui-fluid p-field">
+													<p:dataTable id="dt-docente-seleccionado" var="docente" value="#{gruposOfertadosView.docenteSeleccionado}" allowUnsorting="false">
+							                    		<p:column headerText="Docente">
+							                    			<h:outputText value="#{docente.nombre} #{docente.apellido}" />
+							                    		</p:column>
+							                    		<p:column headerText="Especialidad">
+							                    			<h:outputText value="#{docente.especialidad}" >
+							                    			</h:outputText>
+							                    		</p:column>
+							                    	</p:dataTable>
+							                    	
+							                    	<!-- MODAL PARA AGREGAR Docentes -->
+							                    	<p:dialog header="Designar Docente" widgetVar="agregarDocente" minHeight="450" width="650" showEffect="fade" modal="true">
+														<p:dataTable id="dt-docente-seleccion" var="d" value="#{gruposOfertadosView.docentes}"
+																	 widgetVar="tablaDocentes" emptyMessage="No hay docente buscado"
+														    		 filteredValue="#{gruposOfertadosView.docentesFiltro}" scrollable="true" scrollHeight="250"
+																	 globalFilterFunction="#{gruposOfertadosView.globalFilterFunctionDocentes}">
+														    <f:facet name="header">
+																	<p:inputText id="globalFilter" onkeyup="PF('tablaDocentes').filter()" style="width:300px" placeholder="Buscar..."/>
+															</f:facet>
+															<p:column field="nombre" headerText="Nombre" filterable="false"/>
+															<p:column field="apellido" headerText="Apellido" filterable="false"/>
+															<p:column field="especialidad" headerText="Especialidad" filterable="false"/>
+															<p:column headerText="Agregar">
+																<p:commandButton icon="pi pi-check" styleClass="rounded-button ui-button-flat"
+																				 oncomplete="PF('agregarDocente').hide()"
+																			 	 process="@this" action="#{gruposOfertadosView.asignarDocente}">
+																	<f:setPropertyActionListener value="#{d}" target="#{gruposOfertadosView.docenteSeleccionado}"/>
+																</p:commandButton>
+															</p:column>
+														</p:dataTable>
+													</p:dialog><!-- FIN MODAL -->
+												</div>
+											</div>
+											<br/>
+											
+											<div class="row"> <!-- **********************Aula Designada********************** -->
+												<div class="col-12 ui-fluid p-field">
+													Aula Asignada
+													<p:commandButton type="button" icon="pi pi-plus-circle" onclick="PF('agregarEspacioFisico').show()"
+																	 styleClass="rounded-button ui-button-info ui-button-flat" />
+												</div>
+											</div>
+											<div class="row">	<!-- GENERAL ROW CONTENT FOR ESPACIOFISICO -->
+												<div class="col-12 ui-fluid p-field">
+													<p:dataTable id="dt-espacioFisico-seleccionado" var="espacio" value="#{gruposOfertadosView.espacioFisicoSeleccionado}" allowUnsorting="false">
+							                    		<p:column headerText="Descripción">
+							                    			<h:outputText value="#{espacio.descripcion}" />
+							                    		</p:column>
+							                    		<p:column headerText="Ubicación">
+							                    			<h:outputText value="#{espacio.ubicacion}" >
+							                    			</h:outputText>
+							                    		</p:column>
+							                    	</p:dataTable>
+							                    	
+							                    	<!-- MODAL PARA AGREGAR ESPACIO FISICO -->
+							                    	<p:dialog header="Designar Aula" widgetVar="agregarEspacioFisico" minHeight="450" width="650" showEffect="fade" modal="true">
+														<p:dataTable id="dt-espacioFisico-seleccion" var="e" value="#{gruposOfertadosView.espaciosFisicos}"
+																	 widgetVar="tablaEspaciosFisicos" emptyMessage="No hay aula buscada"
+														    		 filteredValue="#{gruposOfertadosView.espaciosFisicosFiltro}" scrollable="true" scrollHeight="250"
+																	 globalFilterFunction="#{gruposOfertadosView.globalFilterFunctionEspaciosFisicos}">
+														    <f:facet name="header">
+																	<p:inputText id="globalFilter" onkeyup="PF('tablaEspaciosFisicos').filter()" style="width:300px" placeholder="Buscar..."/>
+															</f:facet>
+															<p:column field="descripcion" headerText="Descripción" filterable="false"/>
+															<p:column field="ubicacion" headerText="Ubicación" filterable="false"/>
+															<p:column headerText="Agregar">
+																<p:commandButton icon="pi pi-check" styleClass="rounded-button ui-button-flat"
+																				 oncomplete="PF('agregarEspacioFisico').hide()"
+																			 	 process="@this" action="#{gruposOfertadosView.asignarEspacioFisico}">
+																	<f:setPropertyActionListener value="#{e}" target="#{gruposOfertadosView.espacioFisicoSeleccionado}"/>
+																</p:commandButton>
+															</p:column>
+														</p:dataTable>
+													</p:dialog><!-- FIN MODAL -->
+												</div>
+											</div>
+											
+										</div><br/><br/>	<!-- FIN LADO DERECHO -->
+										<div class="col-12">
+											<hr/>
+											<p:commandButton value="Guardar" icon="pi pi-check" 
+															 action="#{gruposOfertadosView.guardarGrupo}"/>
+										</div>
+									</div>
+								</h:form>
+							
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+</html>

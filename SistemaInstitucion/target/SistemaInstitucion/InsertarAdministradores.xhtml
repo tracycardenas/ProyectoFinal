@@ -9,12 +9,57 @@
 <h:head></h:head> 
 
 <body> 
-<ui:composition template="/template/plantillaLogin.xhtml">
+<ui:composition template="/template/plantilla.xhtml">
 	<ui:define name="title">
 		PORTAL WEB
 	</ui:define>
 	<ui:define name="content">
-	
+	<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Dashboard</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li class="active">Insertar Administradores</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Agregar Administradores</strong>
+								<h:form>
+								<div class="float-right">
+									<a class="btn btn-primary" href="InsertarAdministradores.xhtml" role="button"><i class="fa fa-plus-square"/></a>
+								</div>
+								</h:form>
+							</div>
+							<div class="card-body">
+								<div id="bootstrap-data-table_wrapper"
+									class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+									<div class="row">
+										<div class="col-sm-12 col-md-6">
+
+										</div>
+
+									</div>
+									<div class="row">
 		
 		<div class="col-lg-10">
                         <div class="card-body card-block">
@@ -22,65 +67,77 @@
                              <p:growl id="growl" showDetail="true" />
                             	<div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-addon" style="margin-left: 500px">Cedula</div>
+                                        <div class="input-group-addon" style="margin-left: 300px">Cedula</div>
 										<p:inputText value="#{ingresoPersonasBean.persona.cedula}" id="txtCedula" required="true" style="width:265px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                     </div>
                                 </div>
                             	 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-addon" style="margin-left: 500px">Nombres</div>
+                                        <div class="input-group-addon" style="margin-left: 300px">Nombres</div>
 										<p:inputText value="#{ingresoPersonasBean.persona.nombre}" id="txtNombres" required="true" style="width:248px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                     </div>
                                 </div>
                                 
                                  <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-addon" style="margin-left: 500px">Apellidos</div>
+                                        <div class="input-group-addon" style="margin-left: 300px">Apellidos</div>
 										<p:inputText value="#{ingresoPersonasBean.persona.apellido}" id="txtApellidos" required="true" style="width:250px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                     </div>
                                 </div>
                                  <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-addon" style="margin-left: 500px">Fecha de Nacimiento</div>
+                                        <div class="input-group-addon" style="margin-left: 300px">Fecha de Nacimiento</div>
 										<p:calendar navigator="true" value="#{ingresoPersonasBean.persona.fechaNacimiento}" id="txtNacimiento" required="true" style="width:162px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-addon" style="margin-left: 500px">Direccion</div>
+                                        <div class="input-group-addon" style="margin-left: 300px">Direccion</div>
 										<p:inputText value="#{ingresoPersonasBean.persona.direccion}" id="txtDireccion" required="true" style="width:250px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-addon" style="margin-left: 500px">Telefono</div>
+                                        <div class="input-group-addon" style="margin-left: 300px">Telefono</div>
 										<p:inputText value="#{ingresoPersonasBean.persona.telefono}" id="txtTelefono" required="true" style="width:255px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-addon" style="margin-left: 500px">Email</div>
+                                        <div class="input-group-addon" style="margin-left: 300px">Email</div>
 										<p:inputText value="#{ingresoPersonasBean.persona.email}" id="txtEmail" required="true" style="width:280px" />                                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                     </div>
                                 </div>
                                 <br/>
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <div class="input-group-addon" style="margin-left: 500px">Password</div>
+                                        <div class="input-group-addon" style="margin-left: 300px">Password</div>
 										<p:password value="#{ingresoPersonasBean.persona.password}" id="txtClave" required="true" style="width:250px"   />
                                         <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
                                     </div>
                                 </div>
                                 <br/>
                                 <div class="form-actions form-group">
-									<h:commandButton icon="ui-icon-key" style="margin-left: 650px" value="Guardar" update=":growl"
-									 action="#{ingresoPersonasBean.guardarAdministrador()}"/>                                </div>
+                                <h:form>
+									<h:commandButton icon="ui-icon-key" style="margin-left: 450px" value="Guardar" update=":growl"
+									 action="#{ingresoPersonasBean.guardarAdministrador()}"/>    </h:form>
+									                             </div>
                             </h:form>
                         </div>
                     </div>
+                    </div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
 	</ui:define>
 
 </ui:composition>

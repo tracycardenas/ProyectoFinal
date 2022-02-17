@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:metadata>
+		<!-- f:viewParam name="id" value="#{clienteBean.cedula}"></f:viewParam> 
+		<f:viewAction action="#{clienteBean.loadData()}"/-->
+	</f:metadata>
+</h:head>
+
+<ui:composition template="/template/plantilla.xhtml">
+	<ui:define name="title">
+        Agregar Malla Academica
+    </ui:define>
+	<ui:define name="content">
+		<div class="breadcrumbs">
+			<div class="breadcrumbs-inner">
+				<div class="row m-0">
+					<div class="col-sm-4">
+						<div class="page-header float-left">
+							<div class="page-title">
+								<h1>Dashboard</h1>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="page-header float-right">
+							<div class="page-title">
+								<ol class="breadcrumb text-right">
+									<li><a href="#">Dashboard</a></li>
+									<li><a href="Listar-MallasCurricular.xhtml">Mallas Académicas</a></li>
+									<li class="active">Agregar Malla Académica</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="animated fadeIn">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<strong class="card-title">Agregar Malla Académica</strong>
+							</div>
+							<div class="card-body">
+								<h:form id="form">
+									<div class="col-12">
+											<div class="row"> <!-- Materias -->
+												<div class="col-12 ui-fluid p-field">
+													Carrera
+													<p:commandButton type="button" icon="pi pi-plus-circle"
+																	 onclick="PF('agregarCarreraDialog').show()"
+																	 styleClass="rounded-button ui-button-info ui-button-flat"/>	
+												</div>
+											</div>
+											<div class="row"> <!-- SELECCIÓN DE CARRERAS -->
+												<div class="col-12 ui-fluid p-field">
+													<p:dataTable id="dt-carrera-seleccionada" var="carrera" value="#{mallasCurricularesView.carreraSeleccionada}" allowUnsorting="false">
+							                    		<p:column headerText="Nombre">
+							                    			<h:outputText value="#{carrera.nombre}" />
+							                    		</p:column>
+							                    		<p:column headerText="Modalidad">
+							                    			<h:outputText value="#{carrera.modalidad}" />
+							                    		</p:column>
+							                    		<p:column headerText="Duración">
+							                    			<h:outputText value="#{carrera.duracion} años" />
+							                    		</p:column>
+							                    		<p:column>
+							                    			<p:commandButton icon="pi pi-trash" styleClass="rounded-button ui-button-danger ui-button-flat"
+																 process="@this" action="#{mallasCurricularesView.deseleccionarCarrera}">
+																<f:setPropertyActionListener value="#{carrera}" target="#{mallasCurricularesView.carreraSeleccionada}"/>
+															</p:commandButton>
+							                    		</p:column>
+							                    	</p:dataTable>
+							                    	
+							                    	<!-- MODAL PARA AGREGAR CARRERAS - No tocar!! funcinando bien--> 
+							                    	<p:dialog header="Agregar Carrera" widgetVar="agregarCarreraDialog" minHeight="450" width="750" showEffect="fade" modal="true">
+														<p:dataTable id="dt-carrera-seleccion" var="c" value="#{mallasCurricularesView.carreras}"
+																	 widgetVar="tablaCarreras" emptyMessage="No hay carrera buscada"
+														    		 filteredValue="#{mallasCurricularesView.carrerasFiltro}" scrollable="true" scrollHeight="250"
+																	 globalFilterFunction="#{mallasCurricularesView.globalFilterFunctionCarreras()}">
+														    <f:facet name="header">
+																	<p:inputText id="globalFilter" onkeyup="PF('tablaCarreras').filter()" style="width:300px" placeholder="Buscar..."/>
+															</f:facet>
+															<p:column field="nombre" headerText="Nombre" filterable="false"/>
+															<p:column field="modalidad" headerText="Modalidad" filterable="false"/>
+															<p:column field="duracion" headerText="Duración" filterable="false"/>
+															<p:column headerText="Agregar">
+																<p:commandButton icon="pi pi-check" styleClass="rounded-button ui-button-flat"
+																				oncomplete="PF('agregarCarreraDialog').hide()"
+																			 	 process="@this" action="#{mallasCurricularesView.agregarCarrera}">
+																	<f:setPropertyActionListener value="#{c}" target="#{mallasCurricularesView.carreraSeleccionada}"/>
+																</p:commandButton>
+															</p:column>
+														</p:dataTable>
+													</p:dialog><!-- FIN MODAL -->
+												</div>
+											</div><br/>
+										</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="row"> <!-- Materias -->
+												<div class="col-12 ui-fluid p-field">
+													Niveles
+													<p:commandButton icon="pi pi-plus-circle" onclick="PF('agregarNivelDialog').show()"
+																	 type="button"
+																	 styleClass="rounded-button ui-button-info ui-button-flat"/>	
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-12 ui-fluid p-field">
+													<p:dataTable id="tb-niveles" var="nivel" value="#{mallasCurricularesView.niveles}" sortBy="#{nivel.nivel}">
+														<p:headerRow field="nivel" expandable="true" 
+																	 expanded="#">
+															<p:column colspan="1">
+																<div class="p-d-inline-flex p-ai-center" style="vertical-align: middle">
+																	<h:outputText styleClass="p-ml-2" value="Nivel #{nivel.nivel}"/>
+																</div>
+															</p:column>
+														</p:headerRow>
+														
+														<p:column headerText="Código">
+															<h:outputText value="#{nivel.materia.codigo}" />
+														</p:column>	
+														<p:column headerText="Materia">
+															<h:outputText value="#{nivel.materia.nombre}" />
+														</p:column>	
+														<p:column headerText="Horas Periodo">
+															<h:outputText value="#{nivel.materia.totalHoras()}" />
+														</p:column>	
+														<p:column headerText="Unidad">
+															<h:outputText value="#{nivel.materia.unidad}" />
+														</p:column>	
+														<p:column headerText="Campo Formación">
+															<h:outputText value="#{nivel.materia.descripcion}" />
+														</p:column>	
+														<p:column headerText="">
+															<p:commandButton icon="pi pi-trash" styleClass="rounded-button ui-button-danger ui-button-flat"
+																 process="@this" action="#{mallasCurricularesView.eliminarNivel}">
+																<f:setPropertyActionListener value="#{nivel}" target="#{mallasCurricularesView.nivelSelecionado}"/>
+															</p:commandButton>
+														</p:column>	
+													
+													</p:dataTable>
+							                    	<!-- MODAL PARA AGREGAR MATERIAS -->
+							                    	<p:dialog header="Agregar Nivel" widgetVar="agregarNivelDialog" minHeight="450" width="750" showEffect="fade" modal="true">
+														<p:dataTable id="dt-materias-seleccion" var="m" value="#{mallasCurricularesView.materias}"
+																	 widgetVar="tablaMaterias" emptyMessage="No hay materias"
+														    		 filteredValue="#{mallasCurricularesView.materiasFiltro}" scrollable="true" scrollHeight="250"
+																	 globalFilterFunction="#{mallasCurricularesView.globalFilterFunctionMaterias}">
+														    <f:facet name="header">
+														    	<div class="row">
+														    		<div class="col-6 ui-fluid p-field">
+														    			<h:outputText value="Nivel" />
+														    		</div>
+														    		<div class="col-6 ui-fluid p-field">
+														    			<p:inputText id="globalFilter" onkeyup="PF('tablaMaterias').filter()" style="width:300px" placeholder="Buscar..."/>
+														    		</div>
+														    	</div>
+																	
+															</f:facet>
+															<p:column field="codigo" headerText="Código" filterable="false"/>
+															<p:column field="nombre" headerText="Nombre" filterable="false"/>
+															
+															<p:column headerText="Agregar">
+																<p:commandButton icon="pi pi-check" styleClass="rounded-button ui-button-flat"
+																			 	 process="@this" action="#{mallasCurricularesView.agregarNivel}">
+																	<f:setPropertyActionListener value="#{m}" target="#{mallasCurricularesView.materiaSeleccionada}"/>
+																</p:commandButton>
+															</p:column>
+														</p:dataTable>
+														<div class="card-footer">
+															<p:commandButton value="Salir de panel" icon="pi pi-check" 
+																		oncomplete="PF('agregarNivelDialog').hide()"/>
+														</div>
+													</p:dialog><!-- FIN MODAL -->
+												</div>
+											</div><br/>
+										</div>
+									</div>
+									<div class="foorter">
+										<div class="col-12">
+											<hr/>
+											<p:commandButton value="Guardar" icon="pi pi-check" action="#{mallasCurricularesView.guardarMalla}"/>
+										</div>
+									</div>
+								</h:form>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<!-- .animated -->
+		</div>
+
+	</ui:define>
+
+</ui:composition>
+</html>

@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<meta charset="utf-8" />
@@ -77,86 +78,207 @@
 	<!-- Left Panel -->
 	<aside id="left-panel" class="left-panel"> <nav
 		class="navbar navbar-expand-sm navbar-default">
+		<h:form>
 	<div id="main-menu" class="main-menu collapse navbar-collapse">
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="index.html"><i
-					class="menu-icon fa fa-laptop"></i>Dashboard </a></li>
+					class="menu-icon fa fa-laptop"></i>Inicio </a></li>
 			<li class="menu-title">Módulos</li>
 			<!-- /.menu-title -->
 			<li class="menu-item-has-children dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-					<i class="menu-icon fa fa-clipboard"></i>INSCRIPCIONES
-				</a>
-				<ul class="sub-menu children dropdown-menu">
-					<li><i class="fa fa-plus"></i><a href="../faces/InsertarEstudiantes.xhtml">	Inscribir</a></li>
-					<li><i class="fa fa-list-ol"></i><a href="../faces/Listar_Estudiantes.xhtml">Listado</a></li>
-				</ul>
+				<strong> GESTION DE USUARIOS </strong>
+				
 			</li>
 			<li class="menu-item-has-children dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-					<i class="menu-icon fa fa-pencil-square"></i>MATRICULAS
-				</a>
-				<ul class="sub-menu children dropdown-menu">
-					<li><i class="fa fa-plus"></i><a href="../faces/InsertarMatricula.xhtml">	Matricular</a></li>
-					<li><i class="fa fa-list-ol"></i><a href="../faces/Listar_Matriculas.xhtml">Listado</a></li>
-				</ul>
+				<p:commandButton icon="menu-icon fa fa-user" value=" &nbsp;  NUEVO ESTUDIANTE" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.InscribirEstudiante()}"
+							></p:commandButton>
+				
 			</li>
 			<li class="menu-item-has-children dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<i class="menu-icon fa fa-users"></i>ESTUDIANTES
-				</a>
-				<ul class="sub-menu children dropdown-menu">
-					<li><i class="fa fa-plus"></i><a href="../faces/InsertarEstudiantes.xhtml">	Agregar</a></li>
-					<li><i class="fa fa-list-ol"></i><a href="../faces/Listar_Estudiantes.xhtml">	Listar</a></li>
-				</ul>
+						
+						<p:commandButton icon="menu-icon fa fa-user" value=" &nbsp;  NUEVO DOCENTE" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.agregarDocente()}"
+							></p:commandButton>
+						
+				
+				
 			</li>
 			<li class="menu-item-has-children dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-					<i class="menu-icon fa fa-users"></i>DOCENTES
-				</a>
-				<ul class="sub-menu children dropdown-menu">
-					<li><i class="fa fa-plus"></i><a href="../faces/InsertarDocentes.xhtml">	Agregar</a></li>
-					<li><i class="fa fa-list-ol"></i><a href="../faces/Listar_Docentes.xhtml">Listar</a></li>
-				</ul>
+						
+						<p:commandButton icon="menu-icon fa fa-list-alt" value=" &nbsp;  LISTAR ESTUDIANTES" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.listarEstudiantes()}"
+							></p:commandButton>
+				
+				
 			</li>
 			<li class="menu-item-has-children dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-					<i class="menu-icon fa fa-pencil-square"></i>GESTION ACADEMICA
-				</a>
-				<ul class="sub-menu children dropdown-menu">
-					<li><i class="fa fa-plus"></i><a href="tables-basic.html">	Agregar</a></li>
-					<li><i class="fa fa-list-ol"></i><a href="tables-data.html">Listar</a></li>
-				</ul>
+						
+						<p:commandButton icon="menu-icon fa fa-list-alt" value=" &nbsp;  LISTAR DOCENTES" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.listarDocentes()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+				<strong> PROCESOS EDUCATIVOS </strong>
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-edit" value=" &nbsp;  MATRICULAR" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.insertarMatricula()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-list-alt" value=" &nbsp;  LISTAR MATRICULAS" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.listarMatriculas()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+				<strong> GESTION DE PAGOS </strong>
+				
 			</li>
 			
+			
+			
 			<li class="menu-item-has-children dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-					<i class="menu-icon fa fa-money"></i>COBROS
-				</a>
-				<ul class="sub-menu children dropdown-menu">
-					<li><i class="fa fa-plus"></i><a href="../faces/CostoMatricula.xhtml">	Cobro Matricula</a></li>
-					<li><i class="fa fa-list-ol"></i><a href="../faces/CostoInscripcion.xhtml">Cobro Inscripcion</a></li>
-				</ul>
+						
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  MATRICULA" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.cobroMatricula()}"
+							></p:commandButton>
+						
+				
+				
 			</li>
 			<li class="menu-item-has-children dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-					<i class="menu-icon fa fa-money"></i>LIBRO DIARIO
-				</a>
-				<ul class="sub-menu children dropdown-menu">
-					<li><i class="fa fa-plus"></i><a href="../faces/ArqueoCaja.xhtml">	Arqueo caja</a></li>
-					<li><i class="fa fa-list-ol"></i><a href="../faces/GestionLibroDiario.xhtml">Movimientos</a></li>
-				</ul>
+						
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  INSCRIPCION" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.cobroInscripcion()}"
+							></p:commandButton>
+						
+				
+				
 			</li>
 			<li class="menu-item-has-children dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-					<i class="menu-icon fa fa-gears (alias)"></i>CONFIGURACIONES
-				</a>
-				<ul class="sub-menu children dropdown-menu">
-					<li><i class="fa fa-plus"></i><a href="../faces/ConfiguracionesGenerales.xhtml">	Costo</a></li>
-				</ul>
+				<strong> GESTION ACADEMICA </strong>
+				
 			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  INSERTAR CARRERAS" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.insertarCarreras()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  INSERTAR MATERIAS" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.insertarMaterias()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  MALLAS CURRICULARES" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.insertarMallasCurriculares()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  GENERAR GRUPOS" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.generarGrupos()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			
+			
+			
+			
+			
+			<li class="menu-item-has-children dropdown">
+				<strong> CONTABILIDAD </strong>
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+			
+						
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  LIBRO DIARIO" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.libroDiario()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-table" value=" &nbsp;  MOVIMIENTOS" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.movimientos()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+				<strong> GESTION GENERAL</strong>
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-gears" value=" &nbsp;  CONFIGURACIONES " style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.configuraciones()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-clipboard" value=" &nbsp;  ADMINISTRADORES" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.agregarAdministradores()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			
+			
 		</ul>
 	</div>
+	</h:form>
 	<!-- /.navbar-collapse --> </nav> </aside>
 	<!-- /#left-panel -->
 	<!-- Right Panel -->
@@ -177,25 +299,13 @@
 				</div>
 
 				<div class="user-area dropdown float-right">
-					<a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-						<img class="user-avatar rounded-circle" src="template/images/admin.jpg" alt="User Avatar" />
-					</a>
+				<h:form>
+					<p:commandButton icon="menu-icon fa fa-power-off" value=" &nbsp; CERRAR SESION" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.iniciarSesion()}"
+							></p:commandButton>
 
-					<div class="user-menu dropdown-menu">
-						<a class="nav-link" href="#">
-							<i class="fa fa- user"></i>Mi Perfil
-						</a>
-						<a class="nav-link" href="#">
-							<i class="fa fa- user"></i>Notificaciones
-							<span class="count">13</span>
-						</a> 
-						<a class="nav-link" href="#">
-							<i class="fa fa -cog"></i>Contiguración
-						</a>
-						<a class="nav-link" href="#">
-							<i class="fa fa-power -off"></i>Logout
-						</a>
-					</div>
+					</h:form>
 				</div>
 
 			</div>

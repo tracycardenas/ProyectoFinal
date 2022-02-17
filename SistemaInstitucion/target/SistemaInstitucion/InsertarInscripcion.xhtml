@@ -83,7 +83,6 @@
 										<h:form id="form" style="width: 900px; margin-left: 15px; overflow: hidden;  border: 1px solid #c1c1c1;">
 								       
 								           
-								            <p:growl id="msgs" showDetail="true" />
 								
 								            <h:panelGrid columns="2" cellpadding="5">
 								
@@ -97,7 +96,7 @@
 									                            var="objeto_est" itemLabel="#{objeto_est.cedula}" 
 									                            itemValue="#{objeto_est}"
 									                            converter="estudianteConverter" forceSelection="true" onclick="this.value='';">
-												<p:ajax event="itemSelect" update=":form:msgs :form:tabla_datos" />
+												<p:ajax event="itemSelect" update=":form:tabla_datos" />
 									
 									            </p:autoComplete>
 								
@@ -124,7 +123,6 @@
 	
 										 <h:form id="formC" style="width: 900px; margin-left: 15px; margin-top: 30px; overflow: hidden;  border: 1px solid #c1c1c1;">
 								           
-								            <p:growl id="msgsC" showDetail="true" />
 								
 								            <h:panelGrid columns="2" cellpadding="5">
 								
@@ -138,7 +136,7 @@
 									                            var="objeto_curso" itemLabel="#{objeto_curso.nombre}" 
 									                            itemValue="#{objeto_curso}"
 									                            converter="cursoConverter" forceSelection="true" onclick="this.value='';">
-												<p:ajax event="itemSelect" update=":formC:msgsC :formC:tabla_datosC" />
+												<p:ajax event="itemSelect" update=":formC:tabla_datosC" />
 									
 									            </p:autoComplete>
 								

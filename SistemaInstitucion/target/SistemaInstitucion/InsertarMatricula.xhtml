@@ -81,7 +81,7 @@
 										
 										
 										<h:form id="form" style="width: 900px; margin-left: 15px; overflow: hidden;  border: 1px solid #c1c1c1;">
-								            <p:growl id="msgs" showDetail="true" />
+								           
 								
 								            <h:panelGrid columns="2" cellpadding="5">
 								
@@ -95,7 +95,7 @@
 									                            var="objeto_est" itemLabel="#{objeto_est.cedula}" 
 									                            itemValue="#{objeto_est}"
 									                            converter="estudianteConverter" forceSelection="true" onclick="this.value='';">
-												<p:ajax event="itemSelect" update=":form:msgs :form:tabla_datos" />
+												<p:ajax event="itemSelect"  update=":form:tablaMaterias :form:tabla_datos" />
 									
 									            </p:autoComplete>
 								
@@ -115,36 +115,25 @@
 								
 								            </p:dataTable>
 								
-								        </h:form>
-								         <p:growl id="msg"/>
-								        		<h:form>
-								        		 <p:growl id="msg"/>
+						
+								        	
 								        		 
+
 												<br/>
-												<label style="margin-left: 17px">Nivel 
 												<br/>
-												<br/>
-												
-												
-												<h:selectOneMenu value="#{ingresoMatricula.nivel_id}" id="comboNiveles">
-													<f:selectItem itemLabel="Seleccione" itemValue="0" />
-													<f:selectItems  value="#{ingresoMatricula.selecItemNiveles}"/>
-													<f:ajax event="change" render="tablaMaterias" execute="@this" 
-													listener="#{ingresoMatricula.actualizarMaterias}"
-												   	 />
-												   	
-												</h:selectOneMenu>
-												</label>
+		
+											
 
 															<h:dataTable id="tablaMaterias" var="mat" 
-															 value="#{ingresoMatricula.grupos_seleccionados}"
+															 value="#{ingresoMatricula.actualizarMaterias()}"
 															 class="table table-striped table-bordered dataTable no-footer"
 																role="grid" aria-describedby="bootstrap-data-table_info" style="width: 900px; margin-left: 15px; overflow: hidden;  border: 1px solid #c1c1c1;">
 								
 																<h:column>
-																	<p:growl id="msg1"/>	
-																	        <p:selectBooleanCheckbox value="#{ingresoMatricula.value2}">
-																	            <p:ajax update="msg1" listener="#{ingresoMatricula.addMessage(mat.id,mat.materia.nombre)}"/>
+																	<p:growl id="msg1"/>
+																	        <p:selectBooleanCheckbox value="#{ingresoMatricula.value2}" disabled="#{ingresoMatricula.Estado(mat.materia.id)}">
+																	        
+																	            <p:ajax update="msg1"  listener="#{ingresoMatricula.addMessage(mat.id,mat.materia.nombre)}"/>
 																	        </p:selectBooleanCheckbox>       
 				
 																</h:column>
@@ -167,7 +156,7 @@
 																</h:column>
 																<h:column>
 																	<f:facet name="header">Nivel</f:facet>
-																	<h:outputText disabled="true" value="#{mat.materia.nivel.nivel}" />
+																	<h:outputText disabled="true" value="#{mat.materia.numeroNivel}" />
 				
 																</h:column>
 																
@@ -274,7 +263,7 @@
 																</h:column>
 																<h:column>
 																	<f:facet name="header">Nivel</f:facet>
-																	<h:outputText disabled="true" value="#{mat.materia.nivel.nivel}" />
+																	<h:outputText disabled="true" value="#{mat.materia.numeroNivel}" />
 				
 																</h:column>
 																

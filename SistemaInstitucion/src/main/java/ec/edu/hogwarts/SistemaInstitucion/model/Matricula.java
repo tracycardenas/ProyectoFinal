@@ -42,7 +42,6 @@ public class Matricula implements Serializable{
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "est_id")
-	@JsonbTransient
 	private Estudiante estudiante;
 	
 	
