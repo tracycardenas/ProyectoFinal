@@ -1,12 +1,54 @@
-<p>listar-personas works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Table V03</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
 
-
-<tr class="row100" *ngFor="let persona of personas | async">
-
-    <td class="column100 column2" data-column="column2">{{persona.id}}</td>
-    <td class="column100 column3" data-column="column3">{{persona.nombre}}</td>
-    <td class="column100 column4" data-column="column4">{{persona.apellido}}</td>
-    <td class="column100 column5" data-column="column5">{{persona.rol}}</td>
-    <td class="column100 column6" data-column="column6">{{persona.email}}</td>
-
+<!--===============================================================================================-->
+</head>
+<body>
+<div class="limiter">
+    
+<div class="container-table100">
+    
+<div class="wrap-table100">
+    <h1>LISTADO DE USUARIOS</h1>
+<div class="table100 ver1 m-b-110">
+    
+<table data-vertable="ver1">
+<thead>
+<tr class="row100 head">
+<th class="column100 column2" data-column="column2">ID</th>
+<th class="column100 column3" data-column="column3">NOMBRE</th>
+<th class="column100 column4" data-column="column4">APELLIDO</th>
+<th class="column100 column5" data-column="column5">ROL</th>
+<th class="column100 column6" data-column="column6">EMAIL</th>
 </tr>
+</thead>
+<tbody>
+
+    <tr class="row100" *ngFor="let persona of personas | async">
+
+        <td class="column100 column2" data-column="column2">{{persona.cedula}}</td>
+        <td class="column100 column3" data-column="column3">{{persona.nombre}}</td>
+        <td class="column100 column4" data-column="column4">{{persona.apellido}}</td>
+        <td class="column100 column5" data-column="column5">{{persona.rol}}</td>
+        <td class="column100 column6" data-column="column6">{{persona.email}}</td>
+    
+    </tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!--===============================================================================================-->
+=============================================================-->
+<script src="js/main.js"></script>
+</body>
+</html> 
+
+
