@@ -1,13 +1,25 @@
-<p>libro-diario works!</p>
+<table class="table">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Inicio dia</th>
+          <th scope="col">Ingresos</th>
+          <th scope="col">Egresos</th>
+          <th scope="col">Saldo</th>
+          <th scope="col">Observaciones</th>
+          <th scope="col">Estado</th>
+        </tr>
+      </thead>
+    <tr class="row100" *ngFor="let libro of libros | async">
+        <td class="column100 column2" data-column="column2">{{libro.id}}</td>
+        <td class="column100 column3" data-column="column3">{{libro.fecha}}</td>
+        <td class="column100 column4" data-column="column4">{{libro.inicioDia}}</td>
+        <td class="column100 column5" data-column="column5">{{libro.ingresos}}</td>
+        <td class="column100 column6" data-column="column6">{{libro.egresos}}</td>
+        <td class="column100 column6" data-column="column6">{{libro.saldo}}</td>
+        <td class="column100 column6" data-column="column6">{{libro.observacion}}</td>
+        <td class="column100 column6" data-column="column6">{{libro.estado}}</td>
+    </tr>
+  </table>
 
-<tr class="row100" *ngFor="let libro of libros | async">
-
-    <td class="column100 column2" data-column="column2">{{libro.id}}</td>
-    <td class="column100 column3" data-column="column3">{{libro.fecha}}</td>
-    <td class="column100 column4" data-column="column4">{{libro.inicioDia}}</td>
-    <td class="column100 column5" data-column="column5">{{libro.ingresos}}</td>
-    <td class="column100 column6" data-column="column6">{{libro.egresos}}</td>
-    <td class="column100 column6" data-column="column6">{{libro.saldo}}</td>
-    <td class="column100 column6" data-column="column6">{{libro.observacion}}</td>
-    <td class="column100 column6" data-column="column6">{{libro.estado}}</td>
-</tr>
