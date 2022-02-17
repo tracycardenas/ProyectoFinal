@@ -1,0 +1,12 @@
+<p>listar-personas works!</p>
+
+
+<tr class="row100" *ngFor="let persona of personas | async">
+
+    <td class="column100 column2" data-column="column2">{{persona.id}}</td>
+    <td class="column100 column3" data-column="column3">{{persona.nombre}}</td>
+    <td class="column100 column4" data-column="column4">{{persona.apellido}}</td>
+    <td class="column100 column5" data-column="column5">{{persona.rol}}</td>
+    <td class="column100 column6" data-column="column6">{{persona.email}}</td>
+
+</tr>

@@ -1,0 +1,13 @@
+<p>libro-diario works!</p>
+
+<tr class="row100" *ngFor="let libro of libros | async">
+
+    <td class="column100 column2" data-column="column2">{{libro.id}}</td>
+    <td class="column100 column3" data-column="column3">{{libro.fecha}}</td>
+    <td class="column100 column4" data-column="column4">{{libro.inicioDia}}</td>
+    <td class="column100 column5" data-column="column5">{{libro.ingresos}}</td>
+    <td class="column100 column6" data-column="column6">{{libro.egresos}}</td>
+    <td class="column100 column6" data-column="column6">{{libro.saldo}}</td>
+    <td class="column100 column6" data-column="column6">{{libro.observacion}}</td>
+    <td class="column100 column6" data-column="column6">{{libro.estado}}</td>
+</tr>
