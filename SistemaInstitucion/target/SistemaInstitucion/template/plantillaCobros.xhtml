@@ -79,13 +79,17 @@
 	<!-- Left Panel -->
 	<aside id="left-panel" class="left-panel"> <nav
 		class="navbar navbar-expand-sm navbar-default">
+		<h:form>
 	<div id="main-menu" class="main-menu collapse navbar-collapse">
-	<h:form>
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="index.html"><i
 					class="menu-icon fa fa-laptop"></i>Inicio </a></li>
 			<li class="menu-title">Módulos</li>
 			<!-- /.menu-title -->
+			<li class="menu-item-has-children dropdown">
+				<strong> GESTION DE USUARIOS </strong>
+				
+			</li>
 			<li class="menu-item-has-children dropdown">
 				<p:commandButton icon="menu-icon fa fa-user" value=" &nbsp;  NUEVO ESTUDIANTE" style="border: none; 
          					BACKGROUND-COLOR: white; color: grey;"
@@ -95,11 +99,35 @@
 			</li>
 			<li class="menu-item-has-children dropdown">
 						
+						<p:commandButton icon="menu-icon fa fa-user" value=" &nbsp;  NUEVO DOCENTE" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.agregarDocente()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
 						<p:commandButton icon="menu-icon fa fa-list-alt" value=" &nbsp;  LISTAR ESTUDIANTES" style="border: none; 
          					BACKGROUND-COLOR: white; color: grey;"
 						 action="#{navegabilidadBean.listarEstudiantes()}"
 							></p:commandButton>
 				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-list-alt" value=" &nbsp;  LISTAR DOCENTES" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.listarDocentes()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+				<strong> PROCESOS EDUCATIVOS </strong>
 				
 			</li>
 			<li class="menu-item-has-children dropdown">
@@ -123,29 +151,15 @@
 				
 			</li>
 			<li class="menu-item-has-children dropdown">
-						
-						<p:commandButton icon="menu-icon fa fa-user" value=" &nbsp;  NUEVO DOCENTE" style="border: none; 
-         					BACKGROUND-COLOR: white; color: grey;"
-						 action="#{navegabilidadBean.agregarDocente()}"
-							></p:commandButton>
-						
-				
-				
-			</li>
-			<li class="menu-item-has-children dropdown">
-						
-						<p:commandButton icon="menu-icon fa fa-list-alt" value=" &nbsp;  LISTAR DOCENTES" style="border: none; 
-         					BACKGROUND-COLOR: white; color: grey;"
-						 action="#{navegabilidadBean.listarDocentes()}"
-							></p:commandButton>
-						
-				
+				<strong> GESTION DE PAGOS </strong>
 				
 			</li>
 			
+			
+			
 			<li class="menu-item-has-children dropdown">
 						
-						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  COBRAR MATRICULA" style="border: none; 
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  MATRICULA" style="border: none; 
          					BACKGROUND-COLOR: white; color: grey;"
 						 action="#{navegabilidadBean.cobroMatricula()}"
 							></p:commandButton>
@@ -155,7 +169,7 @@
 			</li>
 			<li class="menu-item-has-children dropdown">
 						
-						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  COBRAR INSCRIPCION" style="border: none; 
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  INSCRIPCION" style="border: none; 
          					BACKGROUND-COLOR: white; color: grey;"
 						 action="#{navegabilidadBean.cobroInscripcion()}"
 							></p:commandButton>
@@ -164,6 +178,60 @@
 				
 			</li>
 			<li class="menu-item-has-children dropdown">
+				<strong> GESTION ACADEMICA </strong>
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  INSERTAR CARRERAS" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.insertarCarreras()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  INSERTAR MATERIAS" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.insertarMaterias()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  MALLAS CURRICULARES" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.insertarMallasCurriculares()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+						
+						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  GENERAR GRUPOS" style="border: none; 
+         					BACKGROUND-COLOR: white; color: grey;"
+						 action="#{navegabilidadBean.generarGrupos()}"
+							></p:commandButton>
+						
+				
+				
+			</li>
+			
+			
+			
+			
+			
+			<li class="menu-item-has-children dropdown">
+				<strong> CONTABILIDAD </strong>
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+			
 						
 						<p:commandButton icon="menu-icon fa fa-money" value=" &nbsp;  LIBRO DIARIO" style="border: none; 
          					BACKGROUND-COLOR: white; color: grey;"
@@ -181,6 +249,10 @@
 							></p:commandButton>
 						
 				
+				
+			</li>
+			<li class="menu-item-has-children dropdown">
+				<strong> GESTION GENERAL</strong>
 				
 			</li>
 			<li class="menu-item-has-children dropdown">
@@ -206,8 +278,8 @@
 			
 			
 		</ul>
-		</h:form>
 	</div>
+</h:form>
 	<!-- /.navbar-collapse --> </nav> </aside>
 	<!-- /#left-panel -->
 	<!-- Right Panel -->

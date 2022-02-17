@@ -256,6 +256,10 @@ public class BuscadorBean implements Serializable {
     
     //BUSCADOR DE DOCENTE
 	
+	public void loadIns() {
+		
+		estudiantes_seleccionados=personaON.getEstudiantes();
+	}
 	
     
     

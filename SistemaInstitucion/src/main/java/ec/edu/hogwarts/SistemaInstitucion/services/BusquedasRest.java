@@ -11,22 +11,16 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import ec.edu.hogwarts.SistemaInstitucion.business.PersonaONLocal;
+import ec.edu.hogwarts.SistemaInstitucion.model.Estudiante;
 import ec.edu.hogwarts.SistemaInstitucion.model.Persona;
 
 
-@Path("busquedas")
+@Path("listarPersonas")
 public class BusquedasRest {
 	
 	@Inject
 	private PersonaONLocal personaON;
-		
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("searh")
-	public Persona getPersona(@QueryParam("cedula") String cedula){
-		return personaON.getPersona(cedula);
-	}
-	
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List< Persona> getPersonas(){

@@ -190,7 +190,8 @@ public class IngresoMatricula implements Serializable{
 			matriculaON.insert(this.matricula);
 		
 			System.out.println("Matricula: ");
-		
+
+			
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -200,9 +201,20 @@ public class IngresoMatricula implements Serializable{
 	}
 	
 	public String cobrarMatricula() {
+		this.grupos_matriculas=new ArrayList<Grupo>();
+		this.lista_calificacioness=new ArrayList<Calificacion>();
+		this.loadCarreras();
+		this.loadNiveles();
+		this.listado_matriculas=matriculaON.getMatricula();
+		this.niveles= new ArrayList<Nivel>();
+
 		return "CostoMatricula?faces-redirect=true";
 	}
 	
+	public void loadPer() {
+		
+		estudiantes_seleccionados=personaON.getEstudiantes();
+	}
 	
 	
 	
@@ -342,10 +354,20 @@ public class IngresoMatricula implements Serializable{
 		estudiante_seleccionado =p;
 		Estudiante estu = personaON.getEstudiante(cedula);
 		estudiante_seleccionado = estu;
+		listado_matriculas=matriculaON.getMatricula();
 
 		
 	}
 	 
+	public void getMatriculas() {
+		
+		listado_matriculas=matriculaON.getMatricula();
+	}
+	
+	public List<Matricula> obtenerMatriculas(){
+		listado_matriculas=matriculaON.getMatricula();
+		return  listado_matriculas;
+	}
     //BUSCADOR DE ESTUDIANTE
     
 	public List<Persona> autocompletar_Estudiantes(String query) {

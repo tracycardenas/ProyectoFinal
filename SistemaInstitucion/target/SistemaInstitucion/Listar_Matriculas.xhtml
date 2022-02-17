@@ -5,6 +5,17 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
+	
+<head>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ <f:metadata>
+ 	
+    <f:viewAction action="#{ingresoMatricula.getMatriculas()}"/>
+
+
+    
+</f:metadata>
+</head>
 
 <ui:composition template="/template/plantilla.xhtml">
 	<ui:define name="title">
@@ -53,7 +64,7 @@
 											
 											<h:form>
 												<p:growl id="message" showDetail="true"/>
-										        <h:dataTable var="per" class="table table-striped" value="#{ingresoMatricula.listado_matriculas}">
+										        <h:dataTable var="per" class="table table-striped" value="#{ingresoMatricula.listado_matriculas}" >
 													
 																										
 													<h:column>

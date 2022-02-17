@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 import javax.json.bind.annotation.JsonbPropertyOrder;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -118,7 +119,7 @@ public class Persona implements Serializable{
 	}
 	
 
-
+	@JsonbTransient
 	public int getEdad() {
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
