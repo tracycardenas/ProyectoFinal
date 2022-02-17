@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Table V03</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+</head>
+<body>
+<div class="limiter">
+    
+<div class="container-table100">
+    
+<div class="wrap-table100">
+    <h1>LISTADO DE MATRICULAS</h1>
+<div class="table100 ver1 m-b-110">
+    
+<table data-vertable="ver1">
+<thead>
+<tr class="row100 head">
+<th class="column100 column2" data-column="column2">ID</th>
+<th class="column100 column3" data-column="column3">COSTO HORA</th>
+<th class="column100 column4" data-column="column4">COSTO MATRICULA</th>
+<th class="column100 column5" data-column="column5">TOTAL HORAS</th>
+<th class="column100 column6" data-column="column6">ESTADO</th>
+<th class="column100 column7" data-column="column7">Cedula Estudiante</th>
+<th class="column100 column8" data-column="column8">Nombre Estudiante</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row100" *ngFor="let matricula of matriculas | async">
+
+<td class="column100 column2" data-column="column2">{{matricula.id}}</td>
+<td class="column100 column3" data-column="column3">{{matricula.costoHora}}</td>
+<td class="column100 column4" data-column="column4">{{matricula.costoMatricula}}</td>
+<td class="column100 column5" data-column="column5">{{matricula.totalHoras}}</td>
+<td class="column100 column6" data-column="column6">{{matricula.estado}}</td>
+<td class="column100 column6" data-column="column6">{{matricula.estudiante.cedula}}</td>
+<td class="column100 column6" data-column="column6">{{matricula.estudiante.nombre}} {{matricula.estudiante.apellido}}</td>
+</tr>
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!--===============================================================================================-->
+=============================================================-->
+<script src="js/main.js"></script>
+</body>
+</html> 
